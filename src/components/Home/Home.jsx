@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Form from '../../components/Form/Form'
+import Boxrepo from '../../components/Boxrepo/Boxrepo'
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
       </div>
       <div className="backBottom">
         <Form />
+        <Boxrepo />
       </div>
     </>
   );
