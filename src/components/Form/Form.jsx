@@ -1,7 +1,7 @@
 import React from 'react'
 import './Form.css'
 
-function Form({}){
+function Form({logIn}){
     return (
         <div>
         <h3>Se connecter</h3>
@@ -9,7 +9,7 @@ function Form({}){
         {/* // logo git */}
         <label htmlFor="Account">Clé token</label>
         <input className="inputToken" type="text"/>
-        <button type="submit">Go</button>
+        <button onClick={logIn} className="btnLogin" type="submit">Go</button>
         </div>
     )
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
@@ -9,21 +9,29 @@ import ProfileRepos from './components/ProfileRepos/ProfileRepos';
 import Toolbox from './components/Toolbox/Toolbox';
 import Repo from './components/Repo/Repo';
 
+
 function App() {
+  const [online, setOnline] = useState(false);
+  const logIn = () => {
+    setOnline(true)
+  }
+  const logOut = () => {
+    setOnline(false)
+  }
   return (
     <div className="body-container">
       <Router>
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home logIn={logIn} />
           </Route>
           <Route path="/profile" component={Profile} />
           <Route path="/profile-repos" component={ProfileRepos} />
           <Route path="/toolbox" component={Toolbox} />
           <Route path="/repo" component={Repo} />
         </Switch>
-        <Footer />
+        <Footer logOut={logOut}/>
       </Router>
     </div>
   );

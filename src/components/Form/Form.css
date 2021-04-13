@@ -1,0 +1,7 @@
+.btnLogin {
+    padding: 0.5% 1.5%;
+    background-color: rgb(23, 187, 23);
+    border: 1px solid grey;
+    border-radius: 20px;
+    color: honeydew;
+}
