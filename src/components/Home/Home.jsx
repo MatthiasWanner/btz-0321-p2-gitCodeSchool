@@ -3,7 +3,8 @@ import './Home.css';
 import Form from '../../components/Form/Form'
 import Boxrepo from '../../components/Boxrepo/Boxrepo'
 
-function Home({logIn}) {
+function Home({logIn, onLine}) {
+
 
 const homeRepos = [
   { 
@@ -41,10 +42,15 @@ const homeRepos = [
       </div>
       </div>
       <div className="backBottom">
-        <Form logIn={logIn}/>
+        {!onLine && 
+        <> 
+          <Form logIn={logIn}/>
+           </>
+        }
         {homeRepos.map((repo , index)=>
          <Boxrepo key={index} {...repo}  />
          )}
+    
         
       </div>
     </>

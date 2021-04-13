@@ -1,11 +1,16 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer({logOut}) {
+function Footer({logOut, noLogOut}) {
   return (
     <>
       <p>Footer</p>
-      <button onClick={logOut} className="logOutB">Logout</button>
+      { noLogOut &&
+        <>
+        <button onClick={logOut} className="logOutB">Logout</button>
+        </>
+
+      }
     </>
   );
 }

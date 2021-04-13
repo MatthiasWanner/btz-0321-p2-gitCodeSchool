@@ -24,14 +24,14 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home logIn={logIn} />
+            <Home logIn={logIn} onLine={online}/>
           </Route>
           <Route path="/profile" component={Profile} />
           <Route path="/profile-repos" component={ProfileRepos} />
           <Route path="/toolbox" component={Toolbox} />
           <Route path="/repo" component={Repo} />
         </Switch>
-        <Footer logOut={logOut}/>
+        <Footer logOut={logOut} noLogOut={online}/>
       </Router>
     </div>
   );
