@@ -1,31 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import Form from '../../components/Form/Form';
 import Boxrepo from '../../components/Boxrepo/Boxrepo';
+import axios from 'axios';
 
 function Home({ logIn, onLine }) {
-  const homeRepos = [
-    {
-      url: 'https://www.editions-delcourt.fr/sites/default/files/styles/image_mis_e/public/2020-06/blagues-de-toto-bloc1-10.jpg?itok=ijOrp6IU',
-      userName: 'Beatriz',
-      repoName: 'TitreB',
-      nbStar: 22,
-    },
+  const [homeRepos, setHomeRepos] = useState([]);
 
-    {
-      url: 'https://www.editions-delcourt.fr/sites/default/files/styles/image_mis_e/public/2020-06/blagues-de-toto-bloc1-10.jpg?itok=ijOrp6IU',
-      userName: 'Polo',
-      repoName: 'JacksTitle',
-      nbStar: 48,
-    },
+  useEffect(() => {
+    const getHomeRepos = () => {
+      axios
+        .get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&per_page=20')
 
-    {
-      url: 'https://www.editions-delcourt.fr/sites/default/files/styles/image_mis_e/public/2020-06/blagues-de-toto-bloc1-10.jpg?itok=ijOrp6IU',
-      userName: 'Bernardo',
-      repoName: 'Titre2',
-      nbStar: 2,
-    },
-  ];
+        .then((res) => {
+          setHomeRepos(res.data.items);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getHomeRepos();
+  }, []);
 
   return (
     <>
@@ -45,8 +40,8 @@ function Home({ logIn, onLine }) {
             <Form logIn={logIn} />
           </>
         )}
-        {homeRepos.map((repo, index) => (
-          <Boxrepo key={index} {...repo} />
+        {homeRepos.map((repo) => (
+          <Boxrepo key={repo.id} {...repo} />
         ))}
       </div>
     </>

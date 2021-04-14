@@ -1,14 +1,14 @@
 import React from 'react';
 import './Boxrepo.css';
 
-function Boxrepo({ url, userName, repoName, nbStar }) {
+function Boxrepo({ name, owner, stargazers_count }) {
   return (
     <div className="boxRepo">
-      <img src={url} alt={`${userName} avatar`} />
+      <img src={owner.avatar_url} alt={owner.login} />
       {/* logo */}
-      <h2>{userName}</h2>
-      <h3>{repoName}</h3>
-      <p>A récolté {nbStar}★</p>
+      <h2>{owner.login}</h2>
+      <h3>{name}</h3>
+      <p>A récolté {stargazers_count}★</p>
     </div>
   );
 }
