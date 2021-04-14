@@ -11,11 +11,14 @@ import Repo from './components/Repo/Repo';
 
 function App() {
   const [online, setOnline] = useState(false);
-  const logIn = () => {
+  const logIn = (value) => {
     setOnline(true);
+    localStorage.setItem('tokenKey', value);
+    console.log(value);
   };
   const logOut = () => {
     setOnline(false);
+    localStorage.clear('tokenKey');
   };
   return (
     <div className="body-container">
