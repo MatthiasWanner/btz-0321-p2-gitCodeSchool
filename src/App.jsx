@@ -11,25 +11,6 @@ import Repo from './components/Repo/Repo';
 import axios from 'axios';
 
 function App() {
-  const [homeRepo, setHomeRepo] = useState([]);
-
-  useEffect(() => {
-    const getHomeRepo = () => {
-      axios
-        .get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&per_page=20')
-
-        .then((res) => {
-          setHomeRepo(res.data.items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getHomeRepo();
-  }, []);
-
-  console.log(homeRepo);
-
   const [online, setOnline] = useState(false);
   const logIn = (value) => {
     setOnline(true);

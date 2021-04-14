@@ -11,6 +11,7 @@ function Form({ logIn }) {
       {/* // logo git */}
       <label htmlFor="Account">Clé token</label>
       <input className="inputToken" type="text" value={inputToken} onChange={(e) => setInputToken(e.target.value)} />
+      
       <button onClick={() => logIn(inputToken)} className="btnLogin" type="submit">
         Go
       </button>

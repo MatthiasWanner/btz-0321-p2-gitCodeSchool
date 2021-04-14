@@ -14,6 +14,7 @@ function Home({ logIn, onLine }) {
 
         .then((res) => {
           setHomeRepos(res.data.items);
+          console.log(res.data.items);
         })
         .catch((err) => {
           console.log(err);
