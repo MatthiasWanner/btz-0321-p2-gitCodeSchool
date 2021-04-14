@@ -1,10 +1,11 @@
 import React from 'react';
 import './Profile.css';
 
-function Profile() {
+function Profile(props) {
+  const pseudo = props.match.params.pseudo;
   return (
     <>
-      <h3>Profil</h3>
+      <h3>Profil de {pseudo}</h3>
     </>
   );
 }

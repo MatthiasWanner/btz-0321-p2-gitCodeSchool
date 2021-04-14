@@ -1,10 +1,11 @@
 import React from 'react';
 import './ProfileRepos.css';
 
-function ProfileRepos() {
+function ProfileRepos(props) {
+  const pseudo = props.match.params.pseudo;
   return (
     <>
-      <h3>Repos de Profil</h3>
+      <h3>Repos de {pseudo}</h3>
     </>
   );
 }

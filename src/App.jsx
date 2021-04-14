@@ -10,16 +10,17 @@ import Toolbox from './components/Toolbox/Toolbox';
 import Repo from './components/Repo/Repo';
 
 function App() {
+  const pseudo = 'Best Team';
   return (
     <div className="body-container">
       <Router>
-        <Navbar />
+        <Navbar pseudo={pseudo} />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/profile" component={Profile} />
-          <Route path="/profile-repos" component={ProfileRepos} />
+          <Route path="/profile/:pseudo" component={Profile} />
+          <Route path="/profile-repos/:pseudo" component={ProfileRepos} />
           <Route path="/toolbox" component={Toolbox} />
           <Route path="/repo" component={Repo} />
         </Switch>

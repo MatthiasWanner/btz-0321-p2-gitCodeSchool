@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ pseudo }) {
   return (
     <div className="navbar">
       <nav>
@@ -11,13 +11,13 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to={`/profile`}>Mon Profil</Link>
+            <Link to={`/profile/${pseudo}`}>Mon Profil</Link>
           </li>
           <li>
             <Link to={`/toolbox`}>Ma Toolbox</Link>
           </li>
           <li>
-            <Link to={`/profile-repos`}>Mes Repos</Link>
+            <Link to={`/profile-repos/${pseudo}`}>Mes Repos</Link>
           </li>
         </ul>
       </nav>
