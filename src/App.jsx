@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import 'tailwindcss/tailwind.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import { login } from './api/api';
+import { HOME_REPOS_URL } from './api/Endpoints';
+import { PROFIL_HOME } from './api/Endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -8,54 +12,49 @@ import Profile from './components/Profile/Profile';
 import ProfileRepos from './components/ProfileRepos/ProfileRepos';
 import Toolbox from './components/Toolbox/Toolbox';
 import Repo from './components/Repo/Repo';
-import axios from 'axios';
 
 function App() {
-  const [homeRepo, setHomeRepo] = useState([]);
+  const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
+  const [isLogged, setIsLogged] = useState(pseudo !== undefined ? true : false);
+  const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_HOME.replace('{username}', pseudo));
 
-  useEffect(() => {
-    const getHomeRepo = () => {
-      axios
-        .get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&per_page=20')
-
-        .then((res) => {
-          setHomeRepo(res.data.items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getHomeRepo();
-  }, []);
-
-  console.log(homeRepo);
-
-  const [online, setOnline] = useState(false);
-  const logIn = (value) => {
-    setOnline(true);
-    localStorage.setItem('tokenKey', value);
-    console.log(value);
+  const handleClickLogin = async (e, tokenKey) => {
+    e.preventDefault();
+    await login(tokenKey)
+      .then((res) => {
+        setIsLogged(true);
+        setPseudo(res.login);
+        setEndpoint(PROFIL_HOME.replace('{username}', res.login));
+      })
+      .catch(() => setIsLogged(false));
   };
-  const logOut = () => {
-    setOnline(false);
+
+  const handleClickLogout = () => {
     localStorage.clear('tokenKey');
+    setPseudo('');
+    setIsLogged(false);
+    setEndpoint(HOME_REPOS_URL);
   };
+
+  const mainContainerClasses = 'flex flex-col items-center';
 
   return (
     <div className="body-container">
       <Router>
         <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home logIn={logIn} onLine={online} />
-          </Route>
-          <Route path="/profile" component={Profile} />
-          <Route path="/profile-repos" component={ProfileRepos} />
-          <Route path="/toolbox" component={Toolbox} />
-          <Route path="/repo" component={Repo} />
-        </Switch>
-        <Footer logOut={logOut} noLogOut={online} />
+        <div className={`${mainContainerClasses}`}>
+          <Switch>
+            <Route exact path="/">
+              <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
+            </Route>
+            <Route path="/profile" component={Profile} />
+            <Route path="/profile-repos" component={ProfileRepos} />
+            <Route path="/toolbox" component={Toolbox} />
+            <Route path="/repo" component={Repo} />
+          </Switch>
+        </div>
       </Router>
+      <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
     </div>
   );
 }

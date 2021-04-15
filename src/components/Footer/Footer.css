@@ -1,6 +1,28 @@
-.logOutB {
-    border: 1px solid grey;
-    border-radius: 20px;
-    background-color: red;
+.footer{
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    height: 50px;
+    background-color: black;
+    border: 1px solid wheat;
+    color: wheat;
+}
 
+.sign-out-btn-container{
+    display: flex;
+    align-items: center;
+}
+
+.sign-out-btn{
+    width: 35px;
+    background-color: tomato;
+    padding: 0;
+    order: 1;
+    height: 35px;
+    border-radius: 50px;
+}
+
+footer p{
+    margin: 0;
+    order: 0;
 }

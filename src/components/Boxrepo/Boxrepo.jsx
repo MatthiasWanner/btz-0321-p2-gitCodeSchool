@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Boxrepo.css';
 
 function Boxrepo({ name, owner, stargazers_count }) {
@@ -12,5 +13,9 @@ function Boxrepo({ name, owner, stargazers_count }) {
     </div>
   );
 }
-
+Boxrepo.propTypes = {
+  name: PropTypes.string,
+  owner: PropTypes.object,
+  stargazers_count: PropTypes.number,
+};
 export default Boxrepo;
