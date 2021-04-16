@@ -10,7 +10,7 @@ function Banner({ handleClickLogin }) {
   const bannerClasses = 'flex flex-col items-center h-screen w-screen text-center';
   const bannerClassesMd = 'md:w-1/2';
   const titleContainerClasses = 'flex justify-center items-end h-1/3 w-full';
-  const titleContainerClassesMd = '';
+  const titleContainerClassesMd = 'md:items-center';
   const homeTitleClasses = 'text-white text-4xl';
   const spanClasses = 'text-gold-dark';
   const logoContainerClasses = 'flex flex-col items-center justify-center w-full h-2/3';

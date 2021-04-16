@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
+  const navbarClasses = 'fixed text-gold-dark bg-black w-screen';
+  const navbarClassesMd = 'relative';
+
   return (
-    <div className="navbar fixed text-gold-dark bg-black w-screen">
+    <div className={`navbar ${navbarClasses} ${navbarClassesMd}`}>
       <nav>
         <ul>
           <li>
