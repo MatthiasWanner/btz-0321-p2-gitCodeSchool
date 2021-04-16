@@ -39,7 +39,7 @@ function Navbar() {
               <Menu.Item key={link.to}>
                 {
                   () => (
-                    <div className="px-[40px] flex items-center">
+                    <div className="px-10 flex items-center">
                       <a href={link.to} className="mr-3 py-2 text-white">{link.content}</a>
                       <span className="w-content h-[1px] flex-grow bg-gold-dark">{' '}</span>
                     </div>
@@ -55,15 +55,13 @@ function Navbar() {
       <FingerPrintIcon style={iconsHeight} className="sm:hidden" />
       <BellIcon style={iconsHeight} className="sm:hidden" />
 
-      <ul className="hidden sm:flex w-full h-[3.75rem] px-3 justify-between items-center">
+      <ul className="hidden sm:flex w-full h-[3.75rem] px-3 justify-between">
         <li className="flex items-center">
           <Link to="/"><FingerPrintIcon className="h-9" /></Link>
           {
             links.map((link) => (
               <div key={link.to} className="group align-middle flex flex-col items-center">
-                <Link className="px-5 text-lg" to={link.to}>{link.content}</Link>
-                <div
-                  className="invisible group-hover:visible w-0 h-[1px] bg-white animate-width group-hover:w-1/2" />
+                <Link className="animate-width px-5 text-lg" to={link.to}>{link.content}</Link>
               </div>
             ))
           }
