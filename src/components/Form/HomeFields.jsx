@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ghLogo from '../../img/gh-logo.png';
