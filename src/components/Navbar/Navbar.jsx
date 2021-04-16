@@ -14,7 +14,7 @@ function Navbar() {
             <Link to={`/profile`}>Mon Profil</Link>
           </li>
           <li>
-            <Link to={`/toolbox`}>Ma Toolbox</Link>
+            <Link to={`/toolbox/`}>Ma Toolbox</Link>
           </li>
           <li>
             <Link to={`/profile-repos`}>Mes Repos</Link>
