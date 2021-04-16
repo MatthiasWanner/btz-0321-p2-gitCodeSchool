@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import {login} from './api/api';
-import {HOME_REPOS_URL, PROFIL_HOME} from './api/endpoints';
+import { login } from './api/api';
+import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -27,7 +27,6 @@ function App() {
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
     } catch (e) {
       console.error(e);
-
       setIsLogged(false);
     }
   };
@@ -39,13 +38,14 @@ function App() {
     setEndpoint(HOME_REPOS_URL);
   };
 
-  const mainContainerClasses = 'flex flex-col items-center';
+  const bodyClasses = 'max-w-[1200px] min-h-screen m-auto';
+  const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
 
   return (
-    <div className="body-container">
+    <div className={`body-container ${bodyClasses}`}>
       <Router>
         <Navbar />
-        <div className={`${mainContainerClasses}`}>
+        <div className={`main-container ${mainContainerClasses}`}>
           <Switch>
             <Route exact path="/">
               <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />

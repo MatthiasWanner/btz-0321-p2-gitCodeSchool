@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './RepoHome.css';
 import star from '../../img/star.svg';
 
-function RepoHome({repo, isLogged}) {
+function RepoHome({ repo, isLogged }) {
   const profileRepoContainer = 'rounded-2xl h-24 w-full bg-repos-dark border mb-5 shadow-lg';
 
   const homeRepoContainer = 'flex p-2 bg-repos-dark w-9/10 mb-3 border border-black rounded-l-full rounded-r-2xl';
@@ -47,7 +47,7 @@ function RepoHome({repo, isLogged}) {
 
 RepoHome.propTypes = {
   repo: PropTypes.object,
-  isLogged: PropTypes.bool
+  isLogged: PropTypes.bool,
 };
 
 export default RepoHome;

@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
 import Banner from '../Banner/Banner';
-import Form from '../Form/Form';
 import RepoHome from '../RepoHome/RepoHome';
 import Spinner from '../Spinner/Spinner';
 import { useGetAll } from '../../api/useGet';
@@ -10,8 +9,7 @@ function Home({ isLogged, handleClickLogin, endpoint }) {
   const homeRepos = useGetAll(endpoint);
   const pseudo = localStorage.ghPseudo;
 
-  const mainContainerClasses = 'home-main-container w-full p-2';
-  const formContainerClasses = 'flex justify-center items-center w-full h-screen';
+  const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {
     return (
@@ -30,11 +28,8 @@ function Home({ isLogged, handleClickLogin, endpoint }) {
   if (!isLogged) {
     return (
       <>
-        <Banner />
-        <div className={`${mainContainerClasses}`}>
-          <div className={formContainerClasses}>
-            <Form page="home" handleClickLogin={handleClickLogin} />
-          </div>
+        <Banner handleClickLogin={handleClickLogin} />
+        <div className={`home-main-container ${mainContainerClasses}`}>
           <section className="home-repos">
             {homeRepos.isLoading && <Spinner />}
             {!homeRepos.isLoading && homeRepos.datas.map((repo) => <RepoHome key={repo.id} repo={repo} isLogged={isLogged} />)}
