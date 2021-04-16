@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import 'tailwindcss/tailwind.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
-import { HOME_REPOS_URL } from './api/Endpoints';
-import { PROFIL_HOME } from './api/Endpoints';
+import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';

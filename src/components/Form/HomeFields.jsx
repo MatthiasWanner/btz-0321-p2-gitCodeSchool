@@ -6,7 +6,6 @@ import './HomeFields.css';
 
 function HomeFields({ handleClickLogin }) {
   const [tokenKey, setTokenKey] = useState('');
-  // const [connection, setConnection] = useState(isConnected)
 
   const tokonLabelClasses = 'text-center text-gold-dark text-2xl';
   const inputTokenClasses = ' rounded-3xl w-4/5 border border-black text-center';

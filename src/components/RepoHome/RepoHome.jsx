@@ -1,5 +1,4 @@
 import React from 'react';
-import 'tailwindcss/tailwind.css';
 import star from '../../img/star.svg';
 import './RepoHome.css';
 

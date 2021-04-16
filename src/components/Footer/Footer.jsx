@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Footer.css';
 
 function Footer({ isLogged, handleClickLogout }) {
   return (
-    <footer className="footer">
+    <footer className="flex content-center justify-end h-[50px] bg-black border border-gold-dark color-gold-dark">
       {isLogged && (
-        <div className="sign-out-btn-container">
-          <button className="sign-out-btn" onClick={(e) => handleClickLogout(e)}></button>
-          <p>Sign out</p>
+        <div className="flex items-center">
+          <p className="m-0 p-0">Sign out</p>
+          <button className="w-5 h-5 ml-3 mr-2 bg-red-400 p-0 rounded-full" onClick={handleClickLogout} />
         </div>
       )}
     </footer>

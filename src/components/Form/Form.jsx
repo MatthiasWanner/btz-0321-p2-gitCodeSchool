@@ -1,5 +1,4 @@
 import React from 'react';
-import 'tailwindcss/tailwind.css';
 import './Form.css';
 import HomeFields from './HomeFields';
 

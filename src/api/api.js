@@ -1,4 +1,4 @@
-import { AUTH_URL } from './Endpoints'
+import { AUTH_URL } from './endpoints'
 import axios from 'axios';
 
 const API_URL =  'https://api.github.com';
