@@ -38,7 +38,7 @@ function App() {
     setEndpoint(HOME_REPOS_URL);
   };
 
-  const bodyClasses = 'min-h-screen';
+  const bodyClasses = 'max-w-[1200px] min-h-screen m-auto';
   const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
 
   return (

@@ -6,7 +6,8 @@ import logo from '../../img/logo.svg';
 import Form from '../Form/Form';
 
 function Banner({ handleClickLogin }) {
-  const headerClasses = 'w-screen md:h-screen md:flex';
+  const headerClasses = 'w-full md:h-screen md:flex';
+  const headerClassesMd = '';
   const bannerClasses = 'flex flex-col items-center h-screen w-screen text-center';
   const bannerClassesMd = 'md:w-1/2';
   const titleContainerClasses = 'flex justify-center items-end h-1/3 w-full';
@@ -19,7 +20,7 @@ function Banner({ handleClickLogin }) {
   const formContainerClassesMd = 'md:w-1/2';
 
   return (
-    <header className={`home-header ${headerClasses}`}>
+    <header className={`home-header ${headerClasses} ${headerClassesMd}`}>
       <div className={`banner ${bannerClasses} ${bannerClassesMd}`}>
         <div className={`${titleContainerClasses} ${titleContainerClassesMd}`}>
           <h2 className={homeTitleClasses}>
