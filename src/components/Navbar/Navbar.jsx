@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
-  const navbarClasses = 'fixed text-gold-dark bg-black w-screen';
+  const navbarClasses = 'fixed text-gold-dark bg-black w-full';
   const navbarClassesMd = 'relative';
 
   return (
