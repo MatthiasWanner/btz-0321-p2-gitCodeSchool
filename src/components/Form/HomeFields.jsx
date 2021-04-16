@@ -9,7 +9,7 @@ function HomeFields({ handleClickLogin }) {
   const tokonLabelClasses = 'text-center text-gold-dark text-2xl';
   const inputTokenClasses = ' rounded-3xl w-4/5 border border-black text-center';
   const submitHomeClasses =
-    'w-2/3 text-red-600 py-1 bg-gold-dark text-white font-semibold rounded-3xl shadow-lg border border-black from-white hover:bg-gold-hover focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75';
+    'w-2/3 text-white py-1 bg-gold-dark text-white font-semibold rounded-3xl shadow-lg border border-black from-white hover:bg-gold-hover focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75';
   const pClasses = 'text-xs text-white';
   const aClasses = 'text-gold-dark font-bold';
 
@@ -35,7 +35,7 @@ function HomeFields({ handleClickLogin }) {
         Se connecter
       </button>
       <p className={`${pClasses}`}>
-        Je n'ai pas encore de clé Token? En obtenir une{' '}
+        {`Je n'ai pas encore de clé Token? En obtenir une `}
         <a href="https://github.com/settings/tokens" className={`${aClasses}`} target="_blank" rel="noreferrer">
           ici
         </a>
