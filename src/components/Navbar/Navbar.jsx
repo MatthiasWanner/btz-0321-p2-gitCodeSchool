@@ -4,7 +4,7 @@ import './Navbar.css';
 
 function Navbar() {
   return (
-    <div className="navbar">
+    <div className="navbar fixed text-gold-dark bg-black w-screen">
       <nav>
         <ul>
           <li>
