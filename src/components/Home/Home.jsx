@@ -9,7 +9,7 @@ function Home({ isLogged, handleClickLogin, endpoint }) {
   const homeRepos = useGetAll(endpoint);
   const pseudo = localStorage.ghPseudo;
 
-  const mainContainerClasses = 'home-main-container w-full p-2';
+  const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {
     return (
@@ -29,7 +29,7 @@ function Home({ isLogged, handleClickLogin, endpoint }) {
     return (
       <>
         <Banner handleClickLogin={handleClickLogin} />
-        <div className={`${mainContainerClasses}`}>
+        <div className={`home-main-container ${mainContainerClasses}`}>
           <section className="home-repos">
             {homeRepos.isLoading && <Spinner />}
             {!homeRepos.isLoading && homeRepos.datas.map((repo) => <RepoHome key={repo.id} repo={repo} isLogged={isLogged} />)}
