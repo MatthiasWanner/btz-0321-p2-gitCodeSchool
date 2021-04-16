@@ -19,6 +19,8 @@
     "since 2017-06"
   ],
   "dependencies": {
+    "@headlessui/react": "^1.0.0",
+    "@heroicons/react": "^1.0.1",
     "autoprefixer": "^10.2.5",
     "axios": "^0.21.1",
     "postcss": "^8.2.9",
