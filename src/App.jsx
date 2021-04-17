@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
-import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
+import { HOME_REPOS_URL, PROFIL_REPOS } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -14,7 +14,7 @@ import Repo from './components/Repo/Repo';
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
   const [isLogged, setIsLogged] = useState(pseudo !== undefined ? true : false);
-  const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_HOME.replace('{username}', pseudo));
+  const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_REPOS.replace('{username}', pseudo));
 
   const handleClickLogin = async (e, tokenKey) => {
     try {
@@ -24,7 +24,7 @@ function App() {
 
       setIsLogged(true);
       setPseudo(res.login);
-      setEndpoint(PROFIL_HOME.replace('{username}', res.login));
+      setEndpoint(PROFIL_REPOS.replace('{username}', res.login));
     } catch {
       // console.error(e);
       setIsLogged(false);
