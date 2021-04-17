@@ -25,8 +25,8 @@ function App() {
       setIsLogged(true);
       setPseudo(res.login);
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
-    } catch (e) {
-      console.error(e);
+    } catch {
+      // console.error(e);
       setIsLogged(false);
     }
   };
