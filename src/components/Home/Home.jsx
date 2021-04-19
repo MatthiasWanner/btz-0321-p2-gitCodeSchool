@@ -8,10 +8,9 @@ import { HOME_REPOS_URL } from '../../api/endpoints';
 import { useGetAll, useGetNewsFields } from '../../api/useGet';
 
 function Home({ isLogged, handleClickLogin, pseudo }) {
-  console.log(isLogged, pseudo);
   const homeEndpoint = HOME_REPOS_URL;
   const homeContent = isLogged ? useGetNewsFields(pseudo) : useGetAll(pseudo, homeEndpoint);
-
+  console.log(homeContent);
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {

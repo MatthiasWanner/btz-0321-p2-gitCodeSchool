@@ -43,48 +43,42 @@ export function useGetNewsFields(pseudo) {
   const [isLoading, setIsLoading] = useState(true);
   const authorization = localStorage.ghTokenKey !== undefined ? `token ${localStorage.ghTokenKey}` : '';
   const config = { headers: { Authorization: authorization } };
+  const [following, setFollowing] = useState([]);
+  const [events, setEvents] = useState([]);
   useEffect(() => {
-    const getFollowing = async (url) => {
+    const getFollowing = async (endpoint) => {
       setError(null);
       setIsLoading(true);
       try {
-        const { data } = await axios.get(`${api}${url}`, config);
-        setDatas(data);
+        const { data } = await axios.get(`${api}${endpoint}`, config);
+        setFollowing(data);
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+        setIsLoading(false);
+      }
+    };
+    const getEvents = async (endpoint) => {
+      setError(null);
+      setIsLoading(true);
+      try {
+        const { data } = await axios.get(`${api}${endpoint}`, config);
+        setEvents(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getFollowing(FOLLOWING_URL.replace('{username}', pseudo));
-    return () => {
-      setDatas([]);
-    };
+    following.forEach((item) => {
+      const followingEvents = {};
+      followingEvents.name = item.login;
+      const endpoint = EVENTS_URL.replace('{username}', item.login);
+      followingEvents.events = getEvents(endpoint);
+      setDatas([...datas, followingEvents]);
+    });
   }, [pseudo]);
-  // const [events, setEvents] = useState([]);
-  // useEffect(() => {
-  //   const getEvents = async (array, url) => {
-  //     setError(null);
-  //     setIsLoading(true);
-  //     array.map(async (item) => {
-  //       const endpoint = url.replace('{username}', item.login);
-  //       const followingEvents = {};
-  //       followingEvents.name = item.login;
-  //       try {
-  //         const { data } = await axios.get(`${api}${endpoint}`, config);
-  //         followingEvents.events = data;
-  //         setEvents(...events, followingEvents);
-  //       } catch (error) {
-  //         setError(error);
-  //       } finally {
-  //         setIsLoading(false)
-  //       }
-  //     });
-  //   };
-  //   getEvents(following, EVENTS_URL);
-  // }, [following]);
   return { datas, error, isLoading };
 }
 
