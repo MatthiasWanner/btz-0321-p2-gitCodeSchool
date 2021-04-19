@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
-import { HOME_REPOS_URL, PROFIL_REPOS } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -13,29 +12,28 @@ import Repo from './components/Repo/Repo';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
-  const [isLogged, setIsLogged] = useState(pseudo !== undefined ? true : false);
-  const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_REPOS.replace('{username}', pseudo));
+  const [isLogged, setIsLogged] = useState(pseudo ? true : false);
+  useEffect(() => {
+    setTimeout(() => {
+      pseudo ? setIsLogged(true) : setIsLogged(false);
+    }, 500);
+  }, [pseudo]);
 
   const handleClickLogin = async (e, tokenKey) => {
     try {
       e.preventDefault();
 
       const res = await login(tokenKey);
-
-      setIsLogged(true);
       setPseudo(res.login);
-      setEndpoint(PROFIL_REPOS.replace('{username}', res.login));
     } catch {
       // console.error(e);
-      setIsLogged(false);
+      setPseudo(undefined);
     }
   };
 
   const handleClickLogout = () => {
     localStorage.clear('tokenKey');
-    setPseudo('');
-    setIsLogged(false);
-    setEndpoint(HOME_REPOS_URL);
+    setPseudo(undefined);
   };
 
   const bodyClasses = 'max-w-[1200px] min-h-screen m-auto';
@@ -48,7 +46,7 @@ function App() {
         <div className={`main-container ${mainContainerClasses}`}>
           <Switch>
             <Route exact path="/">
-              <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
+              <Home isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
             </Route>
             <Route path="/profile" component={Profile} />
             <Route path="/profile-repos" component={ProfileRepos} />

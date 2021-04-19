@@ -3,5 +3,7 @@ export const AUTH_URL = `/user`;
 export const PROFIL_URL = `/users/{username}`;
 export const PROFIL_REPOS = `/users/{username}/repos`;
 export const ONE_REPO_URL = `/repos/{user}/{repo}`;
+export const FOLLOWING_URL = `/users/{username}/following`;
+export const EVENTS_URL = `/users/{username}/events`;
 
-export default { HOME_REPOS_URL, AUTH_URL, ONE_REPO_URL, PROFIL_REPOS, PROFIL_URL };
+export default { HOME_REPOS_URL, AUTH_URL, ONE_REPO_URL, PROFIL_REPOS, PROFIL_URL, FOLLOWING_URL, EVENTS_URL };
