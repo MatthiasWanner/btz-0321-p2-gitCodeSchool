@@ -5,8 +5,7 @@ module.exports = {
     './src/**/*.{js,jsx}'
   ],
   darkMode: false, // or 'media' or 'class',
-  mode: 'jit',
-  theme: {
+  t
     extend: {
       colors: {
         gold: {
