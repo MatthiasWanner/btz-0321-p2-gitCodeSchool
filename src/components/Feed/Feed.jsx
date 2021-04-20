@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './NewsField.css';
+import './Feed.css';
 
 function NewsField({ result }) {
   const NewsFieldContainer = 'rounded-2xl h-24 w-full bg-repos-dark border mb-5 shadow-lg';

@@ -5,5 +5,3 @@ export const PROFIL_REPOS = `/users/{username}/repos`;
 export const ONE_REPO_URL = `/repos/{user}/{repo}`;
 export const FOLLOWING_URL = `/users/{username}/following`;
 export const EVENTS_URL = `/users/{username}/received_events`;
-
-export default { HOME_REPOS_URL, AUTH_URL, ONE_REPO_URL, PROFIL_REPOS, PROFIL_URL, FOLLOWING_URL, EVENTS_URL };

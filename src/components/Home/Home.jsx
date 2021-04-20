@@ -2,13 +2,13 @@ import React from 'react';
 import './Home.css';
 import Banner from '../Banner/Banner';
 import RepoHome from '../RepoHome/RepoHome';
-import NewsField from '../NewsField/NewsField';
+import Feed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
 import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
 
 function Home({ isLogged, handleClickLogin, pseudo }) {
-  const homeContent = isLogged ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
+  const homeContent = pseudo ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {
@@ -19,7 +19,7 @@ function Home({ isLogged, handleClickLogin, pseudo }) {
           <h3 className="text-2xl text-repos-dark mb-10 text-center">{pseudo}</h3>
           <section className="home-repos">
             {homeContent.isLoading && <Spinner />}
-            {!homeContent.isLoading && homeContent.datas.map((field) => <NewsField key={field.id} result={field} />)}
+            {!homeContent.isLoading && homeContent.datas.map((field) => <Feed key={field.id} result={field} />)}
           </section>
         </div>
       </>
