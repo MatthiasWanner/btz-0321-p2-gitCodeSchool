@@ -1,8 +1,8 @@
 import React from 'react';
 import './Home.css';
 import Banner from '../Banner/Banner';
-import RepoHome from '../RepoHome/RepoHome';
-import Feed from '../Feed/Feed';
+import RepoHome from '../HomeLogoutRepos/HomeLogoutRepos';
+import NewFeed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
 import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';

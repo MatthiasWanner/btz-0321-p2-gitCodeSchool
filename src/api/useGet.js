@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import api from './api';
+import API_URL from './api';
 
 export function useGetAll(endpoint) {
   const [datas, setDatas] = useState([]);
@@ -36,14 +37,15 @@ export function useGetAll(endpoint) {
   return { datas, error, isRepoHomeLoading };
 }
 
-export function useGetOne() {
-  const [todo, setTodo] = useState({});
+export function useGetOne(endpoint) {
+  const [repo, setRepo] = useState({});
+  const config = { headers: { Authorization: authorization } };
 
   useEffect(() => {
     const getOne = async () => {
-      const { data } = await axios.get(``);
+      const { data } = await axios.get(`${API_URL}${endpoint}`, config);
 
-      setTodo(data);
+      setRepo(data);
     };
 
     getOne();

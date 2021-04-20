@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
 import Navbar from './components/Navbar/Navbar';
@@ -51,7 +51,7 @@ function App() {
             <Route path="/profile" component={Profile} />
             <Route path="/profile-repos" component={ProfileRepos} />
             <Route path="/toolbox" component={Toolbox} />
-            <Route path="/repo" component={Repo} />
+            <Route path="/repos/:username/:repo" component={Repo} />
           </Switch>
         </div>
       </Router>
