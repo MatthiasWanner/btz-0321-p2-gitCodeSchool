@@ -3,42 +3,24 @@ import PropTypes from 'prop-types';
 
 import './Feed.css';
 
-function defineAction(eventType) {
-  switch (eventType) {
-    case 'CreateEvent':
-      return 'a créé';
-    case 'WatchEvent':
-      return 'a mis une étoile';
-    case 'CommitCommentEvent':
-      return 'a commenté un commit';
-    case 'DeleteEvent':
-      return 'a supprimé';
-    case 'ForkEvent':
-      return 'a forké';
-    case 'GollumEvent':
-      return 'a créé une page wiki'; // actions to determine
-    case 'IssueCommentEvent':
-      return 'a commenté une issue';
-    case 'IssuesEvent':
-      return 'a truc une issue'; //actions to determine
-    case 'MemberEvent':
-      return 'a modifié les collaborateurs'; //actions to determine
-    case 'PublicEvent':
-      return 'a rendu public';
-    case 'PullRequestEvent':
-      return 'a fait une Pull Request';
-    case 'PullRequestReviewEvent':
-      return 'a relu une Pull Request';
-    case 'PullRequestReviewCommentEvent':
-      return 'a commenté une relecture de Pull Request';
-    case 'ReleaseEvent':
-      return 'a modifié/créé une Release';
-    case 'PushEvent':
-      return 'a push';
-    case 'SponsorshipEvent':
-      return 'a sponsorisé';
-  }
-}
+const events = {
+  CreateEvent: 'a créé',
+  WatchEvent: 'a mis une étoile sur',
+  CommitCommentEvent: 'a commenté un commit',
+  DeleteEvent: 'a supprimé',
+  ForkEvent: 'a forké',
+  GollumEvent: 'a créé une page wiki',
+  IssueCommentEvent: 'a commenté une issue',
+  IssuesEvent: 'a truc une issue',
+  MemberEvent: 'a modifié les collaborateurs',
+  PublicEvent: 'a rendu public',
+  PullRequestEvent: 'a fait une Pull Request',
+  PullRequestReviewEvent: 'a relu une Pull Request',
+  PullRequestReviewCommentEvent: 'a commenté une relecture de Pull Request',
+  ReleaseEvent: 'a modifié/créé une Release',
+  PushEvent: 'a push',
+  SponsorshipEvent: 'a sponsorisé',
+};
 
 function Feed({ result }) {
   const feedContainer = 'rounded-2xl w-full bg-repos-dark border mb-5 shadow-lg';
@@ -48,7 +30,7 @@ function Feed({ result }) {
     <div className={`${feedContainer}`}>
       <p>Le {result.created_at}</p>
       <p>
-        {result.actor.login} {defineAction(result.type)} :
+        {result.actor.login} {events[result.type]} :
       </p>
       <p>{result.repo.name}</p>
       <button className={`${buttonRepoClasses}`} />
