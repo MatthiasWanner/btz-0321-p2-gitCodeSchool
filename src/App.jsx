@@ -26,7 +26,8 @@ function App() {
       setPseudo(res.login);
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
     } catch (e) {
-      console.error(e);
+      // TODO: Create a modal
+      // console.error(e);
       setIsLogged(false);
     }
   };

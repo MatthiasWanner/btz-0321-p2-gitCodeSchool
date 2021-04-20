@@ -2,12 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  padding: 0;
+body {
   margin: 0;
+  padding: 0;
   background-color: #1E1D1D;
 }
 
-.body-container{
+.body-container {
   background: url('./img/mob-home-background2.svg');
+}
+
+.animate-width {
+  width: 100%;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  -webkit-transition: width 1s ease-in-out;
+
+  transition: width 1s ease-in-out;
 }
