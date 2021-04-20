@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RepoDetails({ name, owner, forks_count, commits_url }) {
+function RepoDetails({ id, o, forks_count, commits_url }) {
   return (
     <div className="RepoDetails">
       <img src={owner.avatar_url} alt={owner.login} />
