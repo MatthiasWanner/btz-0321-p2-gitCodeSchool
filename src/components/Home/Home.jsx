@@ -4,13 +4,11 @@ import Banner from '../Banner/Banner';
 import RepoHome from '../RepoHome/RepoHome';
 import NewsField from '../NewsField/NewsField';
 import Spinner from '../Spinner/Spinner';
-import { HOME_REPOS_URL } from '../../api/endpoints';
-import { useGetAll, useGetNewsFields } from '../../api/useGet';
+import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
+import { useGetAll } from '../../api/useGet';
 
 function Home({ isLogged, handleClickLogin, pseudo }) {
-  const homeEndpoint = HOME_REPOS_URL;
-  const homeContent = isLogged ? useGetNewsFields(pseudo) : useGetAll(pseudo, homeEndpoint);
-  console.log(homeContent);
+  const homeContent = isLogged ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {

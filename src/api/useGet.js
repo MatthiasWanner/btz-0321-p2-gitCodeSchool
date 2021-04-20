@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import api from './api';
-import { FOLLOWING_URL, EVENTS_URL } from './endpoints';
 
 export function useGetAll(endpoint) {
   const [datas, setDatas] = useState([]);
@@ -37,50 +36,38 @@ export function useGetAll(endpoint) {
   return { datas, error, isRepoHomeLoading };
 }
 
-export function useGetNewsFields(pseudo) {
-  const [datas, setDatas] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const authorization = localStorage.ghTokenKey !== undefined ? `token ${localStorage.ghTokenKey}` : '';
-  const config = { headers: { Authorization: authorization } };
-  const [following, setFollowing] = useState([]);
-  const [events, setEvents] = useState([]);
-  useEffect(() => {
-    const getFollowing = async (endpoint) => {
-      setError(null);
-      setIsLoading(true);
-      try {
-        const { data } = await axios.get(`${api}${endpoint}`, config);
-        setFollowing(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    const getEvents = async (endpoint) => {
-      setError(null);
-      setIsLoading(true);
-      try {
-        const { data } = await axios.get(`${api}${endpoint}`, config);
-        setEvents(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getFollowing(FOLLOWING_URL.replace('{username}', pseudo));
-    following.forEach((item) => {
-      const followingEvents = {};
-      followingEvents.name = item.login;
-      const endpoint = EVENTS_URL.replace('{username}', item.login);
-      followingEvents.events = getEvents(endpoint);
-      setDatas([...datas, followingEvents]);
-    });
-  }, [pseudo]);
-  return { datas, error, isLoading };
-}
+// export function useGetNewsFields(pseudo) {
+//   const [datas, setDatas] = useState([]);
+//   const [error, setError] = useState(null);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const authorization = localStorage.ghTokenKey !== undefined ? `token ${localStorage.ghTokenKey}` : '';
+//   const config = { headers: { Authorization: authorization } };
+//   const [following, setFollowing] = useState([]);
+//   const [events, setEvents] = useState([]);
+//   useEffect(() => {
+//     const getEvents = async (endpoint) => {
+//       setError(null);
+//       setIsLoading(true);
+//       try {
+//         const { data } = await axios.get(`${api}${endpoint}`, config);
+//         setEvents(data);
+//       } catch (error) {
+//         setError(error);
+//       } finally {
+//         setIsLoading(false);
+//       }
+//     };
+//     getFollowing(FOLLOWING_URL.replace('{username}', pseudo));
+//     following.forEach((item) => {
+//       const followingEvents = {};
+//       followingEvents.name = item.login;
+//       const endpoint = EVENTS_URL.replace('{username}', item.login);
+//       followingEvents.events = getEvents(endpoint);
+//       setDatas([...datas, followingEvents]);
+//     });
+//   }, [pseudo]);
+//   return { datas, error, isLoading };
+// }
 
 export function useGetOne() {
   const [todo, setTodo] = useState({});
