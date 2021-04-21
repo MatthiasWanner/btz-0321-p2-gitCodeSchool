@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './RepoHome.css';
+import './HomePopularElement.css';
 import star from '../../img/star.svg';
 
-function RepoHome({ isLogged, result }) {
+function HomePopularElement({ isLogged, result }) {
   const homeRepoContainer = 'flex p-2 bg-repos-dark w-9/10 mb-3 border border-black rounded-l-full rounded-r-2xl';
   const avatarClasses = 'flex justify-center items-center w-1/4 rounded-full overflow-hidden';
   const infosContainerClasses = 'w-4/5 pl-2';
@@ -27,9 +27,9 @@ function RepoHome({ isLogged, result }) {
   }
 }
 
-RepoHome.propTypes = {
+HomePopularElement.propTypes = {
   result: PropTypes.object,
   isLogged: PropTypes.bool,
 };
 
-export default RepoHome;
+export default HomePopularElement;
