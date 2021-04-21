@@ -10,11 +10,15 @@ import Profile from './components/Profile/Profile';
 import ProfileRepos from './components/ProfileRepos/ProfileRepos';
 import Toolbox from './components/Toolbox/Toolbox';
 import Repo from './components/Repo/Repo';
+import Modal from './components/Modal/Modal';
+import { ModalContext } from './components/Contexts';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
-  const [isLogged, setIsLogged] = useState(pseudo !== undefined ? true : false);
+  const [isLogged, setIsLogged] = useState(pseudo !== undefined);
   const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_HOME.replace('{username}', pseudo));
+  const [modal, setModal] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleClickLogin = async (e, tokenKey) => {
     try {
@@ -25,41 +29,64 @@ function App() {
       setIsLogged(true);
       setPseudo(res.login);
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
+      setModal({
+        title: 'Connexion réussie',
+        content: `Vous vous êtes connecté sur : ${res.login}`,
+        closeButton: 'Fermer',
+        error: false,
+      });
+      setModalOpen(true);
     } catch (e) {
-      // TODO: Create a modal
-      // console.error(e);
+      setModal({
+        title: 'Erreur Modal',
+        content: 'Erreur. Veuillez retenter.',
+        closeButton: 'Fermer',
+        error: true,
+      });
+      setModalOpen(true);
       setIsLogged(false);
     }
   };
 
   const handleClickLogout = () => {
-    localStorage.clear('tokenKey');
+    localStorage.removeItem('tokenKey');
     setPseudo('');
     setIsLogged(false);
     setEndpoint(HOME_REPOS_URL);
+    setModal({
+      title: 'Deconnexion',
+      content: 'Deconnecte',
+      closeButton: 'Fermer',
+      error: true,
+    });
+    setModalOpen(true);
   };
 
-  const bodyClasses = 'max-w-[1200px] min-h-screen m-auto';
+  const bodyClasses = 'container min-h-screen m-auto';
   const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
 
   return (
-    <div className={`body-container ${bodyClasses}`}>
-      <Router>
-        <Navbar />
-        <div className={`main-container ${mainContainerClasses}`}>
-          <Switch>
-            <Route exact path="/">
-              <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
-            </Route>
-            <Route path="/profile" component={Profile} />
-            <Route path="/profile-repos" component={ProfileRepos} />
-            <Route path="/toolbox" component={Toolbox} />
-            <Route path="/repo" component={Repo} />
-          </Switch>
-        </div>
-      </Router>
-      <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
-    </div>
+    <ModalContext.Provider value={{ modal, setModal, modalOpen, setModalOpen }}>
+      {modalOpen && <Modal {...{ modal, setModal, setModalOpen }} />}
+
+      <div className={`body-container ${bodyClasses}`}>
+        <Router>
+          <Navbar />
+          <div className={`main-container ${mainContainerClasses}`}>
+            <Switch>
+              <Route exact path="/">
+                <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} modal={modal} />
+              </Route>
+              <Route path="/profile" component={Profile} />
+              <Route path="/profile-repos" component={ProfileRepos} />
+              <Route path="/toolbox" component={Toolbox} />
+              <Route path="/repo" component={Repo} />
+            </Switch>
+          </div>
+        </Router>
+        <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
+      </div>
+    </ModalContext.Provider>
   );
 }
 
