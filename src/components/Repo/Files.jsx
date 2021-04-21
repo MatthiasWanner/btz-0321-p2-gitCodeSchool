@@ -5,7 +5,7 @@ import API_URL from '../../api/api';
 
 export default function Files({ endpoint }) {
   const contentsEndpoint = `${endpoint}/contents`;
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState('');
 
   useEffect(() => {
     axios
