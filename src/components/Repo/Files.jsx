@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import API_URL from '../../api/api';
 
-
-export default function Files({ endpoint, handleClickFile, handleClickDir}) {
+export default function Files({ endpoint, handleClickFile, handleClickDir }) {
   const contentsEndpoint = `${endpoint}/contents`;
-  const [files, setFiles] = useState('');
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     axios
@@ -19,31 +18,30 @@ export default function Files({ endpoint, handleClickFile, handleClickDir}) {
       });
   }, []);
 
-  function haveTheFunction(type, url){
-    if(type === "file"){
+  function haveTheFunction(type, url) {
+    if (type === 'file') {
       return handleClickFile(url);
-      
-    } else if(type === "dir"){
+    } else if (type === 'dir') {
       return handleClickDir();
-    } 
+    }
   }
 
   return (
     <div className="border border-white">
       <ul>
-      {files.map((file) => {
-
-        return (          
-          <li onClick={()=>{haveTheFunction(file.type, file.url)}} 
-          className="text-white" key={file.sha}>
-            {file.name}
-          </li>
-
-        );
-      })}
+        {files.map((file) => {
+          return (
+            <li
+              onClick={() => {
+                haveTheFunction(file.type, file.url);
+              }}
+              className="text-white"
+              key={file.sha}>
+              {file.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 }
-
-
