@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import API_URL from '../../api/api';
 
-export default function Files({ endpoint }) {
+
+export default function Files({ endpoint, handleClickFile, handleClickDir}) {
   const contentsEndpoint = `${endpoint}/contents`;
   const [files, setFiles] = useState([]);
 
@@ -12,23 +13,37 @@ export default function Files({ endpoint }) {
       .get(`${API_URL}${contentsEndpoint}`)
       .then((res) => {
         setFiles(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  function haveTheFunction(type, url){
+    if(type === "file"){
+      return handleClickFile(url);
+      
+    } else if(type === "dir"){
+      return handleClickDir();
+    } 
+  }
+
   return (
-    <div>
+    <div className="border border-white">
+      <ul>
       {files.map((file) => {
-        return (
-          <p className="text-green-900" key={file.sha}>
+
+        return (          
+          <li onClick={()=>{haveTheFunction(file.type, file.url)}} 
+          className="text-white" key={file.sha}>
             {file.name}
-          </p>
+          </li>
+
         );
       })}
-      <h1>ok</h1>
+      </ul>
     </div>
   );
 }
+
+
