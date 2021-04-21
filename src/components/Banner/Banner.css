@@ -1,0 +1,17 @@
+.home-header{
+    background: url('../../img/mob-home_background.webp') repeat;
+}
+
+.home-login-form-container{
+    background: url('../../img/mob-home-background2.svg') repeat;
+}
+
+@media screen and (min-width: 768px) {
+    .home-header{
+        background: url('../../img/desk-home_background.webp') no-repeat;
+    }
+
+    .home-login-form-container{
+        background: none;
+    }
+}

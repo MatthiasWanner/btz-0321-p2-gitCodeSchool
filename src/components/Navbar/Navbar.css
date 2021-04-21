@@ -1,0 +1,12 @@
+.animate-width::after {
+  display: block;
+  width: 0;
+  margin: 0 auto;
+  content: '';
+  transition: width 300ms ease-in-out;
+  border-top: 1px solid #CBAC77;
+}
+
+.group:hover .animate-width::after {
+  width: 75%;
+}
