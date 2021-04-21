@@ -28,7 +28,7 @@ function ProfileRepos() {
   return (
     <>
       <div>
-        <Link to="/profile-Repos"> MA LISTE DE DIFFERENT REPOSITORIES</Link>;
+        <Link to="/profile-Repos"> Mes Repos</Link>
         {profileRepos.map((list) => (
           <ReposDetails key={list.id} {...list} />
         ))}
