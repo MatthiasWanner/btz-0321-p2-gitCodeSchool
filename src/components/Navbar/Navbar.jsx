@@ -35,9 +35,9 @@ function Navbar() {
             <Menu.Item key={link.to}>
               {() => (
                 <div className="px-10 flex items-center">
-                  <a href={link.to} className="mr-3 py-2 text-white">
+                  <NavbarLink classList="mr-3 py-2 text-white" to={link.to}>
                     {link.content}
-                  </a>
+                  </NavbarLink>
                   <span style={{ height: 1 }} className="w-content flex-grow bg-gold-dark" />
                 </div>
               )}
@@ -52,12 +52,14 @@ function Navbar() {
 
       <ul className="hidden sm:flex w-full h-14 px-3 justify-between">
         <li className="flex items-center">
-          <Link to="/">
+          <Link to="/" replace>
             <FingerPrintIcon className="h-9" />
           </Link>
           {links.map((link) => (
             <div key={link.to} className="group align-middle flex flex-col items-center">
-              <NavbarLink to={link.to}>{link.content}</NavbarLink>
+              <NavbarLink classList="animate-width px-5 text-lg" to={link.to}>
+                {link.content}
+              </NavbarLink>
             </div>
           ))}
         </li>

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 NavbarLink.propTypes = {};
 
-function NavbarLink({ children, to }) {
+function NavbarLink({ children, classList, to }) {
   return (
-    <Link className="animate-width px-5 text-lg" to={to}>
+    <Link className={classList} to={to} replace>
       {children}
     </Link>
   );

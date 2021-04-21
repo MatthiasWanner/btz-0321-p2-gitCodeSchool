@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
 import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Home from './components/Home/Home';
-import Profile from './components/Profile/Profile';
-import ProfileRepos from './components/ProfileRepos/ProfileRepos';
-import Toolbox from './components/Toolbox/Toolbox';
-import Repo from './components/Repo/Repo';
 import Modal from './components/Modal/Modal';
 import { ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
@@ -32,17 +27,31 @@ function App() {
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
       setModal({
         title: 'Connexion réussie',
-        content: `Vous vous êtes connecté sur : ${res.login}`,
-        closeButton: 'Fermer',
-        error: false,
+        content: `Vous êtes connecté sur ${res.login}`,
+        buttons: [
+          {
+            content: 'Valider',
+            color: 'bg-green-300 hover:bg-green-600',
+          },
+          {
+            content: 'Se déconnecter',
+            color: 'bg-red-300 hover:bg-red-600',
+            onClick: () => handleClickLogout(),
+          },
+        ],
       });
       setModalOpen(true);
     } catch (e) {
       setModal({
-        title: 'Erreur Modal',
-        content: 'Erreur. Veuillez retenter.',
-        closeButton: 'Fermer',
-        error: true,
+        title: 'Erreur',
+        content: 'Erreur lors de la connexion, veuillez vérifier votre token.',
+        buttons: [
+          {
+            content: 'Compris',
+            color: 'bg-red-300 hover:bg-red-600',
+          },
+        ],
+        status: 'error',
       });
       setModalOpen(true);
       setIsLogged(false);
@@ -55,15 +64,19 @@ function App() {
     setIsLogged(false);
     setEndpoint(HOME_REPOS_URL);
     setModal({
-      title: 'Deconnexion',
-      content: 'Deconnecte',
-      closeButton: 'Fermer',
-      error: true,
+      title: 'Déconnexion',
+      content: 'Déconnecté avec succès',
+      buttons: [
+        {
+          content: 'Fermer',
+          color: 'bg-green-300 hover:bg-green-600',
+        },
+      ],
     });
     setModalOpen(true);
   };
 
-  const bodyClasses = 'container min-h-screen m-auto';
+  const bodyClasses = 'container-xl mx-auto min-h-screen';
   const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
 
   return (
