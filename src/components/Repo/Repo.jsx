@@ -5,6 +5,7 @@ import { useGetOne } from '../../api/useGet';
 import axios from 'axios';
 import API_URL from '../../api/api';
 import { ONE_REPO_URL } from '../../api/endpoints';
+import Files from './Files';
 
 function Repo() {
   const { username, repo } = useParams();
@@ -17,7 +18,6 @@ function Repo() {
       .get(`${API_URL}${endpoint}`)
       .then((res) => {
         setData(res.data);
-        console.log(res);
       })
       .catch(console.error);
   }, []);
@@ -27,6 +27,7 @@ function Repo() {
       <h3 className="text-yellow-500">Name repo {data.name}</h3>
       <p className="text-green-500">Description {data.description}</p>
       <p className="text-blue-600">languages du projet {data.language}</p>
+      <Files endpoint={endpoint} />
     </div>
   );
 }
