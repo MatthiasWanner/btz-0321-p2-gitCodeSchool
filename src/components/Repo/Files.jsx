@@ -4,6 +4,7 @@ import axios from 'axios';
 import API_URL from '../../api/api';
 
 export default function Files({ filesEndpoint, handleClickFile, directory }) {
+  const [endpoint, setEndpoint] = useState(filesEndpoint);
   const [files, setFiles] = useState([]);
   useEffect(() => {
     axios
@@ -11,10 +12,13 @@ export default function Files({ filesEndpoint, handleClickFile, directory }) {
       .then((res) => {
         setFiles(res.data);
       })
+      .then((data) => {
+        setPath;
+      })
       .catch(() => {
         console.error;
       });
-  }, [filesEndpoint]);
+  }, [endpoint, filesEndpoint]);
 
   const [path, setPath] = useState([]);
   useEffect(() => {
@@ -22,22 +26,24 @@ export default function Files({ filesEndpoint, handleClickFile, directory }) {
       ...path,
       {
         directory: directory,
-        files: files,
-        path: path,
+        endpoint: filesEndpoint,
       },
     ]);
   }, [directory]);
 
-  const handleClickPath = (index) => {
-    setFiles(path[index].files);
-    setPath(path[index].path);
+  const handleClickPath = (endpoint) => {
+    setEndpoint(endpoint);
   };
 
   return (
     <div className="border border-white">
       <div>
         {path.map((item, index) => {
-          return <span className="path-item" key={index} onClick={() => handleClickPath(index)}>{item.directory}</span>;
+          return (
+            <span className="path-item" key={index} onClick={() => handleClickPath(item.endpoint)}>
+              {item.directory}
+            </span>
+          );
         })}
       </div>
       <ul>
