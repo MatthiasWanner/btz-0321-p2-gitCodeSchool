@@ -15,8 +15,9 @@ function Home({ isLogged, handleClickLogin, pseudo }) {
     return (
       <>
         <div className={`${mainContainerClasses}`}>
-          <h2 className="text-3xl text-repos-dark text-center">Mes Repos</h2>
+          <h2 className="text-3xl text-repos-dark text-center">Bienvenue</h2>
           <h3 className="text-2xl text-repos-dark mb-10 text-center">{pseudo}</h3>
+          <p className="text-repos-dark">{`Ce qu'il s'est passé autour de vous :`}</p>
           <section className="home-repos">
             {homeContent.isLoading && <Spinner />}
             {!homeContent.isLoading && homeContent.datas.map((field) => <Feed key={field.id} result={field} />)}

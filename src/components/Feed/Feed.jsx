@@ -22,13 +22,23 @@ const events = {
   SponsorshipEvent: 'a sponsorisé',
 };
 
+function changeDateFormat(dateString) {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().length < 2 ? `0${date.getDate()}` : date.getDate();
+  const month = date.getMonth().toString().length < 2 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hour = date.getHours() - 2;
+  const mn = date.getMinutes();
+  return `${day}/${month}/${year} à ${hour}h${mn}`;
+}
+
 function Feed({ result }) {
   const feedContainer = 'rounded-2xl w-full bg-repos-dark border mb-5 shadow-lg';
   const buttonRepoClasses = 'text-white rounded w-1/4 border-b-4 border-l-2 shadow-lg bg-gold-dark border-gold-hover hover:bg-gold-hover';
 
   return (
     <div className={`${feedContainer}`}>
-      <p>Le {result.created_at}</p>
+      <p>Le {changeDateFormat(result.created_at)}</p>
       <p>
         {result.actor.login} {events[result.type]} :
       </p>
