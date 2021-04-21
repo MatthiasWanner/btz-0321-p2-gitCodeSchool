@@ -12,6 +12,7 @@ import Toolbox from './components/Toolbox/Toolbox';
 import Repo from './components/Repo/Repo';
 import Modal from './components/Modal/Modal';
 import { ModalContext } from './components/Contexts';
+import Routes from './components/Routes';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
@@ -74,13 +75,7 @@ function App() {
           <Navbar />
           <div className={`main-container ${mainContainerClasses}`}>
             <Switch>
-              <Route exact path="/">
-                <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} modal={modal} />
-              </Route>
-              <Route path="/profile" component={Profile} />
-              <Route path="/profile-repos" component={ProfileRepos} />
-              <Route path="/toolbox" component={Toolbox} />
-              <Route path="/repo" component={Repo} />
+              <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
             </Switch>
           </div>
         </Router>

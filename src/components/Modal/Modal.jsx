@@ -12,7 +12,7 @@ function Modal() {
 
   return (
     <ModalContext.Consumer>
-      {({ modal, setModal, modalOpen, setModalOpen }) => (
+      {({ modal, modalOpen, setModalOpen }) => (
         <Dialog className="fixed inset-0 flex justify-center items-center flex-wrap" open={modalOpen} onClose={() => setModalOpen(false)}>
           <Dialog.Overlay className="fixed inset-0" />
 
