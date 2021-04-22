@@ -39,7 +39,9 @@ function Repo() {
 
   return (
     <div className="w-full">
-      <h3 className="text-yellow-500">{data.name}</h3>
+      <h3 className="text-yellow-500">
+        {data.name}
+      </h3>
       <p className="text-green-500">{data.description}</p>
       <p className="text-blue-600">languages du projet : {data.language}</p>
       <p></p>
