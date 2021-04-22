@@ -48,7 +48,7 @@ function App() {
             <Route exact path="/">
               <Home isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
             </Route>
-            <Route path="/profile" component={Profile} />
+            <Route path="/profile/:pseudo" component={Profile} />
             <Route path="/profile-repos" component={ProfileRepos} />
             <Route path="/toolbox" component={Toolbox} />
             <Route path="/repos/:username/:repo" component={Repo} />
