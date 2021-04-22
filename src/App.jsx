@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
-import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
 import { ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
+import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
@@ -21,7 +21,6 @@ function App() {
       e.preventDefault();
 
       const res = await login(tokenKey);
-
       setIsLogged(true);
       setPseudo(res.login);
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
