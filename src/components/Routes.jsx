@@ -16,7 +16,7 @@ function Routes({ isLogged, handleClickLogin, endpoint }) {
       <Route path="/profile" component={Profile} />
       <Route path="/profile-repos" component={ProfileRepos} />
       <Route path="/toolbox" component={Toolbox} />
-      <Route path="/repo" component={Repo} />
+      <Route path="/repos/:username/:repo" component={Repo} />
     </>
   );
 }

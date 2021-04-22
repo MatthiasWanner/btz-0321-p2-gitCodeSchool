@@ -21,6 +21,7 @@ function App() {
       e.preventDefault();
 
       const res = await login(tokenKey);
+      setIsLogged(true);
       setPseudo(res.login);
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
       setModal({

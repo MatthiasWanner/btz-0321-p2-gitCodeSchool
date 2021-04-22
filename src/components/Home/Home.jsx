@@ -6,7 +6,7 @@ import Feed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
 import { useGetAll } from '../../api/useGet';
 
-function Home({ isLogged, handleClickLogin, endpoint, modal }) {
+function Home({ isLogged, handleClickLogin, endpoint }) {
   const homeContent = useGetAll(endpoint);
   const pseudo = localStorage.ghPseudo;
 
