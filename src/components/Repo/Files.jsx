@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import File from './File';
 import axios from 'axios';
 import API_URL from '../../api/api';
@@ -53,3 +54,9 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
     </div>
   );
 }
+Files.propTypes = {
+  filesEndpoint: PropTypes.string,
+  handleClickFile: PropTypes.func,
+  handleClickPath: PropTypes.func,
+  directory: PropTypes.string,
+};
