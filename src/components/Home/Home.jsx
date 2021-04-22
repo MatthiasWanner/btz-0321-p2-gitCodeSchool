@@ -5,7 +5,7 @@ import RepoHome from '../RepoHome/RepoHome';
 import Spinner from '../Spinner/Spinner';
 import { useGetAll } from '../../api/useGet';
 
-function Home({ isLogged, handleClickLogin, endpoint, modal }) {
+function Home({ isLogged, handleClickLogin, endpoint }) {
   const homeRepos = useGetAll(endpoint);
   const pseudo = localStorage.ghPseudo;
 
