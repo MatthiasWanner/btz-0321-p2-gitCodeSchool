@@ -7,14 +7,13 @@ import { ONE_REPO_URL } from '../../api/endpoints';
 import Files from './Files';
 import ContentOverview from './ContentOverview';
 
-
 function Repo() {
   const { username, repo } = useParams();
   const [repoEndpoint, setRepoEndpoint] = useState(ONE_REPO_URL.replace('{user}', username).replace('{repo}', repo));
   const [filesEndpoint, setFilesEndpoint] = useState(`${repoEndpoint}/contents`);
   const [fileEndPoint, setFileEndpoint] = useState(`${filesEndpoint}/README.md`);
   const [data, setData] = useState({});
-  const [directory, setDirectory] = useState(`${repo}/`);
+  const [directory, setDirectory] = useState(`${repo}`);
 
   useEffect(() => {
     axios
@@ -30,19 +29,23 @@ function Repo() {
       setFileEndpoint(`${filesEndpoint}/${fileName}`);
     } else if (type === 'dir') {
       setFilesEndpoint(`${filesEndpoint}/${fileName}`);
-      setDirectory(`${fileName}/`);
+      setDirectory(`/${fileName}`);
     }
   };
 
+  const handleClickPath = (endpoint) => {
+    setFilesEndpoint(endpoint);
+  };
+
   return (
-    <div className="">
+    <div className="w-full">
       <h3 className="text-yellow-500">
         {data.name}
       </h3>
       <p className="text-green-500">{data.description}</p>
       <p className="text-blue-600">languages du projet : {data.language}</p>
       <p></p>
-      <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} directory={directory} />
+      <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} handleClickPath={handleClickPath} directory={directory} />
       <ContentOverview fileEndPoint={fileEndPoint} />
     </div>
   );
