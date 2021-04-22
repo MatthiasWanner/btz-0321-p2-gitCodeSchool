@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
 import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Home from './components/Home/Home';
-import Profile from './components/Profile/Profile';
-import ProfileRepos from './components/ProfileRepos/ProfileRepos';
-import Toolbox from './components/Toolbox/Toolbox';
-import Repo from './components/Repo/Repo';
+import Modal from './components/Modal/Modal';
+import { ModalContext } from './components/Contexts';
+import Routes from './components/Routes';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
-  const [isLogged, setIsLogged] = useState(pseudo !== undefined ? true : false);
+  const [isLogged, setIsLogged] = useState(pseudo !== undefined);
   const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_HOME.replace('{username}', pseudo));
+  const [modal, setModal] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleClickLogin = async (e, tokenKey) => {
     try {
@@ -25,41 +25,76 @@ function App() {
       setIsLogged(true);
       setPseudo(res.login);
       setEndpoint(PROFIL_HOME.replace('{username}', res.login));
+      setModal({
+        title: 'Connexion réussie',
+        content: `Vous êtes connecté sur ${res.login}`,
+        buttons: [
+          {
+            content: 'Valider',
+            color: 'bg-green-300 hover:bg-green-600',
+          },
+          {
+            content: 'Se déconnecter',
+            color: 'bg-red-300 hover:bg-red-600',
+            onClick: () => handleClickLogout(),
+          },
+        ],
+      });
+      setModalOpen(true);
     } catch (e) {
-      // TODO: Create a modal
-      // console.error(e);
+      setModal({
+        title: 'Erreur',
+        content: 'Erreur lors de la connexion, veuillez vérifier votre token.',
+        buttons: [
+          {
+            content: 'Compris',
+            color: 'bg-red-300 hover:bg-red-600',
+          },
+        ],
+        status: 'error',
+      });
+      setModalOpen(true);
       setIsLogged(false);
     }
   };
 
   const handleClickLogout = () => {
-    localStorage.clear('tokenKey');
+    localStorage.removeItem('tokenKey');
     setPseudo('');
     setIsLogged(false);
     setEndpoint(HOME_REPOS_URL);
+    setModal({
+      title: 'Déconnexion',
+      content: 'Déconnecté avec succès',
+      buttons: [
+        {
+          content: 'Fermer',
+          color: 'bg-green-300 hover:bg-green-600',
+        },
+      ],
+    });
+    setModalOpen(true);
   };
 
-  const bodyClasses = 'max-w-[1200px] min-h-screen m-auto';
+  const bodyClasses = 'container-xl mx-auto min-h-screen';
   const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
 
   return (
-    <div className={`body-container ${bodyClasses}`}>
-      <Router>
-        <Navbar />
-        <div className={`main-container ${mainContainerClasses}`}>
-          <Switch>
-            <Route exact path="/">
-              <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
-            </Route>
-            <Route path="/profile" component={Profile} />
-            <Route path="/profile-repos" component={ProfileRepos} />
-            <Route path="/toolbox" component={Toolbox} />
-            <Route path="/repo" component={Repo} />
-          </Switch>
-        </div>
-      </Router>
-      <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
-    </div>
+    <ModalContext.Provider value={{ modal, setModal, modalOpen, setModalOpen }}>
+      {modalOpen && <Modal {...{ modal, setModal, setModalOpen }} />}
+
+      <div className={`body-container ${bodyClasses}`}>
+        <Router>
+          <Navbar />
+          <div className={`main-container ${mainContainerClasses}`}>
+            <Switch>
+              <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
+            </Switch>
+          </div>
+        </Router>
+        <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
+      </div>
+    </ModalContext.Provider>
   );
 }
 
