@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import { login } from './api/api';
@@ -7,12 +7,13 @@ import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
 import { ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
-import { HOME_REPOS_URL, PROFIL_HOME } from './api/endpoints';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
   const [isLogged, setIsLogged] = useState(pseudo !== undefined);
-  const [endpoint, setEndpoint] = useState(!isLogged ? HOME_REPOS_URL : PROFIL_HOME.replace('{username}', pseudo));
+  useEffect(() => {
+    pseudo ? setIsLogged(true) : setIsLogged(false);
+  }, [pseudo]);
   const [modal, setModal] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -21,9 +22,7 @@ function App() {
       e.preventDefault();
 
       const res = await login(tokenKey);
-      setIsLogged(true);
       setPseudo(res.login);
-      setEndpoint(PROFIL_HOME.replace('{username}', res.login));
       setModal({
         title: 'Connexion réussie',
         content: `Vous êtes connecté sur ${res.login}`,
@@ -58,10 +57,9 @@ function App() {
   };
 
   const handleClickLogout = () => {
-    localStorage.removeItem('tokenKey');
-    setPseudo('');
-    setIsLogged(false);
-    setEndpoint(HOME_REPOS_URL);
+    localStorage.removeItem('ghPseudo');
+    localStorage.removeItem('ghTokenKey');
+    setPseudo(undefined);
     setModal({
       title: 'Déconnexion',
       content: 'Déconnecté avec succès',
@@ -87,7 +85,7 @@ function App() {
           <Navbar />
           <div className={`main-container ${mainContainerClasses}`}>
             <Switch>
-              <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
+              <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
             </Switch>
           </div>
         </Router>

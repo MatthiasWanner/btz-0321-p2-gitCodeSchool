@@ -15,6 +15,7 @@ function NavbarLink({ children, classList, to }) {
 NavbarLink.propTypes = {
   children: PropTypes.string,
   to: PropTypes.string,
+  classList: PropTypes.string,
 };
 
 export default NavbarLink;

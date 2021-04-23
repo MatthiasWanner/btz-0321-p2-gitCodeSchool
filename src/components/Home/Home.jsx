@@ -5,10 +5,10 @@ import HomePopularElement from '../HomePopularElement/HomePopularElement';
 import Feed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
 import { useGetAll } from '../../api/useGet';
+import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 
-function Home({ isLogged, handleClickLogin, endpoint }) {
-  const homeContent = useGetAll(endpoint);
-  const pseudo = localStorage.ghPseudo;
+function Home({ isLogged, handleClickLogin, pseudo }) {
+  const homeContent = pseudo ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
 
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
@@ -21,7 +21,7 @@ function Home({ isLogged, handleClickLogin, endpoint }) {
           <p className="text-repos-dark">{`Ce qu'il s'est passé autour de vous :`}</p>
           <section className="home-repos w-full">
             {homeContent.isLoading && <Spinner />}
-            {!homeContent.isLoading && homeContent.datas.map((field) => <Feed key={field.id} result={field} />)}
+            {!homeContent.isLoading && homeContent.datas.map((feed) => <Feed key={feed.id} result={feed} />)}
           </section>
         </div>
       </>
@@ -33,9 +33,8 @@ function Home({ isLogged, handleClickLogin, endpoint }) {
         <Banner handleClickLogin={handleClickLogin} />
         <div className={`home-main-container ${mainContainerClasses}`}>
           <section className="home-repos w-full">
-            {homeContent.isRepoHomeLoading && <Spinner />}
-            {!homeContent.isRepoHomeLoading &&
-              homeContent.datas.map((repo) => <HomePopularElement key={repo.id} result={repo} isLogged={isLogged} />)}
+            {homeContent.isLoading && <Spinner />}
+            {!homeContent.isLoading && homeContent.datas.map((repo) => <HomePopularElement key={repo.id} result={repo} isLogged={isLogged} />)}
           </section>
         </div>
       </>

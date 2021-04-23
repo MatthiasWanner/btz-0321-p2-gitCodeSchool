@@ -51,4 +51,3 @@ Feed.propTypes = {
 };
 
 export default Feed;
-

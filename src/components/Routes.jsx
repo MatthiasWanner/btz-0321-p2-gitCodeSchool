@@ -7,11 +7,11 @@ import ProfileRepos from './ProfileRepos/ProfileRepos';
 import Toolbox from './Toolbox/Toolbox';
 import Repo from './Repo/Repo';
 
-function Routes({ isLogged, handleClickLogin, endpoint }) {
+function Routes({ isLogged, handleClickLogin, pseudo }) {
   return (
     <>
       <Route exact path="/">
-        <Home isLogged={isLogged} handleClickLogin={handleClickLogin} endpoint={endpoint} />
+        <Home isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
       </Route>
       <Route path="/profile" component={Profile} />
       <Route path="/profile-repos" component={ProfileRepos} />
@@ -24,7 +24,7 @@ function Routes({ isLogged, handleClickLogin, endpoint }) {
 Routes.propTypes = {
   isLogged: PropTypes.bool,
   handleClickLogin: PropTypes.func,
-  endpoint: PropTypes.string,
+  pseudo: PropTypes.string,
 };
 
 export default Routes;
