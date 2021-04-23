@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function File({ file, handleClickFile }) {
   return (
@@ -7,3 +8,8 @@ export default function File({ file, handleClickFile }) {
     </li>
   );
 }
+
+File.propTypes = {
+  file: PropTypes.object,
+  handleClickFile: PropTypes.func,
+};

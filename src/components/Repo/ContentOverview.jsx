@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import API_URL from '../../api/api';
 
@@ -22,3 +23,6 @@ export default function ContentOverview({ fileEndPoint }) {
     </div>
   );
 }
+ContentOverview.propTypes = {
+  fileEndPoint: PropTypes.string,
+};

@@ -27,7 +27,6 @@ function HomePopularElement({ result }) {
 
 HomePopularElement.propTypes = {
   result: PropTypes.object,
-  isLogged: PropTypes.bool,
 };
 
 export default HomePopularElement;
