@@ -27,8 +27,8 @@ export default function Follow({pseudo}){
         <div className="border 2px border-white">
             {follow.map((follower)=>{
                 return (
-                    <Link to={`/Profile/${follower.login}`}>
-                    <div key={follower.id} >
+                    <Link key={follower.id} to={`/Profile/${follower.login}`}>
+                    <div>
                     <p className="text-white">{follower.login}</p>
                     </div>
                   </Link>
