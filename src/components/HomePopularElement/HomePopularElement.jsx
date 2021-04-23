@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import './HomePopularElement.css';
 import star from '../../img/star.svg';
 
@@ -10,18 +10,20 @@ function HomePopularElement({ result }) {
   const infosContainerClasses = 'w-4/5 pl-2';
   const repoTitleClasses = 'text-xl font-semibold';
   return (
-    <div className={`${homeRepoContainer}`}>
-      <div className={`${avatarClasses}`}>
-        <img src={`${result.owner.avatar_url}`} alt={`${result.owner.login} avatar`} />
+    <Link to={`/repos/${result.owner.login}/${result.name}`}>
+      <div className={`${homeRepoContainer}`}>
+        <div className={`${avatarClasses}`}>
+          <img src={`${result.owner.avatar_url}`} alt={`${result.owner.login} avatar`} />
+        </div>
+        <div className={`${infosContainerClasses}`}>
+          <h3 className={`${repoTitleClasses}`}>{result.name}</h3>
+          <p>de {result.owner.login}</p>
+          <p className="border-t text-right">
+            {result.stargazers_count} <img className="inline w-1/12" src={star} alt="star" />
+          </p>
+        </div>
       </div>
-      <div className={`${infosContainerClasses}`}>
-        <h3 className={`${repoTitleClasses}`}>{result.name}</h3>
-        <p>de {result.owner.login}</p>
-        <p className="border-t text-right">
-          {result.stargazers_count} <img className="inline w-1/12" src={star} alt="star" />
-        </p>
-      </div>
-    </div>
+    </Link>
   );
 }
 
