@@ -73,8 +73,8 @@ function App() {
     setModalOpen(true);
   };
 
-  const bodyClasses = 'container-xl mx-auto min-h-screen';
-  const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
+  const bodyClasses = 'container mx-auto min-h-screen';
+  const mainContainerClasses = 'flex flex-col justify-between items-center w-full min-h-screen';
 
   return (
     <ModalContext.Provider value={{ modal, setModal, modalOpen, setModalOpen }}>

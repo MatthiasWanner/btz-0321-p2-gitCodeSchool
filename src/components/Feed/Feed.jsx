@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './Feed.css';
 
@@ -41,7 +42,9 @@ function Feed({ result }) {
       <p>
         {result.actor.login} {events[result.type]} :
       </p>
-      <p>{result.repo.name}</p>
+      <Link to={`/repos/${result.repo.name}`}>
+        <p>{result.repo.name}</p>
+      </Link>
     </div>
   );
 }
