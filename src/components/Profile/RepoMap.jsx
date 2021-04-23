@@ -20,7 +20,7 @@ export default function RepoMap() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [pseudo]);
 
   return (
     <div className="border 2px border-red-500 text-white">
@@ -28,10 +28,12 @@ export default function RepoMap() {
       <div>
         {repoMap.map((repo) => {
           return (
-            <div className="border 2px border-red-600 ">
-              <p>{repo.name}</p>
-              <p>DESCRIPTION :{repo.description}</p>
+            <div key={repo.id}className="border 2px border-red-600 ">
+              <p>Name: {repo.name}</p>
+              <p>Description :{repo.description}</p>
+             
             </div>
+            
           );
         })}
       </div>

@@ -5,11 +5,12 @@ import { PROFIL_URL } from '../../api/endpoints';
 import { useParams } from 'react-router';
 import RepoMap from './RepoMap';
 import axios from 'axios';
+import Follow from './Follow'
 
 function Profile() {
   const titleContainer = 'pt-[100px]';
   const [profile, setProfile] = useState('');
-  const { pseudo, repoU } = useParams();
+  const { pseudo } = useParams();
   const endpoint = PROFIL_URL.replace('{username}', pseudo);
 
   useEffect(() => {
@@ -36,7 +37,9 @@ function Profile() {
           <p>Followers: {profile.followers}</p>
           <p>Following: {profile.following}</p>
         </div>
+        <Follow pseudo={pseudo}/>
         <RepoMap />
+
 
         <div></div>
       </div>
