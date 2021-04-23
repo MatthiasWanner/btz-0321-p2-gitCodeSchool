@@ -5,7 +5,8 @@ import { PROFIL_URL } from '../../api/endpoints';
 import { useParams } from 'react-router';
 import RepoMap from './RepoMap';
 import axios from 'axios';
-import Follow from './Follow'
+import Follow from './Follow';
+import AllReposProfile from './AllReposProfile';
 
 function Profile() {
   const titleContainer = 'pt-[100px]';
@@ -37,9 +38,9 @@ function Profile() {
           <p>Followers: {profile.followers}</p>
           <p>Following: {profile.following}</p>
         </div>
-        <Follow pseudo={pseudo}/>
+        <AllReposProfile />
+        <Follow pseudo={pseudo} />
         <RepoMap />
-
 
         <div></div>
       </div>
