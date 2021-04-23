@@ -3,8 +3,8 @@ import './Profile.css';
 import API_URL from '../../api/api';
 import { PROFIL_URL } from '../../api/endpoints';
 import { useParams } from 'react-router';
+import RepoMap from './RepoMap';
 import axios from 'axios';
-
 
 function Profile() {
   const titleContainer = 'pt-[100px]';
@@ -17,16 +17,11 @@ function Profile() {
       .get(`${API_URL}${endpoint}`)
       .then((res) => {
         setProfile(res.data);
-        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
       });
   }, [pseudo]);
-
-
-
-
 
   return (
     <>
@@ -41,9 +36,9 @@ function Profile() {
           <p>Followers: {profile.followers}</p>
           <p>Following: {profile.following}</p>
         </div>
-        <div>
-          
-        </div>
+        <RepoMap />
+
+        <div></div>
       </div>
     </>
   );
