@@ -17,7 +17,7 @@ export default function ContentOverview({ fileEndPoint }) {
   }, [fileEndPoint]);
 
   return (
-    <div className="w-full border border-white">
+    <div className="w-full border border-white bg-homeGray-dark rounded-md my-4 ">
       <p className="text-white">{overviewContent.name}</p>
       <p className="text-white">{overviewContent.content}</p>
     </div>
