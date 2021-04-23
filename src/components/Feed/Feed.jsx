@@ -34,7 +34,6 @@ function changeDateFormat(dateString) {
 
 function Feed({ result }) {
   const feedContainer = 'rounded-2xl w-full bg-repos-dark border mb-5 shadow-lg';
-  const buttonRepoClasses = 'text-white rounded w-1/4 border-b-4 border-l-2 shadow-lg bg-gold-dark border-gold-hover hover:bg-gold-hover';
 
   return (
     <div className={`${feedContainer}`}>
@@ -43,7 +42,6 @@ function Feed({ result }) {
         {result.actor.login} {events[result.type]} :
       </p>
       <p>{result.repo.name}</p>
-      <button className={`${buttonRepoClasses}`} />
     </div>
   );
 }
@@ -53,3 +51,4 @@ Feed.propTypes = {
 };
 
 export default Feed;
+

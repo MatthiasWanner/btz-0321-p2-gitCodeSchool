@@ -4,11 +4,12 @@ import Banner from '../Banner/Banner';
 import HomePopularElement from '../HomePopularElement/HomePopularElement';
 import Feed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
-import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
 
-function Home({ isLogged, handleClickLogin, pseudo }) {
-  const homeContent = pseudo ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
+function Home({ isLogged, handleClickLogin, endpoint }) {
+  const homeContent = useGetAll(endpoint);
+  const pseudo = localStorage.ghPseudo;
+
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {
