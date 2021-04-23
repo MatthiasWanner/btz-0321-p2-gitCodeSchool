@@ -37,15 +37,18 @@ function Repo() {
     setFilesEndpoint(endpoint);
   };
 
+  const headerContainer = 'flex flex-col items-center my-4';
+
   return (
-    <div className="w-full">
-      <h3 className="text-yellow-500">{data.name}</h3>
-      <p className="text-green-500">{data.description}</p>
-      <p className="text-blue-600">languages du projet : {data.language}</p>
-      <p></p>
+    <>
+      <div className={`header-repo-page ${headerContainer}`}>
+        <h3 className="text-gold-dark text-3xl">{data.name}</h3>
+        <p className="text-gold-dark text-l">auteur: {username}</p>
+        <p className="text-gold-dark">{data.description}</p>
+      </div>
       <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} handleClickPath={handleClickPath} directory={directory} />
       <ContentOverview fileEndPoint={fileEndPoint} />
-    </div>
+    </>
   );
 }
 
