@@ -5,27 +5,45 @@ import { PROFIL_URL } from '../../api/endpoints';
 import { useParams } from 'react-router';
 import axios from 'axios';
 
+
 function Profile() {
   const titleContainer = 'pt-[100px]';
   const [profile, setProfile] = useState('');
-  const { pseudo } = useParams();
+  const { pseudo, repoU } = useParams();
   const endpoint = PROFIL_URL.replace('{username}', pseudo);
 
   useEffect(() => {
     axios
       .get(`${API_URL}${endpoint}`)
       .then((res) => {
-        setProfile(res);
+        setProfile(res.data);
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
       });
   }, [pseudo]);
 
+
+
+
+
   return (
     <>
       <div className={`${titleContainer}`}>
         <h3 className="text-gold-dark text-2xl">Profil de {pseudo}</h3>
+      </div>
+
+      <div className="boxImgProfil">
+        <img className="avatar" src={profile.avatar_url} />
+        <div className="boxInfoProfil" className="text-white">
+          <h3>{profile.login}</h3>
+          <p>Followers: {profile.followers}</p>
+          <p>Following: {profile.following}</p>
+        </div>
+        <div>
+          
+        </div>
       </div>
     </>
   );
