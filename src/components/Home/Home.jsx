@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css';
 import Banner from '../Banner/Banner';
 import RepoHome from '../HomeLogoutRepos/HomeLogoutRepos';
-import NewFeed from '../Feed/Feed';
+import NewsFeed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
 import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
@@ -19,7 +19,7 @@ function Home({ isLogged, handleClickLogin, pseudo }) {
           <h3 className="text-2xl text-repos-dark mb-10 text-center">{pseudo}</h3>
           <section className="home-repos">
             {homeContent.isLoading && <Spinner />}
-            {!homeContent.isLoading && homeContent.datas.map((field) => <Feed key={field.id} result={field} />)}
+            {!homeContent.isLoading && homeContent.datas.map((field) => <NewsFeed key={field.id} result={field} />)}
           </section>
         </div>
       </>
