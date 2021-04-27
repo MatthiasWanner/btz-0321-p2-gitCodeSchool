@@ -38,7 +38,6 @@ function Profile() {
           <p>Followers: {profile.followers}</p>
           <p>Following: {profile.following}</p>
         </div>
-        <AllRepos />
         <Follow pseudo={pseudo} />
         <RepoMap />
 
