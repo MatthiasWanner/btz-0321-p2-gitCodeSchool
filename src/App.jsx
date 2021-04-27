@@ -9,6 +9,7 @@ import Profile from './components/Profile/Profile';
 import ProfileRepos from './components/ProfileRepos/ProfileRepos';
 import Toolbox from './components/Toolbox/Toolbox';
 import Repo from './components/Repo/Repo';
+import AllRepos from './components/AllRepos/AllRepos';
 
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
@@ -51,7 +52,8 @@ function App() {
             <Route path="/profile/:pseudo" component={Profile} />
             <Route path="/profile-repos" component={ProfileRepos} />
             <Route path="/toolbox" component={Toolbox} />
-            <Route path="/repos/:username/:repo" component={Repo} />
+            <Route path="/repos/:username" component={AllRepos} />
+            <Route path="/repo/:username/:repo" component={Repo} />
           </Switch>
         </div>
       </Router>

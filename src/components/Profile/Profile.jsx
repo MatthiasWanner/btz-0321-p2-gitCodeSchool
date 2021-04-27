@@ -6,7 +6,7 @@ import { useParams } from 'react-router';
 import RepoMap from './RepoMap';
 import axios from 'axios';
 import Follow from './Follow';
-import AllReposProfile from './AllReposProfile';
+import AllRepos from '../AllRepos/AllRepos';
 
 function Profile() {
   const titleContainer = 'pt-[100px]';
@@ -38,7 +38,7 @@ function Profile() {
           <p>Followers: {profile.followers}</p>
           <p>Following: {profile.following}</p>
         </div>
-        <AllReposProfile />
+        <AllRepos />
         <Follow pseudo={pseudo} />
         <RepoMap />
 

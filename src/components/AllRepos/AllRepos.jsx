@@ -1,0 +1,44 @@
+import { FolderIcon } from '@heroicons/react/solid';
+import React from 'react';
+import { useParams } from 'react-router';
+import { PROFIL_REPOS } from '../../api/endpoints';
+import { useGetAll } from '../../api/useGet';
+
+export default function AllRepos() {
+  const { username } = useParams();
+  const endpoint = PROFIL_REPOS.replace(`{username}`, username);
+
+  const allRepos = useGetAll(endpoint);
+
+  const repoContainer = 'border-gold-dark my-4 w-3/12 p-4 mx-4 rounded-md text-center bg-homeGray-dark';
+  const repoContainerMD = '';
+
+  return (
+    <div>
+      <h1 className="text-white mt-[60px]"> {username} Repositories </h1>
+      <p className="text-white">
+        Language
+        <select name="language" id="language-selection" className="text-gray-900">
+          <option value="">--Please choose an language-</option>
+          <option value="">Select All</option>
+          <option value="">Javascript</option>
+          <option value="">HTML</option>
+        </select>
+      </p>
+
+      {allRepos.datas.map((repos) => {
+        return (
+          <div key={repos.id} className="border border-yellow-500">
+            <p className="text-white">Name: {repos.name}</p>
+            <div className="text-gold-dark flex justify-center">
+              <FolderIcon className="h_10 w-10" />
+            </div>
+            <p className="text-white">Description:{repos.description}</p>
+            <p className="text-white">stars{repos.stargazers_count}</p>
+            <p className="text-white">{repos.language}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
