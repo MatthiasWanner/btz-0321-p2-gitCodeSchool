@@ -37,7 +37,7 @@ function App() {
   };
 
   const bodyClasses = 'max-w-[1200px] min-h-screen m-auto';
-  const mainContainerClasses = 'flex flex-col justify-between items-center min-h-screen';
+  const mainContainerClasses = 'flex flex-col justify-between items-center w-full min-h-screen';
 
   return (
     <div className={`body-container ${bodyClasses}`}>

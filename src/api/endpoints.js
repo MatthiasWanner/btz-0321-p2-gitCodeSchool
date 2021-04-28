@@ -6,4 +6,4 @@ export const ONE_REPO_URL = `/repos/{user}/{repo}`;
 export const FOLLOWING_URL = `/users/{username}/following`;
 export const EVENTS_URL = `/users/{username}/received_events`;
 export const CONTENT_REPO_URL = `/repos/{user}/{repo}/{contents}`;
-export const FOLLOWER_URL= `/users/{username}/followers`
+export const FOLLOWER_URL = `/users/{username}/followers`;

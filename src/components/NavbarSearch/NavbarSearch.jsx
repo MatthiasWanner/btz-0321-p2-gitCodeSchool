@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
-import API_URL from '../../api/api';
-import { PROFIL_URL } from '../../api/endpoints';
-import { useHistory, useParams } from 'react-router';
-import axios from 'axios';
-
+import { useHistory } from 'react-router';
 function NavbarSearch() {
   const [user, setUser] = useState('');
   const history = useHistory();
