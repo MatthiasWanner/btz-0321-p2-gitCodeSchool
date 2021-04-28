@@ -14,7 +14,7 @@ export default function Follow({pseudo}){
     
 
     return (
-        <div className="boxFollower mr-4 mt-8 pl-6  w-64 h-28 overflow-scroll ">
+        <div className="boxFollower mr-4 mt-8 ml-10 w-64 h-28 overflow-auto ">
             {follow.datas.map((follower)=>{
                 return (
                     <Link key={follower.id} to={`/Profile/${follower.login}`}>
