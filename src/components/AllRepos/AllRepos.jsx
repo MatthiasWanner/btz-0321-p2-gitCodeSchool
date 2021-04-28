@@ -14,29 +14,6 @@ export default function AllRepos() {
   const repoContainer = 'border-gold-dark my-4 w-3/12 p-4 mx-4 rounded-md text-center bg-homeGray-dark';
   const repoContainerMD = '';
 
-  // // SWITCH UTILISATION DE DEFAULT POUR METTRE AUTRE COULEUR
-  // const haveTheColor = (language) => {
-  //   if (language === 'JavaScript') {
-  //     return 'bg-yellow-200';
-  //   } else if (language === 'HTML') {
-  //     return 'bg-red-700';
-  //   } else if (language === 'CSS') {
-  //     return 'bg-purple-700';
-  //   } else if (language === 'Vue') {
-  //     return 'bg-green-700';
-  //   } else if (language === 'PHP') {
-  //     return 'bg-blue-700';
-  //   } else if (language === 'R') {
-  //     return 'bg-grey-700';
-  //   } else if (language === 'Python') {
-  //     return 'bg-blue-300';
-  //   } else if (language === 'Java') {
-  //     return 'bg-brown-300';
-  //   } else {
-  //     return 'bg-orange-700';
-  //   }
-  // };
-
   const haveTheColor = (language) => {
     switch (language) {
       case 'JavaScript':
