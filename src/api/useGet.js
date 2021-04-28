@@ -6,13 +6,13 @@ import API_URL from './api';
 export function useGetAll(endpoint) {
   const [datas, setDatas] = useState([]);
   const [error, setError] = useState(null);
-  const [isRepoHomeLoading, setisRepoHomeLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const authorization = localStorage.ghTokenKey !== undefined ? `token ${localStorage.ghTokenKey}` : '';
     const config = { headers: { Authorization: authorization } };
     const getRepos = async () => {
       setError(null);
-      setisRepoHomeLoading(true);
+      setIsLoading(true);
       try {
         const { data } = await axios.get(`${api}${endpoint}`, config);
         if (Array.isArray(data)) {
@@ -23,9 +23,7 @@ export function useGetAll(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
-          setisRepoHomeLoading(false);
-        }, 1000);
+        setIsLoading(false);
       }
     };
     getRepos();
@@ -34,7 +32,7 @@ export function useGetAll(endpoint) {
     };
   }, [endpoint]);
 
-  return { datas, error, isRepoHomeLoading };
+  return { datas, error, isLoading };
 }
 
 export function useGetOne(endpoint) {
