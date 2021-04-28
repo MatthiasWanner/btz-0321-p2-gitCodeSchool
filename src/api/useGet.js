@@ -22,9 +22,7 @@ export function useGetAll(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+        setIsLoading(false);
       }
     };
     getRepos();
@@ -49,9 +47,7 @@ export function useGetOne(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
           setIsLoading(false);
-        }, 1000);
       }
     };
     getRepos();
@@ -77,9 +73,7 @@ export function useGetFile(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+          setIsLoading(false);  
       }
     };
     getRepos();

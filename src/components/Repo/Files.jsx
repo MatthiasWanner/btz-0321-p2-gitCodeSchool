@@ -5,8 +5,8 @@ import { useGetAll } from '../../api/useGet';
 
 export default function Files({ filesEndpoint, handleClickFile, handleClickPath, directory }) {
   const files = useGetAll(filesEndpoint);
-
   const [path, setPath] = useState([]);
+
   useEffect(() => {
     setPath([
       ...path,

@@ -8,6 +8,7 @@ import Modal from './components/Modal/Modal';
 import { ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
 
+
 function App() {
   const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
   const [isLogged, setIsLogged] = useState(pseudo !== undefined);
@@ -77,6 +78,7 @@ function App() {
   const mainContainerClasses = 'flex flex-col justify-between items-center w-full min-h-screen';
 
   return (
+
     <ModalContext.Provider value={{ modal, setModal, modalOpen, setModalOpen }}>
       {modalOpen && <Modal {...{ modal, setModal, setModalOpen }} />}
 
@@ -92,6 +94,7 @@ function App() {
         <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
       </div>
     </ModalContext.Provider>
+
   );
 }
 
