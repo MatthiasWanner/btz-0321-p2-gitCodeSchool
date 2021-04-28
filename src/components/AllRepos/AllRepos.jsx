@@ -30,10 +30,12 @@ export default function AllRepos() {
   };
 
   return (
-    <div>
+    <>
       <div className="mb-5 ">
-        <h1 className="text-white flex justify-center px-5 text-lg mb-6  "> Les Repos de {username} </h1>
-        <div className="flex justify-around">
+        <div className="demo-1">
+          <h1 className="text-white flex justify-center px-5 text-lg mb-6 logo-1 ">Les Repos de {username}</h1>
+        </div>
+        <div className="">
           <p className="text-white">Language</p>
           <select name="language" id="language-selection" className="text-gray-900 border rounded-full">
             <option value="">--Please choose an language-</option>
@@ -45,13 +47,13 @@ export default function AllRepos() {
       </div>
       {allRepos.datas.map((repo) => {
         return (
-          <Link key={repo.id} to={`/repo/${username}/${repo.name}`}>
+          <Link className="w-full md:w-3/4" key={repo.id} to={`/repo/${username}/${repo.name}`}>
             <div className="border-2 border-yellow-600 bg-gold-dark hover:bg-gold-hover rounded-md mx-8 mb-5">
-              <div className="text-white flex pl-6 pt-2 items-center justify-between mb-5">
-                <FolderIcon className="h-10 w-10" />
-                <p className="text-white text-lg pt-2">{repo.name}</p>
-                <div className="flex justify-between items-center mr-4">
-                  <p className="text-white">{repo.stargazers_count}</p>
+              <div className="text-white flex pl-6 pt-2 items-center justify-between text-center mb-5 md:text-xl">
+                <FolderIcon className="h-10 w-10 md:h-20 md:w-20 " />
+                <p className="text-white text-lg">{repo.name}</p>
+                <div className="flex justify-around items-center mr-4">
+                  <p className="text-white px-2">{repo.stargazers_count}</p>
                   <StarIcon className="h-5 w-5" />
                 </div>
               </div>
@@ -66,6 +68,6 @@ export default function AllRepos() {
           </Link>
         );
       })}
-    </div>
+    </>
   );
 }
