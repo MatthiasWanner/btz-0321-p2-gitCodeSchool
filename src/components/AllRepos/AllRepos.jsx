@@ -11,9 +11,6 @@ export default function AllRepos() {
 
   const allRepos = useGetAll(endpoint);
 
-  const repoContainer = 'border-gold-dark my-4 w-3/12 p-4 mx-4 rounded-md text-center bg-homeGray-dark';
-  const repoContainerMD = '';
-
   const haveTheColor = (language) => {
     switch (language) {
       case 'JavaScript':

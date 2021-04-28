@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 
 export default function RepoMap() {
   const [repoMap, setRepoMap] = useState([]);
-  const { pseudo } = useParams();
-  const endpoint = PROFIL_URL.replace('{username}', pseudo);
+  const { username } = useParams();
+  const endpoint = PROFIL_URL.replace('{username}', username);
 
   useEffect(() => {
     axios
@@ -22,7 +22,7 @@ export default function RepoMap() {
       .catch((err) => {
         console.log(err);
       });
-  }, [pseudo]);
+  }, [username]);
 
   // class Tailwind
   const repoContainer = 'border-gold-dark my-4 w-3/12 p-4 mx-4 rounded-md text-center bg-homeGray-dark';
@@ -31,7 +31,7 @@ export default function RepoMap() {
 
   return (
     <>
-      <Link to={`/repos/${pseudo}`}>
+      <Link to={`/repos/${username}`}>
         <button className="text-white text-center my-4 border border-red-500">Affichage des repos</button>
       </Link>
       <div className="text-white my-4 flex flex-wrap justify-center border 2px border-gold-dark w-full p-4">

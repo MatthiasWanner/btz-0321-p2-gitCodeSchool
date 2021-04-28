@@ -1,44 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Profile.css';
-import API_URL from '../../api/api';
 import { PROFIL_URL } from '../../api/endpoints';
+import { useGetOne } from '../../api/useGet';
 import { useParams } from 'react-router';
 import RepoMap from './RepoMap';
-import axios from 'axios';
 import Follow from './Follow';
-import AllRepos from '../AllRepos/AllRepos';
 
 function Profile() {
   const titleContainer = 'pt-[100px]';
-  const [profile, setProfile] = useState('');
-  const { pseudo } = useParams();
-  const endpoint = PROFIL_URL.replace('{username}', pseudo);
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}${endpoint}`)
-      .then((res) => {
-        setProfile(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [pseudo]);
+  const { username } = useParams();
+  const endpoint = PROFIL_URL.replace('{username}', username);
+  const profile = useGetOne(endpoint);
 
   return (
     <>
       <div className={`${titleContainer}`}>
-        <h3 className="text-gold-dark text-2xl">Profil de {pseudo}</h3>
+        <h3 className="text-gold-dark text-2xl">Profil de {username}</h3>
       </div>
 
       <div className="boxImgProfil">
-        <img className="avatar" src={profile.avatar_url} />
-        <div className="boxInfoProfil" className="text-white">
-          <h3>{profile.login}</h3>
-          <p>Followers: {profile.followers}</p>
-          <p>Following: {profile.following}</p>
+        <img className="avatar" src={profile.datas.avatar_url} alt={`${username} avatar`} />
+        <div className="boxInfoProfil text-white">
+          <h3>{profile.datas.login}</h3>
+          <p>Followers: {profile.datas.followers}</p>
+          <p>Following: {profile.datas.following}</p>
         </div>
-        <Follow pseudo={pseudo} />
+        <Follow username={username} />
         <RepoMap />
 
         <div></div>
