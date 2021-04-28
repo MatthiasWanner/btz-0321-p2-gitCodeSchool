@@ -34,9 +34,12 @@ function Profile() {
           </div>
         </div>
         <Follow pseudo={pseudo}/>
-        
+        <div className="border 1px border-gold-dark w-3/4 mx-auto mt-12"></div>
+
+        <div className="flex justify-center">
         <RepoMap />
-        
+        </div>
+        <div className="border 1px border-gold-dark w-3/4 mx-auto mt-12"></div>
 
    
       </div>
