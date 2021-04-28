@@ -1,5 +1,6 @@
 import { FolderIcon, StarIcon } from '@heroicons/react/solid';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { PROFIL_REPOS } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
@@ -42,25 +43,27 @@ export default function AllRepos() {
           </select>
         </div>
       </div>
-      {allRepos.datas.map((repos) => {
+      {allRepos.datas.map((repo) => {
         return (
-          <div key={repos.id} className="border-2 border-yellow-600 bg-gold-dark hover:bg-gold-hover rounded-md mx-8 mb-5">
-            <div className="text-white flex pl-6 pt-2 items-center justify-between mb-5">
-              <FolderIcon className="h-10 w-10" />
-              <p className="text-white text-lg pt-2">{repos.name}</p>
-              <div className="flex justify-between items-center mr-4">
-                <p className="text-white">{repos.stargazers_count}</p>
-                <StarIcon className="h-5 w-5" />
+          <Link key={repo.id} to={`/repo/${username}/${repo.name}`}>
+            <div className="border-2 border-yellow-600 bg-gold-dark hover:bg-gold-hover rounded-md mx-8 mb-5">
+              <div className="text-white flex pl-6 pt-2 items-center justify-between mb-5">
+                <FolderIcon className="h-10 w-10" />
+                <p className="text-white text-lg pt-2">{repo.name}</p>
+                <div className="flex justify-between items-center mr-4">
+                  <p className="text-white">{repo.stargazers_count}</p>
+                  <StarIcon className="h-5 w-5" />
+                </div>
               </div>
-            </div>
 
-            <h1 className="text-white mb-2 pl-6">Description</h1>
-            <p className="text-white mb-2 pl-6 pr-4">{repos.description}</p>
-            <p className="flex justify-end items-center text-white mb-2 mx-6">
-              <span className={`${haveTheColor(repos.language)} w-4 h-4 rounded-full mx-3`} />
-              {repos.language}
-            </p>
-          </div>
+              <h1 className="text-white mb-2 pl-6">Description</h1>
+              <p className="text-white mb-2 pl-6 pr-4">{repo.description}</p>
+              <p className="flex justify-end items-center text-white mb-2 mx-6">
+                <span className={`${haveTheColor(repo.language)} w-4 h-4 rounded-full mx-3`} />
+                {repo.language}
+              </p>
+            </div>
+          </Link>
         );
       })}
     </div>

@@ -17,7 +17,6 @@ export default function RepoMap() {
       .get(`${API_URL}${endpoint}/repos`)
       .then((res) => {
         setRepoMap(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
