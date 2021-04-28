@@ -14,55 +14,50 @@ export default function AllRepos() {
   const repoContainer = 'border-gold-dark my-4 w-3/12 p-4 mx-4 rounded-md text-center bg-homeGray-dark';
   const repoContainerMD = '';
 
-  // SWITCH UTILISATION DE DEFAULT POUR METTRE AUTRE COULEUR
-  const haveTheColor = (language) => {
-    if (language === 'JavaScript') {
-      return 'bg-yellow-200';
-    } else if (language === 'HTML') {
-      return 'bg-red-700';
-    } else if (language === 'CSS') {
-      return 'bg-purple-700';
-    } else if (language === 'Vue') {
-      return 'bg-green-700';
-    } else if (language === 'PHP') {
-      return 'bg-blue-700';
-    } else if (language === 'R') {
-      return 'bg-grey-700';
-    } else if (language === 'Python') {
-      return 'bg-blue-300';
-    } else if (language === 'Java') {
-      return 'bg-brown-300';
-    } else {
-      return 'bg-orange-700';
-    }
-  };
-
+  // // SWITCH UTILISATION DE DEFAULT POUR METTRE AUTRE COULEUR
   // const haveTheColor = (language) => {
-  //   switch (language) {
-  //     case 'JavaScript':
-  //       'bg-yellow-700';
-  //       break;
-  //     case 'HTML':
-  //       'bg-red-700';
-  //       break;
-  //     case 'CSS':
-  //       'bg-purple-700';
-  //       break;
-  //     case 'Vue':
-  //       'bg-green-900';
-  //       break;
-  //     case 'PHP':
-  //       'bg-blue-900';
-  //       break;
-  //     default:
-  //       'bg-orange-700';
+  //   if (language === 'JavaScript') {
+  //     return 'bg-yellow-200';
+  //   } else if (language === 'HTML') {
+  //     return 'bg-red-700';
+  //   } else if (language === 'CSS') {
+  //     return 'bg-purple-700';
+  //   } else if (language === 'Vue') {
+  //     return 'bg-green-700';
+  //   } else if (language === 'PHP') {
+  //     return 'bg-blue-700';
+  //   } else if (language === 'R') {
+  //     return 'bg-grey-700';
+  //   } else if (language === 'Python') {
+  //     return 'bg-blue-300';
+  //   } else if (language === 'Java') {
+  //     return 'bg-brown-300';
+  //   } else {
+  //     return 'bg-orange-700';
   //   }
   // };
 
+  const haveTheColor = (language) => {
+    switch (language) {
+      case 'JavaScript':
+        return 'bg-yellow-200';
+      case 'HTML':
+        return 'bg-red-700';
+      case 'CSS':
+        return 'bg-purple-700';
+      case 'Vue':
+        return 'bg-green-900';
+      case 'PHP':
+        return 'bg-blue-900';
+      default:
+        return 'bg-green-200';
+    }
+  };
+
   return (
     <div>
-      <div className="mb-5">
-        <h1 className="text-white flex justify-center px-5 text-lg mb-6  "> {username} Repositories </h1>
+      <div className="mb-5 ">
+        <h1 className="text-white flex justify-center px-5 text-lg mb-6  "> Les Repos de {username} </h1>
         <div className="flex justify-around">
           <p className="text-white">Language</p>
           <select name="language" id="language-selection" className="text-gray-900 border rounded-full">
