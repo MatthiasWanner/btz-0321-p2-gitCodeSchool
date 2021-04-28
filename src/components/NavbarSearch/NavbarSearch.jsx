@@ -34,3 +34,4 @@ function NavbarSearch() {
 }
 
 export default NavbarSearch;
+
