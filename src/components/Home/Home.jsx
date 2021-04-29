@@ -1,25 +1,27 @@
 import React from 'react';
 import './Home.css';
 import Banner from '../Banner/Banner';
-import RepoHome from '../HomeLogoutRepos/HomeLogoutRepos';
-import NewFeed from '../Feed/Feed';
+import HomePopularElement from '../HomePopularElement/HomePopularElement';
+import Feed from '../Feed/Feed';
 import Spinner from '../Spinner/Spinner';
-import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
+import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 
 function Home({ isLogged, handleClickLogin, pseudo }) {
   const homeContent = pseudo ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
+
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
 
   if (isLogged) {
     return (
       <>
         <div className={`${mainContainerClasses}`}>
-          <h2 className="text-3xl text-repos-dark text-center">Mes Repos</h2>
+          <h2 className="text-3xl text-repos-dark text-center">Bienvenue</h2>
           <h3 className="text-2xl text-repos-dark mb-10 text-center">{pseudo}</h3>
-          <section className="home-repos">
+          <p className="text-repos-dark">{`Ce qu'il s'est passé autour de vous :`}</p>
+          <section className="home-repos w-full">
             {homeContent.isLoading && <Spinner />}
-            {!homeContent.isLoading && homeContent.datas.map((field) => <Feed key={field.id} result={field} />)}
+            {!homeContent.isLoading && homeContent.datas.map((feed) => <Feed key={feed.id} result={feed} />)}
           </section>
         </div>
       </>
@@ -30,9 +32,9 @@ function Home({ isLogged, handleClickLogin, pseudo }) {
       <>
         <Banner handleClickLogin={handleClickLogin} />
         <div className={`home-main-container ${mainContainerClasses}`}>
-          <section className="home-repos">
-            {homeContent.isRepoHomeLoading && <Spinner />}
-            {!homeContent.isRepoHomeLoading && homeContent.datas.map((repo) => <RepoHome key={repo.id} result={repo} isLogged={isLogged} />)}
+          <section className="home-repos w-full">
+            {homeContent.isLoading && <Spinner />}
+            {!homeContent.isLoading && homeContent.datas.map((repo) => <HomePopularElement key={repo.id} result={repo} isLogged={isLogged} />)}
           </section>
         </div>
       </>

@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 import { useHistory } from 'react-router';
+
 function NavbarSearch() {
-  const [user, setUser] = useState('');
+  const [search, setSearch] = useState('');
   const history = useHistory();
 
-  function handleSubmit(e) {
+  const handleChangeInput = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/profile/${user}`);
-    setUser('');
-  }
+    history.push(`/profile/${search}`);
+    setSearch('');
+  };
 
   return (
     <div className="px-[40px] sm:px-0 flex items-center">
       <form action="" onSubmit={handleSubmit}>
         <input
           type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
+          value={search}
+          onChange={handleChangeInput}
           placeholder="Search"
           className="w-full h-6 mr-6 sm:mr-2 pl-3 rounded-full outline-none focus:ring focus:ring-black"
         />

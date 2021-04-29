@@ -5,11 +5,12 @@ import { PROFIL_URL } from '../../api/endpoints';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { FolderIcon } from '@heroicons/react/solid';
+import { Link } from 'react-router-dom';
 
 export default function RepoMap() {
   const [repoMap, setRepoMap] = useState([]);
-  const { pseudo } = useParams();
-  const endpoint = PROFIL_URL.replace('{username}', pseudo);
+  const { username } = useParams();
+  const endpoint = PROFIL_URL.replace('{username}', username);
 
   useEffect(() => {
     axios
@@ -20,7 +21,7 @@ export default function RepoMap() {
       .catch((err) => {
         console.log(err);
       });
-  }, [pseudo]);
+  }, [username]);
 
   // class Tailwind
   const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4 w-3/4 text-center bg-homeGray-dark rounded-xl h-4/5';

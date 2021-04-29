@@ -1,49 +1,52 @@
-import { CONTENT_REPO_URL } from '../../api/endpoints';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import API_URL from '../../api/api';
+import PropTypes from 'prop-types';
+import File from './File';
+import { useGetAll } from '../../api/useGet';
 
-
-export default function Files({ endpoint, handleClickFile, handleClickDir}) {
-  const contentsEndpoint = `${endpoint}/contents`;
-  const [files, setFiles] = useState('');
+export default function Files({ filesEndpoint, handleClickFile, handleClickPath, directory }) {
+  const files = useGetAll(filesEndpoint);
+  const [path, setPath] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}${contentsEndpoint}`)
-      .then((res) => {
-        setFiles(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    setPath([
+      ...path,
+      {
+        directory: directory,
+        endpoint: filesEndpoint,
+      },
+    ]);
+  }, [directory]);
 
-  function haveTheFunction(type, url){
-    if(type === "file"){
-      return handleClickFile(url);
-      
-    } else if(type === "dir"){
-      return handleClickDir();
-    } 
-  }
+  const handleClickReturn = (index, endpoint) => {
+    const clickPosition = index + 1;
+    const n = path.length - clickPosition;
+    path.splice(clickPosition, n);
+    handleClickPath(endpoint);
+  };
 
   return (
-    <div className="border border-white">
+    <div className="w-full border border-white">
+      <div>
+        {path.map((item, index) => {
+          return (
+            <button className="path-item cursor-pointer text-yellow-400" key={index} onClick={() => handleClickReturn(index, item.endpoint)}>
+              {item.directory}
+            </button>
+          );
+        })}
+      </div>
       <ul>
-      {files.map((file) => {
-
-        return (          
-          <li onClick={()=>{haveTheFunction(file.type, file.url)}} 
-          className="text-white" key={file.sha}>
-            {file.name}
-          </li>
-
-        );
-      })}
+        {files.datas.map((file) => {
+          return <File handleClickFile={handleClickFile} file={file} key={file.sha} />;
+        })}
       </ul>
     </div>
   );
 }
 
-
+Files.propTypes = {
+  filesEndpoint: PropTypes.string,
+  handleClickFile: PropTypes.func,
+  handleClickPath: PropTypes.func,
+  directory: PropTypes.string,
+};

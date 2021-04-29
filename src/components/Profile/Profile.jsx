@@ -1,6 +1,7 @@
 import React from 'react';
 import './Profile.css';
 import { PROFIL_URL } from '../../api/endpoints';
+import { useGetOne } from '../../api/useGet';
 import { useParams } from 'react-router';
 import Follow from './Follow';
 import { useGetOne } from '../../api/useGet';

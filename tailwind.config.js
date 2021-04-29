@@ -1,8 +1,8 @@
 const colors = require('tailwindcss/colors');
+
 module.exports = {
   purge: ['./src/**/*.html', './src/**/*.{js,jsx}'],
   darkMode: false, // or 'media' or 'class',
-  mode: 'jit',
   theme: {
     extend: {
       colors: {
@@ -23,6 +23,7 @@ module.exports = {
         black: colors.black,
         white: colors.white,
       },
+      padding: ['hover'],
     },
   },
   variants: {
