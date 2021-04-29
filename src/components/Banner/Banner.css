@@ -1,5 +1,6 @@
 .home-header{
-    background: url('../../img/mob-home_background.webp') repeat;
+    background: url('../../img/desk-home_background.webp') no-repeat;
+    background-position: top;
 }
 
 .home-login-form-container{
@@ -7,10 +8,6 @@
 }
 
 @media screen and (min-width: 768px) {
-    .home-header{
-        background: url('../../img/desk-home_background.webp') no-repeat;
-    }
-
     .home-login-form-container{
         background: none;
     }

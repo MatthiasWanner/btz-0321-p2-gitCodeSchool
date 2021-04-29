@@ -17,8 +17,8 @@ function NavbarSearch() {
   };
 
   return (
-    <div className="px-[40px] sm:px-0 flex items-center">
-      <form action="" onSubmit={handleSubmit}>
+    <div className="sm:px-0 flex justify-center items-center">
+      <form className="flex items-center" action="" onSubmit={handleSubmit}>
         <input
           type="text"
           value={search}
