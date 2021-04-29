@@ -5,6 +5,9 @@ import { useParams } from 'react-router';
 import Follow from './Follow';
 import { useGetOne } from '../../api/useGet';
 import RepoMap from './RepoMap';
+import Following from './Following';
+import { Link } from 'react-router-dom';
+
 
 function Profile() {
   const titleContainer = 'pt-[100px]';
@@ -17,20 +20,25 @@ function Profile() {
   return (
     <>
       <div className={`${titleContainer}`}>
-        <h3 className="text-gold-dark text-2xl">{pseudo}</h3>
+        <h3 className="text-gold-dark text-2xl mb-8">{pseudo}</h3>
       </div>
 
-      <div className="boxImgProfil w-full">
-        <img className="avatar lg:w-64 lg:ml-10 rounded-full " src={profile.datas.avatar_url} />
-        <div className="boxInfoProfil text-white mt-4 w-52 ml-6">
-          <div className="flex w-56 space-x-8 ml-8">
-            <p className="w-32">Followers: {profile.datas.followers}</p>
-            <p className="w-32">Following: {profile.datas.following}</p>
+      <div className="boxImgProfil w-full flex flex-col justify-center items-center">
+        <img className="avatar lg:w-64 w-48 rounded-full mb-6 " src={profile.datas.avatar_url} />
+        <div className="flex  flex-col lg:flex-row mt-8">
+          <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4">
+            <p className="border-b 1px w-2/3 border-gold-dark">Followers: {profile.datas.followers}</p>
+            <Follow pseudo={pseudo} />
+          </div>
+          <div className="mx-4 mt-4 text-white border border-gold-dark p-4">
+            <p className="border-b 1px w-2/3 border-gold-dark">Following: {profile.datas.following}</p>
+            <Following pseudo={pseudo} />
           </div>
         </div>
-        <Follow pseudo={pseudo} />
 
         <RepoMap />
+        <Link to={`/repos/${pseudo}`}><button className="w-32 h-16 rounded-xl mt-6 bg-gold-dark ">Tous les repos</button></Link>
+        <div className="border 1px border-gold-dark w-3/4 mx-auto mt-12"></div>
       </div>
     </>
   );

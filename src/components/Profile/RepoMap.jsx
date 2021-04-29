@@ -24,7 +24,7 @@ export default function RepoMap() {
 
   // class Tailwind
   const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4 w-3/4 text-center bg-homeGray-dark rounded-xl h-4/5';
-  const repoContainerLG = 'md:my-4 md:w-3/12 md:p-4 md:mx-4 md:h-72';
+  const repoContainerLG = 'md:my-4 md:w-3/12 md:p-4 md:mx-4 md:h-68 ';
   // fin de class
 
   return (
@@ -36,12 +36,13 @@ export default function RepoMap() {
             <div key={repo.id} className={`repo-container ${repoContainer} ${repoContainerLG}`}>
               <p className="w-full lg:text-lg lg:h-16 lg:w-52 overflow-hidden overflow-ellipsis h-5">{repo.name}</p>
               <div className="text-gold-dark flex justify-center items-center">
-                <FolderIcon className="h-44 w-44 content-center" />
+                <FolderIcon className="h-32 w-32 content-center" />
               </div>
               <p className="lg:text-lg lg:block lg:overflow-hidden hidden lg:h-16">{repo.description}</p>
             </div>
           );
         })}
+        
       </div>
     </>
   );
