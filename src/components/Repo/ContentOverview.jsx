@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import API_URL from '../../api/api';
+import { useGetFile } from '../../api/useGet';
 
 export default function ContentOverview({ fileEndPoint }) {
-  const [overviewContent, setOverviewContent] = useState({});
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}${fileEndPoint}`)
-      .then((res) => {
-        res.data.content = atob(res.data.content);
-        setOverviewContent(res.data);
-      })
-      .catch(console.error);
-  }, [fileEndPoint]);
+  const overviewContent = useGetFile(fileEndPoint);
 
   return (
-    <div className="w-full border border-white bg-homeGray-dark rounded-md my-4 ">
-      <p className="text-white">{overviewContent.name}</p>
-      <p className="text-white">{overviewContent.content}</p>
+    <div className="w-full border border-white">
+      <p className="text-white">{overviewContent.datas.name}</p>
+      <p className="text-white">{overviewContent.datas.content}</p>
     </div>
   );
 }

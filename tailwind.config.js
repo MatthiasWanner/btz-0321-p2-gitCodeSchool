@@ -23,8 +23,13 @@ module.exports = {
         black: colors.black,
         white: colors.white,
       },
+      padding: ['hover'],
     },
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    
+  },
+  plugins: [
+    
+  ],
 };

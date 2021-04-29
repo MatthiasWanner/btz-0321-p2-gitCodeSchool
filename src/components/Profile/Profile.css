@@ -1,0 +1,14 @@
+@media screen and (max-width:767px){
+
+  .repo-container{
+    min-width: 75%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .repo-container{
+    max-width: 50%;
+    margin: 0 2%
+  }
+}

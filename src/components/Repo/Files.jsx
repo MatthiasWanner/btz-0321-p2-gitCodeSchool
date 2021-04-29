@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import File from './File';
-import axios from 'axios';
-import API_URL from '../../api/api';
+import { useGetAll } from '../../api/useGet';
 
 export default function Files({ filesEndpoint, handleClickFile, handleClickPath, directory }) {
-  const [files, setFiles] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${API_URL}${filesEndpoint}`)
-      .then((res) => {
-        setFiles(res.data);
-      })
-      .catch(() => {
-        console.error;
-      });
-  }, [filesEndpoint]);
-
+  const files = useGetAll(filesEndpoint);
   const [path, setPath] = useState([]);
+
   useEffect(() => {
     setPath([
       ...path,
@@ -40,14 +29,14 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
       <div>
         {path.map((item, index) => {
           return (
-            <span className="path-item cursor-pointer text-yellow-400" key={index} onClick={() => handleClickReturn(index, item.endpoint)}>
+            <button className="path-item cursor-pointer text-yellow-400" key={index} onClick={() => handleClickReturn(index, item.endpoint)}>
               {item.directory}
-            </span>
+            </button>
           );
         })}
       </div>
       <ul>
-        {files.map((file) => {
+        {files.datas.map((file) => {
           return <File handleClickFile={handleClickFile} file={file} key={file.sha} />;
         })}
       </ul>
