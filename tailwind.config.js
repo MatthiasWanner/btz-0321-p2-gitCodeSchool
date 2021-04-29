@@ -26,6 +26,10 @@ module.exports = {
       padding: ['hover'],
     },
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    
+  },
+  plugins: [
+    
+  ],
 };

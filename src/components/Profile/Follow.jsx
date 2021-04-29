@@ -1,35 +1,26 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import {FOLLOWER_URL} from '../../api/endpoints'
-import API_URL from '../../api/api'
+import React from 'react';
+import {FOLLOWER_URL} from '../../api/endpoints';
+import {useGetAll} from '../../api/useGet';
+import './Profile.css'
+
 import { Link } from 'react-router-dom';
 
 
 export default function Follow({pseudo}){
 
-    const [follow, setFollow]=useState([])
 
+    const endpoint = FOLLOWER_URL.replace('{username}', pseudo);
+    const follow = useGetAll(endpoint)
     
 
-    useEffect(()=>{
-        axios
-        .get(`${API_URL}${FOLLOWER_URL.replace("{username}", pseudo)}`)
-        .then((res)=>{
-            setFollow(res.data)
-            console.log(res.data)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    },[pseudo])
-
     return (
-        <div className="border 2px border-white">
-            {follow.map((follower)=>{
+        <div className="mt-8 w-64 h-28 overflow-auto ">
+            {follow.datas.map((follower)=>{
                 return (
                     <Link key={follower.id} to={`/Profile/${follower.login}`}>
-                    <div>
-                    <p className="text-white">{follower.login}</p>
+                    <div className="flex items-center">
+                    <img className="h-4 rounded-full " src={follower.avatar_url} alt=""/> 
+                    <p className="text-white ml-2">{follower.login}</p>
                     </div>
                   </Link>
                 )

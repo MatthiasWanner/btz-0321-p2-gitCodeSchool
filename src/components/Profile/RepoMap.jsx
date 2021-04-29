@@ -24,27 +24,26 @@ export default function RepoMap() {
   }, [username]);
 
   // class Tailwind
-  const repoContainer = 'border-gold-dark my-4 w-3/12 p-4 mx-4 rounded-md text-center bg-homeGray-dark';
-  const repoContainerMD = '';
+  const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4 w-3/4 text-center bg-homeGray-dark rounded-xl h-4/5';
+  const repoContainerLG = 'md:my-4 md:w-3/12 md:p-4 md:mx-4 md:h-68 ';
   // fin de class
 
   return (
     <>
-      <Link to={`/repos/${username}`}>
-        <button className="text-white text-center my-4 border border-red-500">Affichage des repos</button>
-      </Link>
-      <div className="text-white my-4 flex flex-wrap justify-center border 2px border-gold-dark w-full p-4">
+      <div className="border 1px border-gold-dark w-3/4 mx-auto mt-12"></div>
+      <div className="text-white my-4 flex justify-start items-center w-full p-4 overflow-auto bg-black h-96">
         {repoMap.map((repo) => {
           return (
-            <div key={repo.id} className={`${repoContainer} ${repoContainerMD}`}>
-              <p>Name: {repo.name}</p>
-              <div className="text-gold-dark flex justify-center">
-                <FolderIcon className="h-32 w-32" />
+            <div key={repo.id} className={`repo-container ${repoContainer} ${repoContainerLG}`}>
+              <p className="w-full lg:text-lg lg:h-16 lg:w-52 overflow-hidden overflow-ellipsis h-5">{repo.name}</p>
+              <div className="text-gold-dark flex justify-center items-center">
+                <FolderIcon className="h-32 w-32 content-center" />
               </div>
-              <p>Description :{repo.description}</p>
+              <p className="lg:text-lg lg:block lg:overflow-hidden hidden lg:h-16">{repo.description}</p>
             </div>
           );
         })}
+        
       </div>
     </>
   );
