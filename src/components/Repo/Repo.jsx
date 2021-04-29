@@ -25,17 +25,6 @@ function Repo() {
     }
   };
 
-  // const filesOrFolder = (image) => {
-  //   switch (image) {
-  //     case `${}`:
-  //       return 'bg-yellow-200';
-  //     case `${}`:
-  //       return 'bg-red-700';
-  //     default:
-  //       return 'bg-green-200';
-  //   }
-  // };
-
   const handleClickPath = (endpoint) => {
     setFilesEndpoint(endpoint);
   };
@@ -51,12 +40,18 @@ function Repo() {
       <>
         <div className="flex flex-col items-center  my-4 justify-end">
           <div className="flex  flex-col items-center mb-6">
-            <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
             <Link to={`/profile/${username}`}>
-              <p className="text-gold-dark text-l">Auteur: {username}</p>
+              <p className="text-gold-dark text-l">{username}</p>
             </Link>
-            <p className="text-gold-dark">{repoConsulted.datas.description}</p>
+            <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
+            <h3 className="text-gold-dark text-2xl text-center">{repoConsulted.datas.description}</h3>
+            <Link to={`/repos/${username}`}>
+              <button className="justify-end bg-gold-dark hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-white hover:border-blue-500 rounded">
+                Tous les Repos
+              </button>
+            </Link>
           </div>
+
           <div className="md:flex md:flex-row items-start ">
             <Files
               filesEndpoint={filesEndpoint}
