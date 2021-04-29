@@ -47,7 +47,7 @@ export function useGetOne(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-          setIsLoading(false);
+        setIsLoading(false);
       }
     };
     getRepos();
@@ -73,7 +73,7 @@ export function useGetFile(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-          setIsLoading(false);  
+        setIsLoading(false);
       }
     };
     getRepos();
@@ -81,5 +81,3 @@ export function useGetFile(endpoint) {
 
   return { datas, error, isLoading };
 }
-
-
