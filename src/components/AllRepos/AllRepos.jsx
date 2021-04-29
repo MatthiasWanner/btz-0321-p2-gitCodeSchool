@@ -33,7 +33,7 @@ export default function AllRepos() {
     <>
       <div className="mb-5 ">
         <div className="demo-1">
-          <h1 className="text-white flex justify-center px-5 text-lg mb-6 logo-1 ">Les Repos de {username}</h1>
+          <h1 className="text-white flex justify-center px-5 text-lg mb-6 logo-1 ">Les Repos de username</h1>
         </div>
         <div className="">
           <p className="text-white">Language</p>
@@ -60,9 +60,9 @@ export default function AllRepos() {
 
               <h1 className="text-white mb-2 pl-6">Description</h1>
               <p className="text-white mb-2 pl-6 pr-4">{repo.description}</p>
-              <p className="flex justify-end items-center text-white mb-2 mx-6">
-                <span className={`${haveTheColor(repo.language)} w-4 h-4 rounded-full mx-3`} />
+              <p className="flex flex-row-reverse items-center text-white mb-2 mx-6">
                 {repo.language}
+                <span className={`${haveTheColor(repo.language)} w-4 h-4 rounded-full mx-3`} />
               </p>
             </div>
           </Link>

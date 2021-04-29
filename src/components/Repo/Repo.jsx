@@ -7,7 +7,6 @@ import Files from './Files';
 import ContentOverview from './ContentOverview';
 import Spinner from '../Spinner/Spinner';
 
-
 function Repo() {
   const { username, repo } = useParams();
   const repoEndpoint = ONE_REPO_URL.replace('{user}', username).replace('{repo}', repo);
@@ -29,7 +28,7 @@ function Repo() {
     setFilesEndpoint(endpoint);
   };
 
-  const headerContainer = 'flex flex-col items-center my-4';
+  const headerContainer = '';
 
   if (repoConsulted.isLoading) {
     return <Spinner />;
@@ -38,13 +37,15 @@ function Repo() {
   if (!repoConsulted.isLoading) {
     return (
       <>
-        <div className={`header-repo-page ${headerContainer}`}>
-          <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
-          <p className="text-gold-dark text-l">auteur: {username}</p>
-          <p className="text-gold-dark">{repoConsulted.datas.description}</p>
+        <div className="flex flex-col items-center  my-4 justify-end">
+          <div className="flex  flex-col items-center mb-6">
+            <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
+            <p className="text-gold-dark text-l">Auteur: {username}</p>
+            <p className="text-gold-dark">{repoConsulted.datas.description}</p>
+          </div>
+          <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} handleClickPath={handleClickPath} directory={directory} />
+          <ContentOverview fileEndPoint={fileEndPoint} />
         </div>
-        <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} handleClickPath={handleClickPath} directory={directory} />
-        <ContentOverview fileEndPoint={fileEndPoint} />
       </>
     );
   }
