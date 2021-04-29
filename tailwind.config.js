@@ -27,9 +27,9 @@ module.exports = {
     },
   },
   variants: {
-    scrollbar:['dark']
+    
   },
   plugins: [
-    require('tailwind-scrollbar'),
+    
   ],
 };
