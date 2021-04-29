@@ -33,7 +33,7 @@ export default function AllRepos() {
     <>
       <div className="mb-5 ">
         <div className="demo-1">
-          <h1 className="text-white flex justify-center px-5 text-lg mb-6 logo-1 ">Les Repos de username</h1>
+          <h1 className="text-white flex justify-center px-5 text-lg mb-6 logo-1 "> Les Repos de {`${username}`}</h1>
         </div>
         <div className="">
           <p className="text-white">Language</p>

@@ -6,6 +6,7 @@ import { ONE_REPO_URL, CONTENT_REPO_URL, README_URL } from '../../api/endpoints'
 import Files from './Files';
 import ContentOverview from './ContentOverview';
 import Spinner from '../Spinner/Spinner';
+import { Link } from 'react-router-dom';
 
 function Repo() {
   const { username, repo } = useParams();
@@ -24,6 +25,17 @@ function Repo() {
     }
   };
 
+  // const filesOrFolder = (image) => {
+  //   switch (image) {
+  //     case `${}`:
+  //       return 'bg-yellow-200';
+  //     case `${}`:
+  //       return 'bg-red-700';
+  //     default:
+  //       return 'bg-green-200';
+  //   }
+  // };
+
   const handleClickPath = (endpoint) => {
     setFilesEndpoint(endpoint);
   };
@@ -40,11 +52,21 @@ function Repo() {
         <div className="flex flex-col items-center  my-4 justify-end">
           <div className="flex  flex-col items-center mb-6">
             <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
-            <p className="text-gold-dark text-l">Auteur: {username}</p>
+            <Link to={`/profile/${username}`}>
+              <p className="text-gold-dark text-l">Auteur: {username}</p>
+            </Link>
             <p className="text-gold-dark">{repoConsulted.datas.description}</p>
           </div>
-          <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} handleClickPath={handleClickPath} directory={directory} />
-          <ContentOverview fileEndPoint={fileEndPoint} />
+          <div className="md:flex md:flex-row items-start ">
+            <Files
+              filesEndpoint={filesEndpoint}
+              handleClickFile={handleClickFile}
+              handleClickPath={handleClickPath}
+              directory={directory}
+              className=""
+            />
+            <ContentOverview fileEndPoint={fileEndPoint} />
+          </div>
         </div>
       </>
     );
