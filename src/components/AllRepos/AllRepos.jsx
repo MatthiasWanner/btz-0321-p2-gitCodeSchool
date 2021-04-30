@@ -29,36 +29,20 @@ export default function AllRepos() {
     }
   };
 
-  // const languageFiles = (languageFiles)=> {
-  //   switch (language) {
-  //     case 'JavaScript':
-  //       return `${}`;
-  //     case '':
-  //       return '';
-  //     case 'CSS':
-  //       return '';
-  //     case 'Vue':
-  //       return '';
-  //     case 'PHP':
-  //       return '';
-  //     default:
-  //       return '';
-  //   }
-  // };
-
-  // }
+  // onchange sur le select / value égale à la valeur option ==> fonction qui va faire un .filter de tout mon repo usegetall en changeant le endpoint
+  // parametre
 
   return (
     <>
       <div className="mb-5 ">
         <div className="demo-1">
-          <h1 className="text-white flex justify-center px-5 text-lg mb-6 logo-1 "> Les Repos de </h1>
+          <h1 className=""> Les Repos de {`${username}`} </h1>
         </div>
-        <div className="">
-          <p className="text-white">Language</p>
+        <div className="flex flex-row items-baseline">
+          <p className="text-white mt-2">Language:</p>
           <select name="language" id="language-selection" className="text-gray-900 border rounded-full text-center">
             <option value="">--Sélection du language-</option>
-            <option value="">Select All</option>
+            <option value="Javascript">Select All</option>
             <option value="">Javascript</option>
             <option value="">HTML</option>
             <option value="">PYTHON</option>
@@ -77,12 +61,11 @@ export default function AllRepos() {
                   <StarIcon className="h-6" />
                 </div>
               </div>
-
               <h1 className="text-white mb-2 pl-6">Description: </h1>
               <p className="text-white mb-2 pl-6 pr-4">{repo.description}</p>
-              <p className="flex flex-row-reverse items-center text-white mb-2 mx-6">
-                {repo.language}
+              <p className="text-white mb-4 mx-6 flex items-center pl-36  ">
                 <span className={`${haveTheColor(repo.language)} w-4 h-4 rounded-full mx-3`} />
+                {repo.language}
               </p>
             </div>
           </Link>

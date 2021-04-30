@@ -17,7 +17,6 @@ function Profile() {
       <div className={`${titleContainer}`}>
         <h3 className="text-gold-dark text-2xl">Profil de {username}</h3>
       </div>
-
       <div className="boxImgProfil">
         <img className="avatar" src={profile.datas.avatar_url} alt={`${username} avatar`} />
         <div className="boxInfoProfil text-white">
