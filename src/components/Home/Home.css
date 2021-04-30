@@ -1,3 +1,7 @@
 .home-main-container{
     background: url('../../img/mob-home-background2.svg');
 }
+
+.title{
+    font-family: 'Raleway', 'sans-serif';
+}

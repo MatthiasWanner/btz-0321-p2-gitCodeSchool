@@ -53,7 +53,7 @@ function Home({ isLogged, handleClickLogin, username }) {
       <>
         <Banner handleClickLogin={handleClickLogin} />
         <div className={`home-main-container ${mainContainerClasses}`}>
-          <h3 className="text-3xl text-gold-dark font-title py-4 md:text-5xl">Les populaires</h3>
+          <h3 className="title text-3xl text-gold-dark py-4 my-10 md:text-5xl">Les populaires</h3>
           <section className={`home-items-container ${ItemsContainer}`}>
             {homeContent.isLoading && <Spinner />}
             {!homeContent.isLoading &&
