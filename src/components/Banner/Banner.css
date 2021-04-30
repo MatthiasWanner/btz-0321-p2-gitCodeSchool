@@ -6,6 +6,18 @@
     background: url('../../img/mob-home-background2.svg') repeat;
 }
 
+.title-container{
+    height: 25vh;
+}
+
+.logo-container{
+    height: 50vh;
+}
+
+.arrow-container{
+    height: 25vh;
+}
+
 @media screen and (min-width: 768px) {
     .home-login-form-container {
         background: none;

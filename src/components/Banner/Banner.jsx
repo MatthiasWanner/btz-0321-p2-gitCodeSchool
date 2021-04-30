@@ -11,11 +11,11 @@ function Banner({ handleClickLogin }) {
   const headerClassesMd = 'md:h-screen md:grid md:grid-cols-2 md:grid-rows-header';
   const titleContainerClasses = 'flex justify-center items-end h-33v w-full text-center';
   const titleContainerClassesMd = 'md:items-center md:col-span-2';
-  const homeTitleClasses = 'text-white text-4xl';
+  const homeTitleClasses = 'text-white text-4xl md:text-6xl md:mt-14';
   const spanClasses = 'text-gold-dark';
   const logoContainerClasses = 'flex flex-col items-center justify-around w-full h-50v';
   const arrowContainer = 'flex flex-col items-center w-full h-17v text-gold-dark';
-  const arrowContainerMd = 'md:order-4 md:col-span-2';
+  const arrowContainerMd = 'md:order-4 md:col-span-2 md:justify-center';
   const formContainerClasses = 'flex justify-center items-center w-full h-screen';
   const formContainerClassesMd = 'md:w-full md:order-3 md:h-full';
 

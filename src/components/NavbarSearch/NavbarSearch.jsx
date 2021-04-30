@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 import { useHistory } from 'react-router';
+
 function NavbarSearch() {
   const [search, setSearch] = useState('');
   const history = useHistory();
@@ -12,6 +13,7 @@ function NavbarSearch() {
     history.push(`/profile/${search}`);
     setSearch('');
   };
+  
   return (
     <div className="sm:px-0 flex items-center justify-center">
       <form className="flex items-center" action="" onSubmit={handleSubmit}>

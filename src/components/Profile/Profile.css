@@ -1,0 +1,9 @@
+.repo-container{
+    min-width: 75%;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .repo-container{
+      min-width: 25%;
+    }
+  }

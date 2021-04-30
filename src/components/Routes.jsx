@@ -6,11 +6,11 @@ import Profile from './Profile/Profile';
 import AllRepos from './AllRepos/AllRepos';
 import Repo from './Repo/Repo';
 
-function Routes({ isLogged, handleClickLogin, pseudo }) {
+function Routes({ isLogged, handleClickLogin, username }) {
   return (
     <>
       <Route exact path="/">
-        <Home isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
+        <Home isLogged={isLogged} handleClickLogin={handleClickLogin} username={username} />
       </Route>
       <Route path="/profile/:username" component={Profile} />
       <Route path="/repo/:username/:repo" component={Repo} />
@@ -22,7 +22,7 @@ function Routes({ isLogged, handleClickLogin, pseudo }) {
 Routes.propTypes = {
   isLogged: PropTypes.bool,
   handleClickLogin: PropTypes.func,
-  pseudo: PropTypes.string,
+  username: PropTypes.string,
 };
 
 export default Routes;

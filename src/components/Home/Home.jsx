@@ -7,8 +7,8 @@ import Spinner from '../Spinner/Spinner';
 import { useGetAll } from '../../api/useGet';
 import { HOME_REPOS_URL, EVENTS_URL } from '../../api/endpoints';
 
-function Home({ isLogged, handleClickLogin, pseudo }) {
-  const homeContent = pseudo ? useGetAll(EVENTS_URL.replace('{username}', pseudo)) : useGetAll(HOME_REPOS_URL);
+function Home({ isLogged, handleClickLogin, username }) {
+  const homeContent = username ? useGetAll(EVENTS_URL.replace('{username}', username)) : useGetAll(HOME_REPOS_URL);
 
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
   const ItemsContainer = 'w-full flex flex-col items-center md:w-3/4';
@@ -30,7 +30,7 @@ function Home({ isLogged, handleClickLogin, pseudo }) {
         <div className={`${mainContainerClasses}`}>
           <header className="mt-14">
             <h2 className="text-3xl text-white text-center">Bienvenue</h2>
-            <h3 className="text-2xl text-white mb-6 text-center">{pseudo}</h3>
+            <h3 className="text-2xl text-white mb-6 text-center">{username}</h3>
             <p className="text-white mb-5">{`Ce qu'il s'est passé autour de vous :`}</p>
           </header>
           <section className={`home-items-container ${ItemsContainer}`}>
@@ -53,7 +53,7 @@ function Home({ isLogged, handleClickLogin, pseudo }) {
       <>
         <Banner handleClickLogin={handleClickLogin} />
         <div className={`home-main-container ${mainContainerClasses}`}>
-          <h3 className="text-3xl text-gold-dark font-title py-4 md:text-5xl">Les populaires</h3>
+          <h3 className="title text-3xl text-gold-dark py-4 my-10 md:text-5xl">Les populaires</h3>
           <section className={`home-items-container ${ItemsContainer}`}>
             {homeContent.isLoading && <Spinner />}
             {!homeContent.isLoading &&
