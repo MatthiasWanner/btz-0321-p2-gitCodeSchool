@@ -58,13 +58,15 @@ function Navbar({ username, isLogged }) {
           <Link to="/" replace>
             <FingerPrintIcon className="h-9" />
           </Link>
-          {links.map((link) => (
-            <div key={link.to} className="group align-middle flex flex-col items-center">
-              <NavbarLink classList="animate-width px-5 text-lg" to={link.to}>
-                {link.content}
-              </NavbarLink>
-            </div>
-          ))}
+          {links
+            .filter((link) => link.displayed)
+            .map((link) => (
+              <div key={link.to} className="group align-middle flex flex-col items-center">
+                <NavbarLink classList="animate-width px-5 text-lg" to={link.to}>
+                  {link.content}
+                </NavbarLink>
+              </div>
+            ))}
         </li>
         <li className="flex items-center">
           <NavbarSearch />
