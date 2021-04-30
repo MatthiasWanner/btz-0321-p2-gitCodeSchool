@@ -7,7 +7,6 @@ import star from '../../img/star.svg';
 function HomePopularElement({ result, index }) {
   const linkContainer = 'md:w-1/2 pb-5 md:flex';
   const homeRepoContainer = 'flex items-center p-2 bg-gold-dark hover:bg-gold-hover border border-black rounded-popular md:w-96';
-  const avatarClasses = 'flex justify-center items-center w-1/2 rounded-full overflow-hidden';
   const infosContainerClasses = 'w-4/5 pl-2 overflow-hidden';
   const repoTitleClasses = 'text-xl font-semibold whitespace-nowrap';
 
@@ -20,10 +19,9 @@ function HomePopularElement({ result, index }) {
   };
 
   return (
-    <Link to={`/repos/${result.owner.login}/${result.name}`} style={{ marginRight: 1 }}
-          className={`${linkContainer} ${haveBorderSide(index)}`}>
+    <Link to={`/repo/${result.owner.login}/${result.name}`} style={{ marginRight: 1 }} className={`${linkContainer} ${haveBorderSide(index)}`}>
       <div className={`${homeRepoContainer}`}>
-          <img src={`${result.owner.avatar_url}`} alt={`${result.owner.login} avatar`} className="h-20 rounded-full" />
+        <img src={`${result.owner.avatar_url}`} alt={`${result.owner.login} avatar`} className="h-20 rounded-full" />
         <div className={`${infosContainerClasses}`}>
           <h3 className={`${repoTitleClasses}`}>{result.name}</h3>
           <p>de {result.owner.login}</p>
@@ -38,7 +36,7 @@ function HomePopularElement({ result, index }) {
 
 HomePopularElement.propTypes = {
   result: PropTypes.object,
-  index: PropTypes.number
+  index: PropTypes.number,
 };
 
 export default HomePopularElement;

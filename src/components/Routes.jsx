@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
-import ProfileRepos from './ProfileRepos/ProfileRepos';
-import Toolbox from './Toolbox/Toolbox';
+import AllRepos from './AllRepos/AllRepos';
 import Repo from './Repo/Repo';
 
 function Routes({ isLogged, handleClickLogin, pseudo }) {
@@ -13,10 +12,9 @@ function Routes({ isLogged, handleClickLogin, pseudo }) {
       <Route exact path="/">
         <Home isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
       </Route>
-      <Route path="/profile" component={Profile} />
-      <Route path="/profile-repos" component={ProfileRepos} />
-      <Route path="/toolbox" component={Toolbox} />
-      <Route path="/repos/:username/:repo" component={Repo} />
+      <Route path="/profile/:username" component={Profile} />
+      <Route path="/repo/:username/:repo" component={Repo} />
+      <Route path="/repos/:username" component={AllRepos} />
     </>
   );
 }

@@ -28,7 +28,7 @@ function Repo() {
     setFilesEndpoint(endpoint);
   };
 
-  const headerContainer = 'flex flex-col items-center my-4';
+  const headerContainer = 'flex flex-col items-center mb-4 mt-14';
 
   if (repoConsulted.isLoading) {
     return <Spinner />;

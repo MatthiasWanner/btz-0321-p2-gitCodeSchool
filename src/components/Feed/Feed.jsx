@@ -20,7 +20,7 @@ const events = {
   PullRequestReviewCommentEvent: 'a commenté une relecture de Pull Request',
   ReleaseEvent: 'a modifié/créé une Release',
   PushEvent: 'a push',
-  SponsorshipEvent: 'a sponsorisé'
+  SponsorshipEvent: 'a sponsorisé',
 };
 
 function changeDateFormat(dateString) {
@@ -40,17 +40,17 @@ function Feed({ result }) {
 
   return (
     <>
-      <p
-        className="flex items-center text-white mx-5 my-3 md:mb-5 font-title">Le {changeDateFormat(result.created_at)}</p>
+      <p className="flex items-center text-white mx-5 my-3 md:mb-5 font-title">Le {changeDateFormat(result.created_at)}</p>
       <div className={`feed-box ${feedContainer} ${feedContainerMd}`}>
-        <img src={result.actor.avatar_url} alt={`${result.actor.login} avatar`}
-             className="w-1/12 md:p-1 rounded-full" />
-        <div><p className="font-title">
-          {result.actor.login} {events[result.type]} :
-        </p>
-          <Link to={`/repos/${result.repo.name}`} className="w-full text-gold-dark hover:text-gold-hover">
-            <p>{result.repo.name}</p>
-          </Link></div>
+        <img src={result.actor.avatar_url} alt={`${result.actor.login} avatar`} className="w-1/12 md:p-1 rounded-full" />
+        <div>
+          <p className="font-title">
+            {result.actor.login} {events[result.type]} :
+          </p>
+          <Link to={`/repo/${result.repo.name}`} className="w-full text-gold-dark hover:text-gold-hover">
+            {result.repo.name}
+          </Link>
+        </div>
       </div>
       <div style={{ height: 1 }} className="border-b border-gold-dark" />
     </>
@@ -58,7 +58,7 @@ function Feed({ result }) {
 }
 
 Feed.propTypes = {
-  result: PropTypes.object
+  result: PropTypes.object,
 };
 
 export default Feed;
