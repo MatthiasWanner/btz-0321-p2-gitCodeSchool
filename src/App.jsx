@@ -9,11 +9,11 @@ import { ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
 
 function App() {
-  const [pseudo, setPseudo] = useState(localStorage.ghPseudo);
-  const [isLogged, setIsLogged] = useState(pseudo !== undefined);
+  const [username, setUsername] = useState(localStorage.ghUsername);
+  const [isLogged, setIsLogged] = useState(username !== undefined);
   useEffect(() => {
-    pseudo ? setIsLogged(true) : setIsLogged(false);
-  }, [pseudo]);
+    username ? setIsLogged(true) : setIsLogged(false);
+  }, [username]);
   const [modal, setModal] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -22,7 +22,7 @@ function App() {
       e.preventDefault();
 
       const res = await login(tokenKey);
-      setPseudo(res.login);
+      setUsername(res.login);
       setModal({
         title: 'Connexion réussie',
         content: `Vous êtes connecté sur ${res.login}`,
@@ -57,9 +57,9 @@ function App() {
   };
 
   const handleClickLogout = () => {
-    localStorage.removeItem('ghPseudo');
+    localStorage.removeItem('ghUsername');
     localStorage.removeItem('ghTokenKey');
-    setPseudo(undefined);
+    setUsername(undefined);
     setModal({
       title: 'Déconnexion',
       content: 'Déconnecté avec succès',
@@ -82,10 +82,10 @@ function App() {
 
       <div className={`body-container ${bodyClasses}`} style={{ maxWidth: 1440 }}>
         <Router>
-          <Navbar />
+          <Navbar username={username} isLogged={isLogged} />
           <div className={`main-container ${mainContainerClasses}`}>
             <Switch>
-              <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
+              <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} username={username} />
             </Switch>
           </div>
         </Router>

@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
+import PropTypes from 'prop-types';
 import { FingerPrintIcon, BellIcon, PlusIcon, UserIcon, XIcon, MenuIcon } from '@heroicons/react/solid';
 import NavbarSearch from '../NavbarSearch/NavbarSearch';
 import './Navbar.css';
 import NavbarLink from '../NavbarLink/NavbarLink';
 
-function Navbar() {
+function Navbar({ username, isLogged }) {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-
+  const [links, setLinks] = useState([
+    { to: '/', content: 'Accueil', displayed: true },
+    { to: `/profile/${username}`, content: 'Profil', displayed: isLogged },
+    { to: `/repos/${username}`, content: 'Mes repos', displayed: isLogged },
+  ]);
   const iconsHeight = {
     height: 50,
   };
@@ -16,13 +21,6 @@ function Navbar() {
   const handleClick = () => {
     setIsBurgerOpen(!isBurgerOpen);
   };
-
-  const links = [
-    { to: '/', content: 'Accueil' },
-    { to: '/profile', content: 'Profil' },
-    { to: '/toolbox', content: 'Ma Toolbox' },
-    { to: '/profile-repos', content: 'Mes repos' },
-  ];
 
   return (
     <div
@@ -33,18 +31,20 @@ function Navbar() {
           {isBurgerOpen ? <XIcon style={iconsHeight} onClick={handleClick} /> : <MenuIcon style={iconsHeight} onClick={handleClick} />}
         </Menu.Button>
         <Menu.Items className="absolute w-full top-14 flex flex-col bg-homeGray-dark backdrop-filter backdrop-blur bg-opacity-80 focus:outline-none">
-          {links.map((link) => (
-            <Menu.Item key={link.to}>
-              {() => (
-                <div className="px-10 flex items-center">
-                  <NavbarLink classList="mr-3 py-2 text-white" to={link.to}>
-                    {link.content}
-                  </NavbarLink>
-                  <span style={{ height: 1 }} className="w-content flex-grow bg-gold-dark" />
-                </div>
-              )}
-            </Menu.Item>
-          ))}
+          {links
+            .filter((link) => link.displayed)
+            .map((link) => (
+              <Menu.Item key={link.to}>
+                {() => (
+                  <div className="px-10 flex items-center">
+                    <NavbarLink classList="mr-3 py-2 text-white" to={link.to}>
+                      {link.content}
+                    </NavbarLink>
+                    <span style={{ height: 1 }} className="w-content flex-grow bg-gold-dark" />
+                  </div>
+                )}
+              </Menu.Item>
+            ))}
           <NavbarSearch />
         </Menu.Items>
       </Menu>
@@ -77,3 +77,8 @@ function Navbar() {
 }
 
 export default Navbar;
+
+Navbar.propTypes = {
+  username: PropTypes.string,
+  isLogged: PropTypes.bool,
+};
