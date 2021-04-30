@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import { FolderIcon, StarIcon } from '@heroicons/react/solid';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -52,13 +53,13 @@ export default function AllRepos() {
   return (
     <>
       <div className="mb-5 ">
-        <div className="demo-1">
+        <div className="demo-1 mt-2">
           <h1 className=""> Les Repos de {`${username}`} </h1>
         </div>
         <div className="flex flex-row items-baseline">
           <p className="text-white mt-2">Language:</p>
           <select
-            onBlur={handleChange}
+            onChange={handleChange}
             value={changeLang}
             name="language"
             id="language-selection"
@@ -84,7 +85,7 @@ export default function AllRepos() {
         })
         .map((repo) => {
           return (
-            <Link className="w-full md:w-3/4 bg" key={repo.id} to={`/repo/${username}/${repo.name}`}>
+            <Link className="w-full md:w-3/4 " key={repo.id} to={`/repo/${username}/${repo.name}`}>
               <div className="border-2 border-white bg-gold-hover hover:bg-gold-dark rounded-md mx-8 mb-5">
                 <div className="text-white flex pl-6 pt-2 items-center justify-between text-center mb-5 md:text-xl">
                   <FolderIcon className="h-10 w-10 md:h-20 md:w-20 " />

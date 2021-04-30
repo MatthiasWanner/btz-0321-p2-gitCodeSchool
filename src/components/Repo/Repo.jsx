@@ -29,8 +29,6 @@ function Repo() {
     setFilesEndpoint(endpoint);
   };
 
-  const headerContainer = '';
-
   if (repoConsulted.isLoading) {
     return <Spinner />;
   }
@@ -39,7 +37,7 @@ function Repo() {
     return (
       <>
         <div className="flex flex-col items-center  my-4 justify-end">
-          <div className="flex  flex-col items-center mb-6">
+          <div className="flex flex-col items-center mb-6">
             <Link to={`/profile/${username}`}>
               <p className="text-gold-dark text-l">{username}</p>
             </Link>
