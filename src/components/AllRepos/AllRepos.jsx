@@ -97,7 +97,7 @@ export default function AllRepos() {
                 </div>
                 <h1 className="text-white mb-2 pl-6">Description: </h1>
                 <p className="text-white mb-2 pl-6 pr-4">{repo.description}</p>
-                <p className="text-white mb-4 mx-6 flex items-center pl-36  ">
+                <p className="text-white mb-4 mx-6 flex items-center pl-36 md:justify-end">
                   <span className={`${haveTheColor(repo.language)} w-4 h-4 rounded-full mx-3`} />
                   {repo.language}
                 </p>
