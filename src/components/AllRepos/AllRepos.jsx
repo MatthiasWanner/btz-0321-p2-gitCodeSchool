@@ -32,9 +32,9 @@ export default function AllRepos() {
   return (
     <div>
       <div className="mb-5 ">
-        <h1 className="text-white flex justify-center px-5 text-lg mb-6  "> Les Repos de {username} </h1>
+        <h1 className="text-gold-dark flex justify-center px-5 text-lg mb-6 mt-14  "> Les Repos de {username} </h1>
         <div className="flex justify-around">
-          <p className="text-white">Language</p>
+          <p className="text-gold-dark">Language</p>
           <select name="language" id="language-selection" className="text-gray-900 border rounded-full">
             <option value="">--Please choose an language-</option>
             <option value="">Select All</option>

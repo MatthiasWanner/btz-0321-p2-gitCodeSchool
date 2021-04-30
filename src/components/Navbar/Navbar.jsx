@@ -9,14 +9,15 @@ import NavbarLink from '../NavbarLink/NavbarLink';
 
 function Navbar({ username, isLogged }) {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  const [links, setLinks] = useState([
-    { to: '/', content: 'Accueil', displayed: true },
-    { to: `/profile/${username}`, content: 'Profil', displayed: isLogged },
-    { to: `/repos/${username}`, content: 'Mes repos', displayed: isLogged },
-  ]);
   const iconsHeight = {
     height: 50,
   };
+
+  const links = [
+    { to: '/', content: 'Accueil', displayed: true },
+    { to: `/profile/${username}`, content: 'Profil', displayed: isLogged },
+    { to: `/repos/${username}`, content: 'Mes repos', displayed: isLogged },
+  ];
 
   const handleClick = () => {
     setIsBurgerOpen(!isBurgerOpen);
