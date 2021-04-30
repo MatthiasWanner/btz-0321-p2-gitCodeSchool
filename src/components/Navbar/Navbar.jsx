@@ -25,7 +25,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="sticky top-0 w-full h-14 flex justify-between sm:justify-start bg-homeGray-dark backdrop-filter backdrop-blur bg-opacity-80 text-gold-dark">
+    <div className="fixed top-0 w-full h-14 flex justify-between sm:justify-start bg-homeGray-dark backdrop-filter backdrop-blur bg-opacity-80 text-gold-dark">
       <Menu>
         <Menu.Button className="flex sm:hidden items-center focus:outline-none">
           {isBurgerOpen ? <XIcon style={iconsHeight} onClick={handleClick} /> : <MenuIcon style={iconsHeight} onClick={handleClick} />}

@@ -7,7 +7,6 @@ import Files from './Files';
 import ContentOverview from './ContentOverview';
 import Spinner from '../Spinner/Spinner';
 
-
 function Repo() {
   const { username, repo } = useParams();
   const repoEndpoint = ONE_REPO_URL.replace('{user}', username).replace('{repo}', repo);

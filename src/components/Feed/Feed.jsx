@@ -20,7 +20,7 @@ const events = {
   PullRequestReviewCommentEvent: 'a commenté une relecture de Pull Request',
   ReleaseEvent: 'a modifié/créé une Release',
   PushEvent: 'a push',
-  SponsorshipEvent: 'a sponsorisé',
+  SponsorshipEvent: 'a sponsorisé'
 };
 
 function changeDateFormat(dateString) {
@@ -28,29 +28,37 @@ function changeDateFormat(dateString) {
   const day = date.getDate().toString().length < 2 ? `0${date.getDate()}` : date.getDate();
   const month = date.getMonth().toString().length < 2 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const year = date.getFullYear();
-  const hour = date.getHours() - 2;
-  const mn = date.getMinutes();
+  const hour = (date.getHours() - 2).toString().length < 2 ? `0${date.getHours() - 2}` : date.getHours() - 2;
+  const mn = date.getMinutes().toString().length < 2 ? `0${date.getMinutes()}` : date.getMinutes();
   return `${day}/${month}/${year} à ${hour}h${mn}`;
 }
 
 function Feed({ result }) {
-  const feedContainer = 'rounded-2xl w-full bg-repos-dark border mb-5 shadow-lg';
+  const feedContainer =
+    'flex justify-evenly items-center rounded-2xl text-white w-full bg-repos-dark hover:bg-repos-hover border border-gold-dark mb-5 shadow-homeItem';
+  const feedContainerMd = 'md:w-3/5 md:h-feed';
 
   return (
-    <div className={`${feedContainer}`}>
-      <p>Le {changeDateFormat(result.created_at)}</p>
-      <p>
-        {result.actor.login} {events[result.type]} :
-      </p>
-      <Link to={`/repos/${result.repo.name}`}>
-        <p>{result.repo.name}</p>
-      </Link>
-    </div>
+    <>
+      <p
+        className="flex items-center text-white mx-5 my-3 md:mb-5 font-title">Le {changeDateFormat(result.created_at)}</p>
+      <div className={`feed-box ${feedContainer} ${feedContainerMd}`}>
+        <img src={result.actor.avatar_url} alt={`${result.actor.login} avatar`}
+             className="w-1/12 md:p-1 rounded-full" />
+        <div><p className="font-title">
+          {result.actor.login} {events[result.type]} :
+        </p>
+          <Link to={`/repos/${result.repo.name}`} className="w-full text-gold-dark hover:text-gold-hover">
+            <p>{result.repo.name}</p>
+          </Link></div>
+      </div>
+      <div style={{ height: 1 }} className="border-b border-gold-dark" />
+    </>
   );
 }
 
 Feed.propTypes = {
-  result: PropTypes.object,
+  result: PropTypes.object
 };
 
 export default Feed;
