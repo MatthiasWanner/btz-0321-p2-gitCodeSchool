@@ -25,11 +25,14 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
   };
 
   return (
-    <div className="w-full border border-white">
-      <div>
+    <div className="w-80 border  border-gold-dark  mb-6 pl-6 py-4 rounded-md md:mr-4 ">
+      <div className="text-center">
         {path.map((item, index) => {
           return (
-            <button className="path-item cursor-pointer text-yellow-400" key={index} onClick={() => handleClickReturn(index, item.endpoint)}>
+            <button
+              className="path-item cursor-pointer text-yellow-400 focus:outline-none"
+              key={index}
+              onClick={() => handleClickReturn(index, item.endpoint)}>
               {item.directory}
             </button>
           );
