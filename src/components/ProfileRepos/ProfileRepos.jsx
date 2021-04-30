@@ -2,7 +2,7 @@ import React from 'react';
 import './ProfileRepos.css';
 
 function ProfileRepos() {
-  const titleContainer = 'text-gold-dark text-2xl pt-[100px]';
+  const titleContainer = 'text-gold-dark text-2xl mt-navbar';
 
   return (
     <>

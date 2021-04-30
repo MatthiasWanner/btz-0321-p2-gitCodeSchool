@@ -1,35 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Banner.css';
+import { ArrowCircleDownIcon } from '@heroicons/react/solid';
 import 'tailwindcss/tailwind.css';
 import logo from '../../img/logo.svg';
 import Form from '../Form/Form';
 
 function Banner({ handleClickLogin }) {
-  const headerClasses = 'w-full md:h-screen md:flex';
-  const headerClassesMd = '';
-  const bannerClasses = 'flex flex-col items-center h-screen w-screen text-center';
-  const bannerClassesMd = 'md:w-1/2';
-  const titleContainerClasses = 'flex justify-center items-end h-1/3 w-full';
-  const titleContainerClassesMd = 'md:items-center';
+  const headerClasses = 'w-full';
+  const headerClassesMd = 'md:h-screen md:grid md:grid-cols-2 md:grid-rows-header';
+  const titleContainerClasses = 'flex justify-center items-end h-33v w-full text-center';
+  const titleContainerClassesMd = 'md:items-center md:col-span-2';
   const homeTitleClasses = 'text-white text-4xl';
   const spanClasses = 'text-gold-dark';
-  const logoContainerClasses = 'flex flex-col items-center justify-center w-full h-2/3';
-  const imgClasses = 'w-2/3 max-h-1/2';
+  const logoContainerClasses = 'flex flex-col items-center justify-around w-full h-50v';
+  const arrowContainer = 'flex flex-col items-center w-full h-17v text-gold-dark';
+  const arrowContainerMd = 'md:order-4 md:col-span-2';
   const formContainerClasses = 'flex justify-center items-center w-full h-screen';
-  const formContainerClassesMd = 'md:w-1/2';
+  const formContainerClassesMd = 'md:w-full md:order-3 md:h-full';
 
   return (
     <header className={`home-header ${headerClasses} ${headerClassesMd}`}>
-      <div className={`banner ${bannerClasses} ${bannerClassesMd}`}>
-        <div className={`${titleContainerClasses} ${titleContainerClassesMd}`}>
-          <h2 className={homeTitleClasses}>
-            Bienvenue sur <span className={spanClasses}>GitCodeSchool</span>
-          </h2>
-        </div>
-        <div className={logoContainerClasses}>
-          <img className={imgClasses} src={logo} alt="Git Code School logo" />
-        </div>
+      <div className={`title-container ${titleContainerClasses} ${titleContainerClassesMd}`}>
+        <h2 className={homeTitleClasses}>
+          Bienvenue sur <span className={spanClasses}>GitCodeSchool</span>
+        </h2>
+      </div>
+      <div className={`logo-container ${logoContainerClasses}`}>
+        <img className="w-2/3 max-h-1/2 md:w-1/2" src={logo} alt="Git Code School logo" />
+      </div>
+      <div className={`arrow-container ${arrowContainer} ${arrowContainerMd}`}>
+        <p>{`Défiles si t'en veux plus`}</p>
+        <ArrowCircleDownIcon className="w-1/12 md:w-10" />
       </div>
       <div className={`home-login-form-container ${formContainerClasses} ${formContainerClassesMd}`}>
         <Form page="home" handleClickLogin={handleClickLogin} />

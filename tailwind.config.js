@@ -1,11 +1,8 @@
 const colors = require('tailwindcss/colors');
+
 module.exports = {
-  purge: [
-    './src/**/*.html',
-    './src/**/*.{js,jsx}'
-  ],
+  purge: [ './src/**/*.html', './src/**/*.{js,jsx}' ],
   darkMode: false, // or 'media' or 'class',
-  mode: 'jit',
   theme: {
     extend: {
       colors: {
@@ -19,13 +16,15 @@ module.exports = {
           dark: '#1D1E1E'
         },
         repos: {
-          dark: '#FCE7D0'
+          dark: '#252828',
+          hover: '#1D1E1E'
         },
         transparent: 'transparent',
         current: 'currentColor',
         black: colors.black,
         white: colors.white
-      }
+      },
+      padding: [ 'hover' ]
     }
   },
   variants: {},

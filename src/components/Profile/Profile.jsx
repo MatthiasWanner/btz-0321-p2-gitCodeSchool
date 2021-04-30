@@ -2,7 +2,7 @@ import React from 'react';
 import './Profile.css';
 
 function Profile() {
-  const titleContainer = 'pt-[100px]';
+  const titleContainer = 'mt-navbar';
 
   return (
     <>
