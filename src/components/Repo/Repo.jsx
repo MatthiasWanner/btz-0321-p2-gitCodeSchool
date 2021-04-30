@@ -6,6 +6,8 @@ import { ONE_REPO_URL, CONTENT_REPO_URL, README_URL } from '../../api/endpoints'
 import Files from './Files';
 import ContentOverview from './ContentOverview';
 import Spinner from '../Spinner/Spinner';
+import { Link } from 'react-router-dom';
+
 
 function Repo() {
   const { username, repo } = useParams();
@@ -28,8 +30,6 @@ function Repo() {
     setFilesEndpoint(endpoint);
   };
 
-  const headerContainer = 'flex flex-col items-center mb-4 mt-14';
-
   if (repoConsulted.isLoading) {
     return <Spinner />;
   }
@@ -37,13 +37,31 @@ function Repo() {
   if (!repoConsulted.isLoading) {
     return (
       <>
-        <div className={`header-repo-page ${headerContainer}`}>
-          <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
-          <p className="text-gold-dark text-l">auteur: {username}</p>
-          <p className="text-gold-dark">{repoConsulted.datas.description}</p>
+        <div className="flex flex-col items-center  my-4 justify-end">
+          <div className="flex flex-col items-center mb-6">
+            <Link to={`/profile/${username}`}>
+              <p className="text-gold-dark text-l">{username}</p>
+            </Link>
+            <h3 className="text-gold-dark text-3xl">{repoConsulted.datas.name}</h3>
+            <h3 className="text-gold-dark text-2xl text-center">{repoConsulted.datas.description}</h3>
+            <Link to={`/repos/${username}`}>
+              <button className="justify-end bg-gold-dark hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-white hover:border-blue-500 rounded">
+                Tous les Repos
+              </button>
+            </Link>
+          </div>
+
+          <div className="md:flex md:flex-row items-start ">
+            <Files
+              filesEndpoint={filesEndpoint}
+              handleClickFile={handleClickFile}
+              handleClickPath={handleClickPath}
+              directory={directory}
+              className=""
+            />
+            <ContentOverview fileEndPoint={fileEndPoint} />
+          </div>
         </div>
-        <Files filesEndpoint={filesEndpoint} handleClickFile={handleClickFile} handleClickPath={handleClickPath} directory={directory} />
-        <ContentOverview fileEndPoint={fileEndPoint} />
       </>
     );
   }

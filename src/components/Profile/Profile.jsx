@@ -33,6 +33,7 @@ function Profile() {
             <p className="border-b 1px w-2/3 border-gold-dark">Following: {profile.datas.following}</p>
             <Following username={username} />
           </div>
+
         </div>
 
         <RepoMap />
