@@ -4,10 +4,10 @@ import ghLogo from '../../img/gh-logo.png';
 import './HomeFields.css';
 
 function HomeFields({ handleClickLogin }) {
-  const [tokenKey, setTokenKey] = useState('');
+  const [ tokenKey, setTokenKey ] = useState('');
 
   const tokonLabelClasses = 'text-center text-gold-dark text-2xl';
-  const inputTokenClasses = ' rounded-3xl w-4/5 border border-black text-center';
+  const inputTokenClasses = ' rounded-3xl w-4/5 border border-black text-center focus:outline-none focus:ring focus:ring-gold-dark';
   const submitHomeClasses =
     'w-2/3 text-white py-1 bg-gold-dark text-white font-semibold rounded-3xl shadow-lg border border-black from-white hover:bg-gold-hover focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75';
   const pClasses = 'text-xs text-white';
@@ -20,7 +20,7 @@ function HomeFields({ handleClickLogin }) {
       </label>
       <img src={ghLogo} alt="Github Logo" />
       <input
-        id="home-input token-input"
+        id="token"
         className={`${inputTokenClasses}`}
         placeholder="Collez votre clé token ici"
         value={tokenKey}
@@ -45,7 +45,7 @@ function HomeFields({ handleClickLogin }) {
 }
 
 HomeFields.propTypes = {
-  handleClickLogin: PropTypes.func,
+  handleClickLogin: PropTypes.func
 };
 
 export default HomeFields;

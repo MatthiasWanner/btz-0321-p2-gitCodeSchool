@@ -73,14 +73,16 @@ function App() {
     setModalOpen(true);
   };
 
-  const bodyClasses = 'container mx-auto min-h-screen';
+
+  const bodyClasses = 'mx-auto min-h-screen';
   const mainContainerClasses = 'flex flex-col justify-start items-center w-full min-h-screen';
+
 
   return (
     <ModalContext.Provider value={{ modal, setModal, modalOpen, setModalOpen }}>
       {modalOpen && <Modal {...{ modal, setModal, setModalOpen }} />}
 
-      <div className={`body-container ${bodyClasses}`}>
+      <div className={`body-container ${bodyClasses}`} style={{ maxWidth: 1440 }}>
         <Router>
           <Navbar />
           <div className={`main-container ${mainContainerClasses}`}>

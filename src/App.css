@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +11,7 @@ body {
 }
 
 .body-container {
+  max-width: 1440px;
   background: url('./img/mob-home-background2.svg');
 }
 
@@ -19,4 +22,21 @@ body {
   -webkit-transition: width 1s ease-in-out;
 
   transition: width 1s ease-in-out;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-homeGray-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  @apply bg-gold-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold-hover;
 }

@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
 import AllRepos from './AllRepos/AllRepos';
-import Toolbox from './Toolbox/Toolbox';
 import Repo from './Repo/Repo';
 
 function Routes({ isLogged, handleClickLogin, pseudo }) {
@@ -14,9 +13,8 @@ function Routes({ isLogged, handleClickLogin, pseudo }) {
         <Home isLogged={isLogged} handleClickLogin={handleClickLogin} pseudo={pseudo} />
       </Route>
       <Route path="/profile/:username" component={Profile} />
-      <Route path="/repos/:username" component={AllRepos} />
-      <Route path="/toolbox" component={Toolbox} />
       <Route path="/repo/:username/:repo" component={Repo} />
+      <Route path="/repos/:username" component={AllRepos} />
     </>
   );
 }

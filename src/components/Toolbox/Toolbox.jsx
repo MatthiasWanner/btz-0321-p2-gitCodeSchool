@@ -2,7 +2,7 @@ import React from 'react';
 import './Toolbox.css';
 
 function Toolbox() {
-  const titleContainer = 'text-gold-dark text-2xl pt-[100px]';
+  const titleContainer = 'text-gold-dark text-2xl mt-14';
 
   return (
     <>
