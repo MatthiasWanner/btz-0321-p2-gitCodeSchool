@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
 import { useGetFile } from '../../api/useGet';
 
@@ -7,8 +8,8 @@ export default function ContentOverview({ fileEndPoint }) {
 
   return (
     <div className="w-full border border-white">
-      <p className="text-white">{overviewContent.datas.name}</p>
-      <p className="text-white">{overviewContent.datas.content}</p>
+      <ReactMarkdown className="text-white">{overviewContent.datas.name}</ReactMarkdown>
+      <ReactMarkdown className="text-white">{overviewContent.datas.content}</ReactMarkdown>
     </div>
   );
 }
