@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FOLLOWER_URL } from '../../api/endpoints';
+import { FOLLOWERS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
 import './Profile.css';
 
 import { Link } from 'react-router-dom';
 
 export default function Follow({ username }) {
-  const endpoint = FOLLOWER_URL.replace('{username}', username);
+  const endpoint = FOLLOWERS_URL.replace('{username}', username);
   const follow = useGetAll(endpoint);
 
   return (
