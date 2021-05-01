@@ -12,9 +12,12 @@ function SearchUsers({ query }) {
     return <Spinner />;
   } else if (result.datas.total_count > 0) {
     return (
-      <div className="">
-        <p>Nombre de résultats: {result.datas.total_count}</p>
-        {result.items.map((item) => {
+      <div className={`users-results`}>
+        <p>
+          {`Nombre d'utilisateurs:`}
+          {result.datas.total_count}
+        </p>
+        {result.datas.items.map((item) => {
           return (
             <Link key={item.login} to={`/profile/${item.login}`}>
               <p>{item.login}</p>

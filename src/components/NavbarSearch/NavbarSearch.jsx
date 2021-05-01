@@ -10,7 +10,7 @@ function NavbarSearch() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/profile/${search}`);
+    history.push(`/search/${search}`);
     setSearch('');
   };
 

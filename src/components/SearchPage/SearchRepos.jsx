@@ -13,7 +13,7 @@ function SearchRepos({ query }) {
   } else if (result.datas.total_count > 0) {
     return (
       <div className="">
-        <p>Nombre de résultats: {result.datas.total_count}</p>
+        <p>Nombre de repos: {result.datas.total_count}</p>
         {result.datas.items.map((item) => {
           return (
             <Link key={item.full_name} to={`/repo/${item.owner.login}/${item.full_name}`}>
@@ -25,7 +25,7 @@ function SearchRepos({ query }) {
       </div>
     );
   } else {
-    return <p>Aucun utilisateur trouvé</p>;
+    return <p>Aucun Repo trouvé</p>;
   }
 }
 

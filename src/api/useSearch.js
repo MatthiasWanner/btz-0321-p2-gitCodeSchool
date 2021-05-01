@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import API_URL from './api';
 
-export function useGetAll(endpoint) {
+export function useSearch(endpoint) {
   const [datas, setDatas] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
