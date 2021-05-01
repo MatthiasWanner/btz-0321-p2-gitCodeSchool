@@ -56,7 +56,7 @@ function App() {
     }
   };
 
-  const handleClickLogout = () => {
+  const handleClickLogout = (history) => {
     localStorage.removeItem('ghUsername');
     localStorage.removeItem('ghTokenKey');
     setUsername(undefined);
@@ -65,7 +65,12 @@ function App() {
       content: 'Déconnecté avec succès',
       buttons: [
         {
-          content: 'Fermer',
+          content: 'Accueil',
+          color: 'bg-green-300 hover:bg-green-600',
+          onClick: () => history.push('/'),
+        },
+        {
+          content: 'Je reste ici',
           color: 'bg-green-300 hover:bg-green-600',
         },
       ],
@@ -88,8 +93,8 @@ function App() {
               <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} username={username} />
             </Switch>
           </div>
+          <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
         </Router>
-        <Footer handleClickLogout={handleClickLogout} isLogged={isLogged} />
       </div>
     </ModalContext.Provider>
   );
