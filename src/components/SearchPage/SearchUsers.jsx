@@ -9,10 +9,13 @@ import { useSearch } from '../../api/useSearch';
 
 function SearchUsers({ query }) {
   const [activePage, setActivePage] = useState('1');
-  const [endpoint, setEndpoint] = useState('');
+  useEffect(() => {
+    setActivePage('1');
+  }, [query]);
+  const [endpoint, setEndpoint] = useState(SEARCH_USERS_URL.replace('{query}', query).replace('{page}', activePage));
   useEffect(() => {
     setEndpoint(SEARCH_USERS_URL.replace('{query}', query).replace('{page}', activePage));
-  }, [activePage]);
+  }, [activePage, query]);
   const result = useSearch(endpoint);
   const [totalPages, setTotalPages] = useState(0);
   const [pagination, setPagination] = useState([]);
@@ -45,7 +48,7 @@ function SearchUsers({ query }) {
             🤗
           </span>
         </p>
-        <div className="flex w-full justify-center">
+        <div className="flex w-full justify-center my-4">
           <DropDown
             className="p-1"
             params={{

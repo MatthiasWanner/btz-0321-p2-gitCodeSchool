@@ -4,12 +4,13 @@ import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
 
 export default function DropDown({ params }) {
-  const [active, setActive] = useState(params.text);
+  const [active, setActive] = useState('');
 
   const handeChange = (value) => {
     setActive(value);
     params.onClick(value);
   };
+
   return (
     <Dropdown
       color={params.color}
