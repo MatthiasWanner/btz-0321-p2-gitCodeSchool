@@ -9,5 +9,5 @@ export const EVENTS_URL = `/users/{username}/received_events`;
 export const CONTENT_REPO_URL = `/repos/{user}/{repo}/contents`;
 export const README_URL = '/repos/{user}/{repo}/readme';
 export const PROFIL_HOME = `/users/{username}/repos`;
-export const SEARCH_REPOS_URL = '/search/repositories?q={query}';
-export const SEARCH_USERS_URL = '/search/users?q={query}';
+export const SEARCH_REPOS_URL = '/search/repositories?q={query}&page={page}';
+export const SEARCH_USERS_URL = '/search/users?q={query}&page={page}';

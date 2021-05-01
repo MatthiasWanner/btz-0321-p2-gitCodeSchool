@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
+import '@material-tailwind/react/tailwind.css';
 import { login } from './api/api';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
