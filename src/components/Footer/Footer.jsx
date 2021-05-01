@@ -6,10 +6,10 @@ function Footer({ isLogged, handleClickLogout }) {
   return (
     <footer className="flex content-center justify-end h-[50px] bg-black border border-gold-dark color-gold-dark">
       {isLogged && (
-        <div className="flex items-center cursor-pointer" onClick={handleClickLogout}>
+        <button className="flex items-center cursor-pointer" onClick={handleClickLogout}>
           <p className="m-0 p-0 text-red-400">Déconnexion</p>
           <LogoutIcon className="ml-2 w-5 text-red-400" />
-        </div>
+        </button>
       )}
     </footer>
   );

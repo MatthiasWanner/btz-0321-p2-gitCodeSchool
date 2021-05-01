@@ -13,7 +13,7 @@ function NavbarSearch() {
     history.push(`/profile/${search}`);
     setSearch('');
   };
-  
+
   return (
     <div className="sm:px-0 flex items-center justify-center">
       <form className="flex items-center" action="" onSubmit={handleSubmit}>
