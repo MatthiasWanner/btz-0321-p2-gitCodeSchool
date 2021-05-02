@@ -36,29 +36,32 @@ function SearchRepos({ query }) {
   };
 
   const searchResultsContainer = 'w-full flex flex-col items-start my-5 border-t border-gold-dark';
+  const searchResultsContainerMd = '';
 
   if (result.datas.isLoading) {
     return <Spinner />;
   } else if (result.datas.total_count > 0) {
     return (
-      <div className={`repos-results ${searchResultsContainer}`}>
+      <div className={`repos-results ${searchResultsContainer} ${searchResultsContainerMd}`}>
         <p className="w-full flex mb-2 text-lg underline">
           {result.datas.total_count} {result.datas.total_count === 1 ? 'repo trouvé ' : 'repos trouvés '}
           <span role="img" aria-label="yeah">
             🤗
           </span>
         </p>
-        <div className="flex w-full justify-center my-4">
-          <DropDown
-            className="p-1"
-            params={{
-              text: 'Page',
-              color: 'orange',
-              items: pagination,
-              onClick: (action) => handleChangePage(action),
-            }}
-          />
-        </div>
+        {totalPages > 1 && (
+          <div className="flex w-full justify-center my-4">
+            <DropDown
+              className="p-1"
+              params={{
+                text: 'Page',
+                color: 'orange',
+                items: pagination,
+                onClick: (action) => handleChangePage(action),
+              }}
+            />
+          </div>
+        )}
         <p className="w-full text-center text-white"></p>
         {result.datas.items.map((item) => {
           return (
@@ -73,12 +76,14 @@ function SearchRepos({ query }) {
     );
   } else {
     return (
-      <p className="text-left mt-5 border-t border-gold-dark">
-        Aucun Repo trouvé{' '}
-        <span role="img" aria-label="oups">
-          😱
-        </span>
-      </p>
+      <div className={`repos-results ${searchResultsContainer} ${searchResultsContainerMd}`}>
+        <p className="text-left mt-5">
+          Aucun Repo trouvé{' '}
+          <span role="img" aria-label="oups">
+            😱
+          </span>
+        </p>
+      </div>
     );
   }
 }
