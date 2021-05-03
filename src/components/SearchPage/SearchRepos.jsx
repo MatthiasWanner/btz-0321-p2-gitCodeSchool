@@ -7,22 +7,26 @@ import PropTypes from 'prop-types';
 import { SEARCH_REPOS_URL } from '../../api/endpoints';
 import { useSearch } from '../../api/useSearch';
 
-function SearchRepos({ query }) {
+function SearchRepos({ query, handleCalculateResults }) {
   const [activePage, setActivePage] = useState('1');
   useEffect(() => {
     setActivePage('1');
   }, [query]);
+
   const [endpoint, setEndpoint] = useState(SEARCH_REPOS_URL.replace('{query}', query).replace('{page}', activePage));
   useEffect(() => {
     setEndpoint(SEARCH_REPOS_URL.replace('{query}', query).replace('{page}', activePage));
   }, [activePage, query]);
+
   const result = useSearch(endpoint);
   const [totalPages, setTotalPages] = useState(0);
   const [pagination, setPagination] = useState([]);
   useEffect(() => {
+    handleCalculateResults(result.datas.total_count);
     const pages = Math.ceil(result.datas.total_count / 30) > 10 ? 10 : Math.ceil(result.datas.total_count / 30);
     setTotalPages(pages);
   }, [result]);
+
   useEffect(() => {
     const pagination = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -90,5 +94,6 @@ function SearchRepos({ query }) {
 
 SearchRepos.propTypes = {
   query: PropTypes.string,
+  handleCalculateResults: PropTypes.func,
 };
 export default SearchRepos;

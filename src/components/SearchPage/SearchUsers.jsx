@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { SEARCH_USERS_URL } from '../../api/endpoints';
 import { useSearch } from '../../api/useSearch';
 
-function SearchUsers({ query }) {
+function SearchUsers({ query, handleCalculateResults }) {
   const [activePage, setActivePage] = useState('1');
   useEffect(() => {
     setActivePage('1');
@@ -20,6 +20,7 @@ function SearchUsers({ query }) {
   const [totalPages, setTotalPages] = useState(0);
   const [pagination, setPagination] = useState([]);
   useEffect(() => {
+    handleCalculateResults(result.datas.total_count);
     const pages = Math.ceil(result.datas.total_count / 30) > 10 ? 10 : Math.ceil(result.datas.total_count / 30);
     setTotalPages(pages);
   }, [result]);
@@ -87,5 +88,6 @@ function SearchUsers({ query }) {
 
 SearchUsers.propTypes = {
   query: PropTypes.string,
+  handleCalculateResults: PropTypes.func,
 };
 export default SearchUsers;
