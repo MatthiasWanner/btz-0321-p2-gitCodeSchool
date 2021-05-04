@@ -1,4 +1,10 @@
 .content {
+  min-width: 40%;
+  max-width: 80%;
+}
+
+.content2 {
   min-width: 80%;
   max-width: 80%;
 }
+

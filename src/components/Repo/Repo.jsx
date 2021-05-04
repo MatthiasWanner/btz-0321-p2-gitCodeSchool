@@ -40,7 +40,7 @@ function Repo() {
         <div className="flex flex-col items-center w-full justify-end">
           <div className="flex flex-col items-center mb-6">
             <Link to={`/profile/${username}`}>
-              <h1 className="text-gold-dark text-2xl mt-24 border-b border-gold-dark">{username}</h1>
+              <h1 className="text-gold-dark text-4xl mt-24 border-b border-gold-dark">{username}</h1>
             </Link>
             <h3 className="text-gold-dark text-xl mt-10">{repoConsulted.datas.name}</h3>
             <h3 className="text-gold-dark text-xl text-center mt-10 mb-10 ">{repoConsulted.datas.description}</h3>
