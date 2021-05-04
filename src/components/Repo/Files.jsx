@@ -42,13 +42,13 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
           );
         })}
       </div>
-      <hr className="border-gold-dark w-1/4 mx-auto my-2"/>
-      <ul className="pt-3 overflow-auto">
+      <hr className="border-gold-dark w-1/4 mx-auto my-4"/>
+      <ul className=" overflow-auto text-center">
         {files.datas.map((file) => {
           return <File handleClickFile={handleClickFile} file={file} key={file.sha} />;
         })}
       </ul>
-      <hr className="border-gold-dark w-1/4 mx-auto my-2"/>
+      <hr className="border-gold-dark w-1/4 mx-auto my-3"/>
     </div>
   );
 }
