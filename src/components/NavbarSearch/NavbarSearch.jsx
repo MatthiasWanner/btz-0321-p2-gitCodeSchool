@@ -14,7 +14,7 @@ function NavbarSearch() {
     e.preventDefault();
     if (search.length < 4) {
       setModal({
-        title: '',
+        title: '4 caractères minimum',
         content: `Veuillez saisir plus de caractères (4 au minimum). Le nombre de résultats risque d'être trop important 😵‍💫`,
         buttons: [
           {

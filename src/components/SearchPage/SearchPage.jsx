@@ -17,7 +17,7 @@ function SearchPage() {
     if ((resultsRepos > 300 || resultsUsers > 300) && activePageRepos === 1 && activePageUsers === 1) {
       const totalResults = resultsUsers + resultsRepos;
       setModal({
-        title: '',
+        title: 'Wow 🤯',
         content: `Il y a ${totalResults} résultats 😵‍💫 ! Nous vous proposons les 300 premiers dans chaque catégorie. Pour plus de précision, ajoutez des critères`,
         buttons: [
           {
