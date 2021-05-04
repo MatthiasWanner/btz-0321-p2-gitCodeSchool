@@ -18,9 +18,7 @@ export function useSearch(endpoint) {
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
+        setIsLoading(false);
       }
     };
     getRepos();

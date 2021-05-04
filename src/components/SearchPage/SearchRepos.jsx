@@ -6,11 +6,12 @@ import DropDown from '../DropDown/DropDown';
 import PropTypes from 'prop-types';
 import { SEARCH_REPOS_URL } from '../../api/endpoints';
 import { useSearch } from '../../api/useSearch';
+import { usePagination } from '../../hooks/usePagination';
 
-function SearchRepos({ query, handleCalculateResults }) {
-  const [activePage, setActivePage] = useState('1');
+function SearchRepos({ query, handleSetRepos }) {
+  const [activePage, setActivePage] = useState(1);
   useEffect(() => {
-    setActivePage('1');
+    setActivePage(1);
   }, [query]);
 
   const [endpoint, setEndpoint] = useState(SEARCH_REPOS_URL.replace('{query}', query).replace('{page}', activePage));
@@ -19,21 +20,12 @@ function SearchRepos({ query, handleCalculateResults }) {
   }, [activePage, query]);
 
   const result = useSearch(endpoint);
-  const [totalPages, setTotalPages] = useState(0);
-  const [pagination, setPagination] = useState([]);
+  const pagination = usePagination(result.datas.total_count);
   useEffect(() => {
-    handleCalculateResults(result.datas.total_count);
-    const pages = Math.ceil(result.datas.total_count / 30) > 10 ? 10 : Math.ceil(result.datas.total_count / 30);
-    setTotalPages(pages);
-  }, [result]);
-
-  useEffect(() => {
-    const pagination = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pagination.push(i);
+    if (!result.isLoading) {
+      handleSetRepos(result.datas.total_count, activePage);
     }
-    setPagination(pagination);
-  }, [totalPages]);
+  }, [result]);
 
   const handleChangePage = (value) => {
     setActivePage(value);
@@ -53,11 +45,12 @@ function SearchRepos({ query, handleCalculateResults }) {
             🤗
           </span>
         </p>
-        {totalPages > 1 && (
+        {pagination.length > 1 && (
           <div className="flex w-full justify-center my-4">
             <DropDown
               className="p-1"
               params={{
+                active: activePage,
                 text: 'Page',
                 color: 'orange',
                 items: pagination,

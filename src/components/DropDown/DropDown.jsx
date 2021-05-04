@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
 
 export default function DropDown({ params }) {
   const [active, setActive] = useState('');
+  useEffect(() => {
+    setActive(params.active);
+  }, [params]);
 
   const handeChange = (value) => {
     setActive(value);
