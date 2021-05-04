@@ -10,7 +10,7 @@ export default function ContentOverview({ fileEndPoint }) {
   return (
     <div className="content2 border border-gold-dark  mb-6 px-6 py-4 rounded-md bg-homeGray-dark overflow-auto">
       <ReactMarkdown className="text-white flex justify-center pb-3 border-b border-gold-dark ">{overviewContent.datas.name}</ReactMarkdown>
-      <ReactMarkdown className="text-white px-2 break-words pt-3 text-justify overflow-scroll">{overviewContent.datas.content}</ReactMarkdown>
+      <ReactMarkdown className="text-white px-2 break-words pt-3 text-justify overflow-auto">{overviewContent.datas.content}</ReactMarkdown>
     </div>
   );
 }
