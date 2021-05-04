@@ -26,7 +26,7 @@ function Footer({ isLogged, handleClickLogout }) {
       <div className="text-gold">
         <ul className="flex md:justify-around">
           <a href="https://github.com/Aeryle" target="_blank" rel="noreferrer">
-            <li className="flex flex-col-reverse md:flex md:flex-row-reverse md:justify-evenly md:items-center">
+            <li className="md:flex md:flex-row-reverse md:justify-evenly md:items-center">
               Mickael Kergrohen
               <img
                 src="https://avatars.githubusercontent.com/u/47262222?v=4"
