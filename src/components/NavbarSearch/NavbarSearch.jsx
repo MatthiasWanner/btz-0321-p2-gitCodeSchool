@@ -15,7 +15,7 @@ function NavbarSearch() {
     if (search.length < 4) {
       setModal({
         title: '',
-        content: `Veuillez saisir plus de caractères. Le nombre de résultat risque d'être trop important 😵‍💫`,
+        content: `Veuillez saisir plus de caractères (4 au minimum). Le nombre de résultats risque d'être trop important 😵‍💫`,
         buttons: [
           {
             content: 'Je comprends',

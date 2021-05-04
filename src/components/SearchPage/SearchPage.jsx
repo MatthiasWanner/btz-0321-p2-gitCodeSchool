@@ -13,6 +13,7 @@ function SearchPage() {
   const [activePageRepos, setActivePageRepos] = useState(1);
   const [activePageUsers, setActivePageUsers] = useState(1);
   useEffect(() => {
+    setModalOpen(false);
     if ((resultsRepos > 300 || resultsUsers > 300) && activePageRepos === 1 && activePageUsers === 1) {
       const totalResults = resultsUsers + resultsRepos;
       setModal({
@@ -27,7 +28,7 @@ function SearchPage() {
       });
       setModalOpen(true);
     }
-  }, [resultsRepos, resultsUsers, activePageUsers, activePageRepos]);
+  }, [resultsRepos, resultsUsers]);
 
   const handleSetRepos = (reposResults, active) => {
     setResultsRepos(reposResults);
