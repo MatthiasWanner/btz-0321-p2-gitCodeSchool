@@ -27,10 +27,13 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
 
   return (
     <div className="content border border-gold-dark mb-6 py-4 rounded-md  flex flex-col px-8 bg-homeGray-dark">
-      <div className="text-center border-b border-gold-dark pb-3">
+      <div className="text-center ">
+        
         {path.map((item, index) => {
           return (
+            
             <button
+            
               className="path-item cursor-pointer text-yellow-400 focus:outline-none"
               key={index}
               onClick={() => handleClickReturn(index, item.endpoint)}>
@@ -39,11 +42,13 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
           );
         })}
       </div>
+      <hr className="border-gold-dark w-1/4 mx-auto my-2"/>
       <ul className="pt-3 overflow-auto">
         {files.datas.map((file) => {
           return <File handleClickFile={handleClickFile} file={file} key={file.sha} />;
         })}
       </ul>
+      <hr className="border-gold-dark w-1/4 mx-auto my-2"/>
     </div>
   );
 }
