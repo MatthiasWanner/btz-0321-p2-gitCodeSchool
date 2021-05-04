@@ -4,7 +4,7 @@ import ghLogo from '../../img/gh-logo.png';
 import './HomeFields.css';
 
 function HomeFields({ handleClickLogin }) {
-  const [ tokenKey, setTokenKey ] = useState('');
+  const [tokenKey, setTokenKey] = useState('');
 
   const tokonLabelClasses = 'text-center text-gold-dark text-2xl';
   const inputTokenClasses = ' rounded-3xl w-4/5 border border-black text-center focus:outline-none focus:ring focus:ring-gold-dark';
@@ -45,7 +45,7 @@ function HomeFields({ handleClickLogin }) {
 }
 
 HomeFields.propTypes = {
-  handleClickLogin: PropTypes.func
+  handleClickLogin: PropTypes.func,
 };
 
 export default HomeFields;

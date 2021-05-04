@@ -14,10 +14,11 @@ function Banner({ handleClickLogin }) {
   const homeTitleClasses = 'text-white text-4xl md:text-6xl md:mt-14';
   const spanClasses = 'text-gold-dark';
   const logoContainerClasses = 'flex flex-col items-center justify-around w-full h-50v';
-  const arrowContainer = 'flex flex-col items-center w-full h-17v text-gold-dark';
+  const arrowContainer = 'flex flex-col items-center w-full text-gold-dark';
   const arrowContainerMd = 'md:order-4 md:col-span-2 md:justify-center';
-  const formContainerClasses = 'flex justify-center items-center w-full h-screen';
+  const formContainerClasses = 'flex flex-col justify-around items-center w-full h-screen';
   const formContainerClassesMd = 'md:w-full md:order-3 md:h-full';
+  const arrowFormContainer = 'md:hidden';
 
   return (
     <header className={`home-header ${headerClasses} ${headerClassesMd}`}>
@@ -33,8 +34,12 @@ function Banner({ handleClickLogin }) {
         <p>{`Défiles si t'en veux plus`}</p>
         <ArrowCircleDownIcon className="w-1/12 md:w-10" />
       </div>
-      <div className={`home-login-form-container ${formContainerClasses} ${formContainerClassesMd}`}>
+      <div id="home-form" className={`home-login-form-container ${formContainerClasses} ${formContainerClassesMd}`}>
         <Form page="home" handleClickLogin={handleClickLogin} />
+        <div className={`arrow-form-container ${arrowContainer} ${arrowFormContainer} `}>
+          <p>{`Ou commence à visiter`}</p>
+          <ArrowCircleDownIcon className="w-1/12 md:w-10" />
+        </div>
       </div>
     </header>
   );

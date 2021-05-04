@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import File from './File';
 import { useGetAll } from '../../api/useGet';
+import './Repo.css';
 
 export default function Files({ filesEndpoint, handleClickFile, handleClickPath, directory }) {
   const files = useGetAll(filesEndpoint);
@@ -25,8 +26,8 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
   };
 
   return (
-    <div className="w-80 border  border-gold-dark  mb-6 pl-6 py-4 rounded-md md:mr-4 ">
-      <div className="text-center">
+    <div className="content border border-gold-dark mb-6 py-4 rounded-md  flex flex-col px-8 bg-homeGray-dark">
+      <div className="text-center border-b border-gold-dark pb-3">
         {path.map((item, index) => {
           return (
             <button
@@ -38,7 +39,7 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
           );
         })}
       </div>
-      <ul>
+      <ul className="pt-3 overflow-auto">
         {files.datas.map((file) => {
           return <File handleClickFile={handleClickFile} file={file} key={file.sha} />;
         })}

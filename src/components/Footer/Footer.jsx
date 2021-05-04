@@ -1,8 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { LogoutIcon } from '@heroicons/react/outline';
 
 function Footer({ isLogged, handleClickLogout }) {
+  const history = useHistory();
+
   return (
     <footer className="flex flex-col h-[50px] bg-black border border-gold-dark color-gold-dark">
       <div className="flex flex-row justify-around items-center mt-8">
