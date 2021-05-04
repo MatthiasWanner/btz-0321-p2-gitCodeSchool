@@ -29,11 +29,11 @@ function Profile() {
         
       </div>
         <div className="flex  flex-col lg:flex-row mt-8">
-          <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl">
+          <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl bg-homeGray-dark">
             <p className="border-b 1px w-2/3 border-gold-dark">Followers: {profile.datas.followers}</p>
             <Follow username={username} />
           </div>
-          <div className="mx-4 mt-4 text-white border border-gold-dark p-4 rounded-xl">
+          <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl bg-homeGray-dark">
             <p className="border-b 1px w-2/3 border-gold-dark">Following: {profile.datas.following}</p>
             <Following username={username} />
           </div>
