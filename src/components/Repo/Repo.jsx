@@ -8,7 +8,6 @@ import ContentOverview from './ContentOverview';
 import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
 
-
 function Repo() {
   const { username, repo } = useParams();
   const repoEndpoint = ONE_REPO_URL.replace('{user}', username).replace('{repo}', repo);
@@ -37,7 +36,7 @@ function Repo() {
   if (!repoConsulted.isLoading) {
     return (
       <>
-        <div className="flex flex-col items-center  my-4 justify-end">
+        <div className="flex flex-col items-center mt-14  mb-4 justify-end">
           <div className="flex flex-col items-center mb-6">
             <Link to={`/profile/${username}`}>
               <p className="text-gold-dark text-l">{username}</p>
