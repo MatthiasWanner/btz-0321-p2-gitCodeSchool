@@ -26,7 +26,7 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
   };
 
   return (
-    <div className="content border border-gold-dark mb-6 py-4 rounded-md  flex flex-col px-8">
+    <div className="content border border-gold-dark mb-6 py-4 rounded-md  flex flex-col px-8 bg-homeGray-dark">
       <div className="text-center border-b border-gold-dark pb-3">
         {path.map((item, index) => {
           return (
@@ -39,7 +39,7 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
           );
         })}
       </div>
-      <ul>
+      <ul className="pt-3 overflow-auto">
         {files.datas.map((file) => {
           return <File handleClickFile={handleClickFile} file={file} key={file.sha} />;
         })}
