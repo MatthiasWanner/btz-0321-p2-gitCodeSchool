@@ -6,11 +6,13 @@ import { useParams } from 'react-router';
 import { FolderIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
+import { useErrorModal } from '../../api/modals';
 
 export default function RepoMap() {
   const { username } = useParams();
   const endpoint = PROFIL_REPOS.replace('{username}', username);
   const repoMap = useGetAll(endpoint);
+  // useErrorModal(repoMap.error);
 
   // class Tailwind
   const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4  text-center bg-homeGray-dark rounded-xl h-full';
