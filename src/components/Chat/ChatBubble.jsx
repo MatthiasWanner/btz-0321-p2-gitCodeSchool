@@ -1,6 +1,4 @@
-// noinspection JSCheckFunctionSignatures
-
-import React, { useContext, useEffect, useState, Fragment } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ChatContext } from '../Contexts';
 import Tooltip from '../Tooltip/Tooltip';
@@ -25,12 +23,10 @@ function ChatBubble({ username, recipient }) {
     });
 
     socket.on('chat:delete', () => {
-      console.log('Chat deleted');
       setMessages([]);
     });
 
     socket.on('message:delete', (deletedMessages) => {
-      console.log('message deleted', deletedMessages);
       setMessages(deletedMessages);
     });
 
@@ -60,6 +56,7 @@ function ChatBubble({ username, recipient }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // noinspection JSCheckFunctionSignatures
     socket.emit('message:create', recipient, content);
 
     setContent('');
