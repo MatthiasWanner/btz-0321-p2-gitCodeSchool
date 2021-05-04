@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ModalContext } from '../Contexts';
 import { SearchIcon } from '@heroicons/react/solid';
 import { useHistory } from 'react-router';
 
 function NavbarSearch() {
+  const { setModal, setModalOpen } = useContext(ModalContext);
   const [search, setSearch] = useState('');
   const history = useHistory();
   const handleChangeInput = (e) => {
@@ -10,8 +12,22 @@ function NavbarSearch() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/search/${search}`);
-    setSearch('');
+    if (search.length < 4) {
+      setModal({
+        title: '',
+        content: `Veuillez saisir plus de caractères. Le nombre de résultat risque d'être trop important 😵‍💫`,
+        buttons: [
+          {
+            content: 'Je comprends',
+            color: 'bg-green-300 hover:bg-green-600',
+          },
+        ],
+      });
+      setModalOpen(true);
+    } else {
+      history.push(`/search/${search}`);
+      setSearch('');
+    }
   };
 
   return (
