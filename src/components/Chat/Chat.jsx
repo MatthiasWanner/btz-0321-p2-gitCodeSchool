@@ -25,7 +25,8 @@ function Chat({ username }) {
   }, [username]);
 
   return (
-    <div className="py-14 text-white">
+    <>
+    <div className="my-14  w-4/5 md:w-80 border border-gold-dark text-white">
       <p>Pseudo: {username}</p>
       <br />
       <p>Utilisateurs en ligne :</p>
@@ -36,8 +37,9 @@ function Chat({ username }) {
             {user}
           </button>
         ))}
-      {activeChat && <ChatBubble recipient={activeChat} username={username} />}
     </div>
+  {activeChat && <ChatBubble recipient={activeChat} username={username} setActiveChat={setActiveChat} />}
+  </>
   );
 }
 
