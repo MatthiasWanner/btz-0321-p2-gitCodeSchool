@@ -41,9 +41,11 @@ function Profile() {
 
         <RepoMap />
         <Link to={`/repos/${username}`}>
-          <button className="w-32 h-16 rounded-xl my-12 bg-gold-dark ">Tous les repos</button>
+        <button className="justify-end bg-gold-dark hover:bg-homeGray-dark hover:text-gold-dark text-white font-bold py-3 px-4  rounded-md my-10">
+                Tous les Repos
+              </button>
         </Link>
-        <div className="border 1px border-gold-dark w-3/4 mx-auto "></div>
+        <div className="border 1px border-gold-dark w-3/4 mx-auto mb-10"></div>
       
     </>
   );
