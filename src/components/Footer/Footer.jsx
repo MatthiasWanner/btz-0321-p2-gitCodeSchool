@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { LogoutIcon } from '@heroicons/react/outline';
+import GitLogo from '../../img/Gitlogo.png';
 
 function Footer({ isLogged, handleClickLogout }) {
   const history = useHistory();
@@ -10,7 +11,7 @@ function Footer({ isLogged, handleClickLogout }) {
     <footer className="flex flex-col h-[50px] bg-black border border-gold-dark color-gold-dark">
       <div className="flex flex-row justify-around items-center mt-8">
         <a href="https://github.com/" target="_blank" rel="noreferrer">
-          <img src="src/img/GitHub-Mark-120px-plus.png" alt="logo-Octobat" className="w-12 bg-white border border-gold-dark rounded-full" />
+          <img src={GitLogo} alt="logo-Octobat" className="w-12 bg-white border border-gold-dark rounded-full" />
         </a>
         <a href="https://www.wildcodeschool.com/fr-FR" target="_blank" rel="noreferrer" className="justify-center">
           <img
@@ -36,7 +37,7 @@ function Footer({ isLogged, handleClickLogout }) {
               <img
                 src="https://avatars.githubusercontent.com/u/47262222?v=4"
                 alt="logo-Octobat"
-                className="md:w-2/12 w-12 rounded-full border border-gold-dark"
+                className="md:w-10 w-12 rounded-full border border-gold-dark"
               />
               <p className="w-16 md:w-52 md:text-lg text-xs text-center pt-2">Mickael Kergrohen</p>
             </a>
@@ -47,9 +48,9 @@ function Footer({ isLogged, handleClickLogout }) {
               <img
                 src="https://avatars.githubusercontent.com/u/77199375?v=4"
                 alt="logo-Octobat"
-                className="md:w-2/12 w-12 rounded-full border border-gold-dark"
+                className="md:w-10 w-12 rounded-full border border-gold-dark"
               />
-              <p className="w-16 md:w-52 md:text-lg text-xs text-center pt-2"> Rémi Caron</p>
+              <p className="w-10 md:w-52 md:text-lg text-xs text-center pt-2"> Rémi Caron</p>
             </a>
           </li>
           <li className="flex flex-col items-center">
@@ -57,7 +58,7 @@ function Footer({ isLogged, handleClickLogout }) {
               <img
                 src="https://avatars.githubusercontent.com/u/77199375?v=4"
                 alt="logo-Octobat"
-                className="md:w-2/12 w-12 rounded-full border border-gold-dark"
+                className="md:w-10 w-12 rounded-full border border-gold-dark"
               />
               <p className="w-16 md:w-52 md:text-lg text-xs text-center pt-2">Matthias Wanner</p>
             </a>
@@ -67,7 +68,7 @@ function Footer({ isLogged, handleClickLogout }) {
               <img
                 src="https://avatars.githubusercontent.com/u/78235274?s=400&u=dd99ed59c443a7cbe3b6e71c81ac62ba15ceba22&v=4"
                 alt="logo-Octobat"
-                className="md:w-2/12 w-12 rounded-full border border-gold-dark"
+                className="md:w-10 w-12 rounded-full border border-gold-dark"
               />
               <p className="w-16 md:w-52 md:text-lg text-xs text-center pt-2">Estelle Chabat</p>
             </a>
