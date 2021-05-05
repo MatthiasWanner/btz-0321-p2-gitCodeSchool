@@ -2,11 +2,10 @@ import React from 'react';
 import './Profile.css';
 import { useGetAll } from '../../api/useGet';
 import { PROFIL_REPOS } from '../../api/endpoints';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { FolderIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
-import { useErrorModal } from '../../api/modals';
 
 export default function RepoMap() {
   const { username } = useParams();
@@ -25,7 +24,7 @@ export default function RepoMap() {
   if (!repoMap.isLoading) {
     return (
       <>
-        <div className="border 1px border-gold-dark w-3/4 mx-auto mt-12"></div>
+        <div className="border 1px border-gold-dark w-3/4 mx-auto mt-12" />
         <div className="text-white my-4 flex justify-start items-center w-full p-4 overflow-auto bg-black h-72">
           {repoMap.datas.map((repo) => {
             return (

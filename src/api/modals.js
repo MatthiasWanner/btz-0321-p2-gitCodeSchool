@@ -23,6 +23,7 @@ export function useErrorModal(error) {
         ],
         status: 'error',
       });
+
       setModalOpen(true);
     } else if (error) {
       setModal({
@@ -39,6 +40,7 @@ export function useErrorModal(error) {
         ],
         status: 'error',
       });
+
       setModalOpen(true);
     }
   }, [error]);
