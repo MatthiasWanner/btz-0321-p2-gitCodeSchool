@@ -1,0 +1,17 @@
+.tooltip {
+  position: absolute;
+  display: none;
+  transform: translate(-10%, calc(-150% - .5rem));
+}
+
+.tooltip p {
+  @apply bg-gold-dark rounded-md px-3 py-1;
+}
+
+.tooltip .triangle {
+  content: '';
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-top: 8px solid #CBAC77;
+  @apply block w-0 h-0 my-0 mx-auto bg-transparent;
+}

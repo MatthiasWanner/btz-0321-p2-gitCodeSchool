@@ -6,6 +6,7 @@ import Profile from './Profile/Profile';
 import AllRepos from './AllRepos/AllRepos';
 import Repo from './Repo/Repo';
 import SearchPage from './SearchPage/SearchPage';
+import Chat from './Chat/Chat';
 
 function Routes({ isLogged, handleClickLogin, username }) {
   return (
@@ -17,6 +18,9 @@ function Routes({ isLogged, handleClickLogin, username }) {
       <Route path="/repo/:username/:repo" component={Repo} />
       <Route path="/repos/:username" component={AllRepos} />
       <Route path="/search/:query" component={SearchPage} />
+      <Route exact path="/chat">
+        <Chat username={username} />
+      </Route>
     </>
   );
 }

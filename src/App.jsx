@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { HashRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
 import '@material-tailwind/react/tailwind.css';
@@ -6,14 +6,19 @@ import { login } from './api/api';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
-import { ModalContext } from './components/Contexts';
+import { ChatContext, ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
 
 function App() {
+  const socket = useContext(ChatContext);
+
   const [username, setUsername] = useState(localStorage.ghUsername);
   const [isLogged, setIsLogged] = useState(username !== undefined);
   useEffect(() => {
     username ? setIsLogged(true) : setIsLogged(false);
+
+    // noinspection JSCheckFunctionSignatures
+    username && socket.emit('user:connect', username);
   }, [username]);
   const [modal, setModal] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
