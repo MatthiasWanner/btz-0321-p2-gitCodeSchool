@@ -11,7 +11,7 @@ export default function Following({ username }) {
   const following = useGetAll(endpoint);
 
   return (
-    <div className="mt-8 w-64 h-28 overflow-auto ">
+    <div className="mt-4 w-64 h-32 overflow-auto ">
       {following.datas.map((following) => {
         return (
           <Link key={following.id} to={`/Profile/${following.login}`}>
