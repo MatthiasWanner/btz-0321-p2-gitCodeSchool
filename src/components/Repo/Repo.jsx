@@ -44,7 +44,7 @@ function Repo() {
             <h3 className="text-gold-dark text-2xl mt-10">{repoConsulted.datas.name}</h3>
             <h3 className="text-gold-dark text-xl text-center mb-10 ">{repoConsulted.datas.description}</h3>
             <Link to={`/repos/${username}`}>
-              <button className="justify-end bg-gold-dark hover:bg-homeGray-dark hover:text-gold-dark text-white font-bold py-2 px-4  rounded-md mt-2">
+              <button className="justify-end bg-gold-dark hover:bg-homeGray-dark hover:text-gold-dark text-white font-bold py-3  px-4  rounded-md mt-2">
                 Tous les Repos
               </button>
             </Link>
