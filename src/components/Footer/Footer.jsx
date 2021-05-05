@@ -8,7 +8,7 @@ function Footer({ isLogged, handleClickLogout }) {
   const history = useHistory();
 
   return (
-    <footer className="flex flex-col h-[50px] bg-black border border-gold-dark color-gold-dark">
+    <footer className="flex flex-col h-[50px] bg-black border border-gold-dark color-gold-dark mt-10">
       <div className="flex flex-row justify-around items-center mt-8">
         <a href="https://github.com/" target="_blank" rel="noreferrer">
           <img src={GitLogo} alt="logo-Octobat" className="w-12 bg-white border border-gold-dark rounded-full" />
