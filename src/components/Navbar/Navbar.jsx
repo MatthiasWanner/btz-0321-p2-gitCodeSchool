@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import PropTypes from 'prop-types';
-import { FingerPrintIcon, BellIcon, PlusIcon, UserIcon, XIcon, MenuIcon } from '@heroicons/react/solid';
+import { FingerPrintIcon, BellIcon, PlusIcon, XIcon, MenuIcon } from '@heroicons/react/solid';
 import NavbarSearch from '../NavbarSearch/NavbarSearch';
 import './Navbar.css';
 import NavbarLink from '../NavbarLink/NavbarLink';
+import { ModalContext } from '../Contexts';
 
 function Navbar({ username, isLogged }) {
+  const { setModal, setModalOpen } = useContext(ModalContext);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const iconsHeight = {
     height: 50,
   };
+  const [checkedValue, setCheckedValue] = useState('public');
 
   const links = [
     { to: '/', content: 'Accueil', displayed: true },
@@ -22,6 +25,49 @@ function Navbar({ username, isLogged }) {
   const handleClick = () => {
     setIsBurgerOpen(!isBurgerOpen);
   };
+
+  const haveRadioOpt = (e) => {
+    console.log(e.target.value);
+    // return e.target.value === checkedValue ? true : false;
+  };
+
+  const handleChangeRadio = (e) => {
+    setCheckedValue(e.target.value);
+  };
+
+  const handleClicAdd = () => {
+    setModal({
+      title: 'Créer un repo',
+      content: (
+        <form>
+          <input id="name" className="mb-3" />
+          <input id="description" />
+          <div>
+            <input type="radio" id="public" name="public" value="public" checked={checkedValue === 'public'} onChange={handleChangeRadio} />
+            <label htmlFor="public">public</label>
+
+            <input type="radio" id="private" name="private" value="private" checked={checkedValue === 'private'} onChange={handleChangeRadio} />
+            <label htmlFor="private">Private</label>
+          </div>
+        </form>
+      ),
+      buttons: [
+        {
+          content: 'Valider',
+          color: 'bg-green-300 hover:bg-green-600',
+        },
+        {
+          content: 'Annuler',
+          color: 'bg-red-300 hover:bg-red-600',
+        },
+      ],
+    });
+    setModalOpen(true);
+  };
+
+  useEffect(() => {
+    handleClicAdd();
+  }, [checkedValue]);
 
   return (
     <div
@@ -71,8 +117,9 @@ function Navbar({ username, isLogged }) {
         <li className="flex items-center">
           <NavbarSearch />
           <BellIcon className="h-7 pl-3" />
-          <PlusIcon className="h-7 pl-3" />
-          <UserIcon className="h-7 pl-3" />
+          <button onClick={handleClicAdd}>
+            <PlusIcon className="h-7 pl-3" />
+          </button>
         </li>
       </ul>
     </div>
