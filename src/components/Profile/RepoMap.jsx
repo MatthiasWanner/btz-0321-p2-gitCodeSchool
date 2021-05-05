@@ -13,7 +13,7 @@ export default function RepoMap() {
   const repoMap = useGetAll(endpoint);
 
   // class Tailwind
-  const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4  text-center bg-homeGray-dark rounded-xl h-full';
+  const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4  text-center bg-homeGray-dark rounded-xl h-full border border-gold-dark';
   const repoContainerLG = 'md:my-4 md:w-1/2 md:p-4 md:h-56 md:w-10/12 md:h-10/12';
   // fin de class
 
@@ -23,8 +23,8 @@ export default function RepoMap() {
   if (!repoMap.isLoading) {
     return (
       <>
-        <div className="border 1px border-gold-dark w-3/4 mx-auto my-12"></div>
-        <div className="text-white flex justify-start items-center w-full h-full p-4 overflow-auto bg-black h-72">
+        <div className="border 1px border-gold-dark w-3/4 mx-auto my-12 "></div>
+        <div className="text-white flex justify-start items-center w-full h-full p-4 overflow-auto bg-homeGray-darker h-72">
           {repoMap.datas.map((repo) => {
             return (
               <div key={repo.id} className="repo-container">

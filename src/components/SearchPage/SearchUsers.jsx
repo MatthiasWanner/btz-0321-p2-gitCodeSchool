@@ -30,7 +30,7 @@ function SearchUsers({ query, handleSetUsers }) {
     setActivePage(value);
   };
 
-  const searchResultsContainer = 'w-full flex flex-col items-start my-5 border-t border-gold-dark';
+  const searchResultsContainer = 'w-full h-full flex flex-col items-start my-5 border-t border-gold-dark';
   const searchResultsContainerMd = '';
 
   if (result.datas.isLoading) {
@@ -38,26 +38,13 @@ function SearchUsers({ query, handleSetUsers }) {
   } else if (result.datas.total_count > 0) {
     return (
       <div className={`users-results ${searchResultsContainer} ${searchResultsContainerMd}`}>
-        <p className={`w-full flex mb-2 text-lg underline`}>
+        <p className={`w-full flex my-4 text-lg underline`}>
           {result.datas.total_count} {result.datas.total_count === 1 ? 'utilisateur trouvé ' : 'utilisateurs trouvés '}
           <span role="img" aria-label="yeah">
             🤗
           </span>
         </p>
-        {pagination.length > 1 && (
-          <div className="flex w-full justify-center my-4">
-            <DropDown
-              className="p-1"
-              params={{
-                active: activePage,
-                text: 'Page',
-                color: 'orange',
-                items: pagination,
-                onClick: (action) => handleChangePage(action),
-              }}
-            />
-          </div>
-        )}
+      
         {result.datas.items.map((item) => {
           return (
             <Link key={item.login} to={`/profile/${item.login}`}>
@@ -65,6 +52,20 @@ function SearchUsers({ query, handleSetUsers }) {
             </Link>
           );
         })}
+          {pagination.length > 1 && (
+          <div className="flex w-full h-full justify-center items-end mb-10 border-gold-dark">
+            <DropDown
+              className="p-1"
+              params={{
+                active: activePage,
+                text: 'Page',
+                color: 'gold-dark',
+                items: pagination,
+                onClick: (action) => handleChangePage(action),
+              }}
+            />
+          </div>
+        )}
       </div>
     );
   } else {
