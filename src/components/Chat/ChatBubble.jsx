@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ChatContext } from '../Contexts';
-// import Tooltip from '../Tooltip/Tooltip';
 
 import './ChatBubble.css';
 import { ChevronRightIcon, TrashIcon, XIcon } from '@heroicons/react/solid';
@@ -38,20 +37,20 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
     };
   }, [recipient]);
 
-  const formatDate = (date) => {
-    date = new Date(date);
+  // const formatDate = (date) => {
+  //   date = new Date(date);
 
-    const [years, months, days, hours, minutes, seconds] = [
-      date.getFullYear(),
-      date.getMonth() + 1,
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds(),
-    ].map((v) => v.toString().padStart(2, '0'));
+  //   const [years, months, days, hours, minutes, seconds] = [
+  //     date.getFullYear(),
+  //     date.getMonth() + 1,
+  //     date.getDate(),
+  //     date.getHours(),
+  //     date.getMinutes(),
+  //     date.getSeconds(),
+  //   ].map((v) => v.toString().padStart(2, '0'));
 
-    return `${days}/${months}/${years} a ${hours}:${minutes}:${seconds}`;
-  };
+  //   return `${days}/${months}/${years} a ${hours}:${minutes}:${seconds}`;
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -88,11 +87,10 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
             <div
               className={
                 msg.from === username
-                  ? 'has-tooltip bg-gold-dark text-homeGray-dark rounded-2xl py-0.5 px-3 w-5/6 w-max break-all'
-                  : 'has-tooltip bg-homeGray-dark text-gold-dark rounded-2xl px-3 py-0.5 w-5/6 w-max break-all'
+                  ? 'has-tooltip bg-gold-dark text-homeGray-dark rounded-2xl py-0.5 px-3 w-max break-all'
+                  : 'has-tooltip bg-homeGray-dark text-gold-dark rounded-2xl px-3 py-0.5 w-max break-all'
               }>
               <p>{msg.content}</p>
-              <div className="text-homeGray-dark">{/* <Tooltip>{formatDate(msg.date)}</Tooltip> */}</div>
             </div>
             {msg.from === username && (
               <button
@@ -125,6 +123,8 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
 ChatBubble.propTypes = {
   username: PropTypes.string,
   recipient: PropTypes.string,
+  handleClickChat: PropTypes.func,
+  avatarUrl: PropTypes.string,
 };
 
 export default ChatBubble;

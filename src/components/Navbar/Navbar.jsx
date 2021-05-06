@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import PropTypes from 'prop-types';
@@ -6,11 +6,9 @@ import { FingerPrintIcon, BellIcon, PlusIcon, XIcon, MenuIcon } from '@heroicons
 import NavbarSearch from '../NavbarSearch/NavbarSearch';
 import './Navbar.css';
 import NavbarLink from '../NavbarLink/NavbarLink';
-import { ModalContext } from '../Contexts';
 import AddRepo from '../AddRepo/AddRepo';
 
 function Navbar({ username, isLogged }) {
-  const { setModal, setModalOpen } = useContext(ModalContext);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const iconsHeight = {
     height: 50,
