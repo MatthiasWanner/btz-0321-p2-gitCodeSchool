@@ -75,7 +75,7 @@ function Navbar({ username, isLogged }) {
         <li className="flex items-center">
           <NavbarSearch />
           <BellIcon className="h-7 pl-3" />
-          <button onClick={() => setShowForm(!showForm)}>
+          <button className="focus:outline-none" onClick={() => setShowForm(!showForm)}>
             <PlusIcon className="h-7 pl-3" />
           </button>
         </li>
