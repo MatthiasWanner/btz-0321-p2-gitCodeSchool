@@ -28,8 +28,8 @@ function Home({ isLogged, handleClickLogin, username }) {
     return (
       <>
         <div className={`${mainContainerClasses}`}>
-          <header className="mt-14 w-40">
-            <h2 className="text-3xl text-gold-dark border-b border-gold-dark mb-10 text-center">Bienvenue</h2>
+            <h2 className="text-3xl text-gold-dark border-b border-gold-dark mt-10 text-center">Bienvenue</h2>
+          <header className="mt-14 w-full">
             <h3 className="text-2xl text-white mb-10 text-center">{username}</h3>
           </header>
           <div className="border 1px border-gold-dark w-1/4 mx-auto mb-10 "></div>
