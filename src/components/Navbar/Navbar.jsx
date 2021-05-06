@@ -14,7 +14,7 @@ function Navbar({ username, isLogged }) {
   const iconsHeight = {
     height: 50,
   };
-  const [checkedValue, setCheckedValue] = useState('public');
+  const [checkedValue, setCheckedValue] = useState(undefined);
 
   const links = [
     { to: '/', content: 'Accueil', displayed: true },
@@ -66,7 +66,9 @@ function Navbar({ username, isLogged }) {
   };
 
   useEffect(() => {
-    handleClicAdd();
+    if (checkedValue) {
+      handleClicAdd();
+    }
   }, [checkedValue]);
 
   return (
