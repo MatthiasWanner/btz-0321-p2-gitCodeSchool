@@ -15,7 +15,7 @@ function BotBar() {
           </button>
         </div>
         <div className={` ${chat ? "fixed" : "hidden"} bottom-0 w-4/5 botbar`}>
-          <Chat />
+          <Chat username={localStorage.ghUsername} />
         </div>
       </div>
     </>

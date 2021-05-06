@@ -67,7 +67,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
   };
 
   return (
-    <div className="box absolute bottom-16 -rigth-16 md:border md:border-gold-dark rounded-t-lg bg-homeGray-darker text-white  w-72">
+    <div className="box absolute bottom-16 -rigth-16 md:border md:border-gold-dark rounded-lg bg-homeGray-darker text-white  w-72">
       <div className="flex justify-between rounded-t-lg p-2 bg-homeGray-dark">
         {recipient}
         <div className="flex  items-center ">
@@ -105,7 +105,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
           </div>
         ))}
       </div>
-      <div className="w-full bg-homeGray-dark py-2 ">
+      <div className="w-full rounded-b-lg bg-homeGray-dark py-2 ">
         <form action="" className="flex flex-row  justify-around md:justify-beetwin sticky items-start " onSubmit={handleSubmit}>
           <input
             type="text"
