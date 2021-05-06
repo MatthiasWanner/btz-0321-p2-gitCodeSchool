@@ -26,20 +26,26 @@ function Chat({ username }) {
 
   return (
     <>
-    <div className="my-14  w-4/5 md:w-80 border border-gold-dark text-white">
-      <p>Pseudo: {username}</p>
-      <br />
-      <p>Utilisateurs en ligne :</p>
-      {onlineUsers
-        .filter((user) => user !== username)
-        .map((user) => (
-          <button key={user} onClick={() => setActiveChat(user)}>
-            {user}
-          </button>
-        ))}
-    </div>
-  {activeChat && <ChatBubble recipient={activeChat} username={username} setActiveChat={setActiveChat} />}
-  </>
+      <div className="flex w-full h-screen justify-end items-end md:fixed margBox">
+        {activeChat && <ChatBubble recipient={activeChat} username={username} setActiveChat={setActiveChat} />}
+        <div className="boxOnline w-4/5 md:w-72 border border-gold-dark text-white bg-homeGray-dark p-2">
+          <p>Pseudo: {username}</p>
+          <br />
+          <p className="border-b w-1/2 border-gold-dark">Online</p>
+          {onlineUsers
+            .filter((user) => user !== username)
+            .map((user) => (
+              <div className="rounded-full flex p-2 my-4 flex items-center" key={user}>
+                <div className="bg-green-200 rounded-full h-6 w-6 flex-shrink-0" />
+                <button className="w-full focus:outline-none flex justify-start pl-4" key={user} onClick={() => setActiveChat(user)}>
+                  {user}
+                </button>
+                <div className="bg-green-online rounded-full h-2 w-2 flex-shrink-0" />
+              </div>
+            ))}
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -4,9 +4,11 @@ module.exports = {
   purge: ['./src/**/*.html', './src/**/*.{js,jsx}'],
   darkMode: false, // or 'media' or 'class',
   theme: {
- 
     extend: {
       colors: {
+        green: {
+          online: '#00FF00',
+        },
         gold: {
           light: '#CBAC77',
           DEFAULT: '#CBAC77',
