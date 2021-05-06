@@ -6,7 +6,7 @@ import { ChatContext } from '../Contexts';
 import './ChatBubble.css';
 import { ChevronRightIcon, TrashIcon, XIcon } from '@heroicons/react/solid';
 
-function ChatBubble({ username, recipient, setActiveChat }) {
+function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
   const socket = useContext(ChatContext);
   const [messages, setMessages] = useState([]);
   const [content, setContent] = useState('');
@@ -67,7 +67,7 @@ function ChatBubble({ username, recipient, setActiveChat }) {
   };
 
   return (
-    <div className="box absolute bottom-16 md:border md:border-gold-dark rounded-t-lg bg-homeGray-darker text-white  w-72">
+    <div className="box absolute bottom-16 -rigth-16 md:border md:border-gold-dark rounded-t-lg bg-homeGray-darker text-white  w-72">
       <div className="flex justify-between rounded-t-lg p-2 bg-homeGray-dark">
         {recipient}
         <div className="flex  items-center ">
@@ -75,7 +75,7 @@ function ChatBubble({ username, recipient, setActiveChat }) {
             <TrashIcon className="h-4" />
             <p className="hidden ">Effacer la discussion</p>
           </button>
-          <button onClick={() => setActiveChat(null)}>
+          <button onClick={() => handleClickChat(null, null)}>
             <XIcon className="h-5" />
           </button>
         </div>
@@ -83,7 +83,7 @@ function ChatBubble({ username, recipient, setActiveChat }) {
       <div className="h-96 overflow-auto">
         {messages.map((msg, index) => (
           <div key={msg.date} className={`flex ${msg.from === username ? 'flex-row-reverse' : 'flex-row'} w-full items-center  p-2`}>
-            <div className="bg-green-200 rounded-full h-6 w-6 flex-shrink-0" />
+            <img src={msg.from !== username ? avatarUrl : localStorage.ghAvatar} alt="photoprofile" className="rounded-full h-6 w-6 flex-shrink-0" />
             <p className={msg.from === username ? 'ml-1' : 'mr-1'}></p>
             <div
               className={

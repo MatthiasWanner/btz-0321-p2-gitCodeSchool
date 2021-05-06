@@ -14,11 +14,9 @@ function BotBar() {
             <UsersIcon className="h-8 text-white flex pr-4 focus:outline-none" />
           </button>
         </div>
-        {chat && (
-          <div className="fixed bottom-0 w-4/5 botbar">
-            <Chat />
-          </div>
-        )}
+        <div className={` ${chat ? "fixed" : "hidden"} bottom-0 w-4/5 botbar`}>
+          <Chat />
+        </div>
       </div>
     </>
   );
