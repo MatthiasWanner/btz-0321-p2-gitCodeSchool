@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Modal from './components/Modal/Modal';
 import { ChatContext, ModalContext } from './components/Contexts';
 import Routes from './components/Routes';
+import BotBar from './components/BotBar/BotBar';
 
 function App() {
   const socket = useContext(ChatContext);
@@ -94,6 +95,7 @@ function App() {
       <div className={`body-container ${bodyClasses}`} style={{ maxWidth: 1440 }}>
         <Router>
           <Navbar username={username} isLogged={isLogged} />
+          <BotBar />
           <div className={`main-container ${mainContainerClasses}`}>
             <Switch>
               <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} username={username} />

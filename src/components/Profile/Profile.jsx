@@ -23,30 +23,32 @@ function Profile() {
       </div>
 
       <div className="boxImgProfil w-full flex justify-center items-center">
-        <div className="md:mr-24"><hr className="md:w-52 md:border-gold-dark" /></div>
-        <img className="avatar lg:w-64 w-48 rounded-full " src={profile.datas.avatar_url} alt={`${username} avatar`} />
-       <div className="md:ml-24"><hr className="md:w-52 md:border-gold-dark"/></div>
-        
-      </div>
-        <div className="flex  flex-col lg:flex-row mt-8">
-          <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl bg-homeGray-dark">
-            <p className="border-b 1px w-2/3 border-gold-dark">Followers: {profile.datas.followers}</p>
-            <Follow username={username} />
-          </div>
-          <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl bg-homeGray-dark">
-            <p className="border-b 1px w-2/3 border-gold-dark">Following: {profile.datas.following}</p>
-            <Following username={username} />
-          </div>
+        <div className="md:mr-24">
+          <hr className="md:w-52 md:border-gold-dark" />
         </div>
+        <img className="avatar lg:w-64 w-48 rounded-full " src={profile.datas.avatar_url} alt={`${username} avatar`} />
+        <div className="md:ml-24">
+          <hr className="md:w-52 md:border-gold-dark" />
+        </div>
+      </div>
+      <div className="flex  flex-col lg:flex-row mt-8">
+        <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl bg-homeGray-dark">
+          <p className="border-b 1px w-2/3 border-gold-dark">Followers: {profile.datas.followers}</p>
+          <Follow username={username} />
+        </div>
+        <div className="mr-4 ml-4 mt-4 text-white border border-gold-dark p-4 mt-6 rounded-xl bg-homeGray-dark">
+          <p className="border-b 1px w-2/3 border-gold-dark">Following: {profile.datas.following}</p>
+          <Following username={username} />
+        </div>
+      </div>
 
-        <RepoMap />
-        <Link to={`/repos/${username}`}>
+      <RepoMap />
+      <Link to={`/repos/${username}`}>
         <button className="justify-end bg-gold-dark hover:bg-homeGray-dark hover:text-gold-dark text-white font-bold py-3 px-4  rounded-md my-10">
-                Tous les Repos
-              </button>
-        </Link>
-        <div className="border 1px border-gold-dark w-3/4 mx-auto mb-10"></div>
-      
+          Tous les Repos
+        </button>
+      </Link>
+      <div className="border 1px border-gold-dark w-3/4 mx-auto mb-10"></div>
     </>
   );
 }

@@ -17,7 +17,7 @@ module.exports = {
         },
         homeGray: {
           dark: '#1D1E1E',
-          darker: '#141414'
+          darker: '#141414',
         },
         repos: {
           dark: '#252828',
