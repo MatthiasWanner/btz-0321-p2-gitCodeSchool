@@ -7,6 +7,7 @@ import NavbarSearch from '../NavbarSearch/NavbarSearch';
 import './Navbar.css';
 import NavbarLink from '../NavbarLink/NavbarLink';
 import { ModalContext } from '../Contexts';
+import AddRepo from '../AddRepo/AddRepo';
 
 function Navbar({ username, isLogged }) {
   const { setModal, setModalOpen } = useContext(ModalContext);
@@ -14,62 +15,17 @@ function Navbar({ username, isLogged }) {
   const iconsHeight = {
     height: 50,
   };
-  const [checkedValue, setCheckedValue] = useState(undefined);
+
+  const [showForm, setShowForm] = useState(false);
 
   const links = [
     { to: '/', content: 'Accueil', displayed: true },
     { to: `/profile/${username}`, content: 'Profil', displayed: isLogged },
     { to: `/repos/${username}`, content: 'Mes repos', displayed: isLogged },
   ];
-
   const handleClick = () => {
     setIsBurgerOpen(!isBurgerOpen);
   };
-
-  const haveRadioOpt = (e) => {
-    console.log(e.target.value);
-    // return e.target.value === checkedValue ? true : false;
-  };
-
-  const handleChangeRadio = (e) => {
-    setCheckedValue(e.target.value);
-  };
-
-  const handleClicAdd = () => {
-    setModal({
-      title: 'Créer un repo',
-      content: (
-        <form>
-          <input id="name" className="mb-3" />
-          <input id="description" />
-          <div>
-            <input type="radio" id="public" name="public" value="public" checked={checkedValue === 'public'} onChange={handleChangeRadio} />
-            <label htmlFor="public">public</label>
-
-            <input type="radio" id="private" name="private" value="private" checked={checkedValue === 'private'} onChange={handleChangeRadio} />
-            <label htmlFor="private">Private</label>
-          </div>
-        </form>
-      ),
-      buttons: [
-        {
-          content: 'Valider',
-          color: 'bg-green-300 hover:bg-green-600',
-        },
-        {
-          content: 'Annuler',
-          color: 'bg-red-300 hover:bg-red-600',
-        },
-      ],
-    });
-    setModalOpen(true);
-  };
-
-  useEffect(() => {
-    if (checkedValue) {
-      handleClicAdd();
-    }
-  }, [checkedValue]);
 
   return (
     <div
@@ -119,11 +75,12 @@ function Navbar({ username, isLogged }) {
         <li className="flex items-center">
           <NavbarSearch />
           <BellIcon className="h-7 pl-3" />
-          <button onClick={handleClicAdd}>
+          <button onClick={() => setShowForm(!showForm)}>
             <PlusIcon className="h-7 pl-3" />
           </button>
         </li>
       </ul>
+      {showForm && <AddRepo setShowForm={setShowForm} showForm={showForm} />}
     </div>
   );
 }
