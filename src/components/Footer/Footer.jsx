@@ -3,12 +3,13 @@ import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { LogoutIcon } from '@heroicons/react/outline';
 import GitLogo from '../../img/Gitlogo.png';
+import './Footer.css';
 
 function Footer({ isLogged, handleClickLogout }) {
   const history = useHistory();
 
   return (
-    <footer className="flex flex-col h-[50px] bg-black border border-gold-dark color-gold-dark mt-10">
+    <footer className=" footer flex flex-col bg-black  color-gold-dark mt-10 md:mb-0 mb-16  z-50">
       <div className="flex flex-row justify-around items-center mt-8">
         <a href="https://github.com/" target="_blank" rel="noreferrer">
           <img src={GitLogo} alt="logo-Octobat" className="w-12 bg-white border border-gold-dark rounded-full" />
