@@ -42,7 +42,7 @@ function Feed({ result }) {
     <>
       <p className="flex items-center text-white mx-5 my-3 md:mb-5 font-title">Le {changeDateFormat(result.created_at)}</p>
       <div className={`feed-box ${feedContainer} ${feedContainerMd}`}>
-      <hr className="md:w-5 md:border-gold-dark" />
+        <hr className="md:w-5 md:border-gold-dark" />
         <img src={result.actor.avatar_url} alt={`${result.actor.login} avatar`} className="w-1/12 md:w-24 md:p-1 rounded-full" />
         <hr className="md:w-5 md:border-gold-dark md:px-0" />
         <div>

@@ -45,7 +45,6 @@ function Home({ isLogged, handleClickLogin, username }) {
               })}
           </section>
           <div className="border 1px border-gold-dark w-1/4 mx-auto mt-10 "></div>
-
         </div>
       </>
     );
