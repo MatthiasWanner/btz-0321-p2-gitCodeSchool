@@ -12,7 +12,7 @@ function Home({ isLogged, handleClickLogin, username }) {
 
   const mainContainerClasses = 'w-full p-2 flex flex-col justify-center items-center';
   const ItemsContainer = 'w-full flex flex-col items-center md:w-3/4';
-  const homeItemContainer = 'flex flex-col w-11/12 h-15';
+  const homeItemContainer = 'flex flex-col w-11/12 h-15 md:h-32';
   const homeItemContainerMd = 'md:flex-row md:w-full';
   const homeFeedContainerMd = 'md:justify-center';
 
@@ -28,11 +28,11 @@ function Home({ isLogged, handleClickLogin, username }) {
     return (
       <>
         <div className={`${mainContainerClasses}`}>
-          <header className="mt-14">
-            <h2 className="text-3xl text-white text-center">Bienvenue</h2>
-            <h3 className="text-2xl text-white mb-6 text-center">{username}</h3>
-            <p className="text-white mb-5">{`Ce qu'il s'est passé autour de vous :`}</p>
+          <header className="mt-14 w-40">
+            <h2 className="text-3xl text-gold-dark border-b border-gold-dark mb-10 text-center">Bienvenue</h2>
+            <h3 className="text-2xl text-white mb-10 text-center">{username}</h3>
           </header>
+          <div className="border 1px border-gold-dark w-1/4 mx-auto mb-10 "></div>
           <section className={`home-items-container ${ItemsContainer}`}>
             {homeContent.isLoading && <Spinner />}
             {!homeContent.isLoading &&
@@ -44,6 +44,7 @@ function Home({ isLogged, handleClickLogin, username }) {
                 );
               })}
           </section>
+          <div className="border 1px border-gold-dark w-1/4 mx-auto mt-10 "></div>
         </div>
       </>
     );

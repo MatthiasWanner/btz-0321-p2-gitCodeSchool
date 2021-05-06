@@ -44,7 +44,7 @@ function SearchUsers({ query, handleSetUsers }) {
             🤗
           </span>
         </p>
-      
+
         {result.datas.items.map((item) => {
           return (
             <Link key={item.login} to={`/profile/${item.login}`}>
@@ -52,7 +52,7 @@ function SearchUsers({ query, handleSetUsers }) {
             </Link>
           );
         })}
-          {pagination.length > 1 && (
+        {pagination.length > 1 && (
           <div className="flex w-full h-full justify-center items-end mb-10 border-gold-dark">
             <DropDown
               className="p-1"
