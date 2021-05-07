@@ -39,12 +39,12 @@ function Repo() {
         <div className="flex flex-col items-center w-full justify-end">
           <div className="flex flex-col items-center mb-6">
             <Link to={`/profile/${username}`}>
-              <h1 className="text-gold-dark text-4xl mt-24 border-b border-gold-dark">{username}</h1>
+              <h1 className="text-gold-dark md:text-4xl text-2xl mt-24 border-b border-gold-dark">{username}</h1>
             </Link>
-            <h3 className="text-gold-dark text-2xl mt-10">{repoConsulted.datas.name}</h3>
+            <h3 className="text-gold-dark md:text-2xl text-xl mt-10">{repoConsulted.datas.name}</h3>
             <h3 className="text-gold-dark text-xl text-center mb-10 ">{repoConsulted.datas.description}</h3>
             <Link to={`/repos/${username}`}>
-              <button className="justify-end bg-gold-dark hover:bg-homeGray-dark hover:text-gold-dark text-white font-bold py-3  px-4  rounded-md mt-2">
+              <button className="justify-end bg-gold-dark hover:bg-homeGray-dark hover:text-gold-dark text-white font-bold py-3  px-4 mb-5 rounded-md mt-2">
                 Tous les Repos
               </button>
             </Link>
