@@ -27,7 +27,7 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
 
   return (
     <div className="content border border-gold-dark mb-6 py-4 rounded-md  flex flex-col px-8 bg-homeGray-dark">
-      <div className="text-center">
+      <div className="text-center ">
         {path.map((item, index) => {
           return (
             <button
