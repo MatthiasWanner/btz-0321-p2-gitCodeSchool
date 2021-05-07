@@ -96,7 +96,7 @@ function App() {
         <div className={`body-container ${bodyClasses}`} style={{ maxWidth: 1440 }}>
           <Router>
             <Navbar username={username} isLogged={isLogged} />
-            <BotBar />
+            {isLogged && <BotBar />}
             <div className={`main-container ${mainContainerClasses}`}>
               <Switch>
                 <Routes isLogged={isLogged} handleClickLogin={handleClickLogin} username={username} />
