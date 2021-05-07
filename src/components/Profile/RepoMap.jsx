@@ -11,7 +11,6 @@ export default function RepoMap() {
   const { username } = useParams();
   const endpoint = PROFIL_REPOS.replace('{username}', username);
   const repoMap = useGetAll(endpoint);
-  // useErrorModal(repoMap.error);
 
   // class Tailwind
   const repoContainer =
