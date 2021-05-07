@@ -86,7 +86,7 @@ export default function AllRepos() {
         .map((repo) => {
           return (
             <Link className="w-full md:w-3/4 " key={repo.id} to={`/repo/${username}/${repo.name}`}>
-              <div className="border-2 border-white bg-gold-hover hover:bg-gold-dark rounded-md mx-8 mb-5">
+              <div className="border border-white bg-gold-hover hover:bg-gold-dark rounded-md mx-8 mb-5">
                 <div className="text-white flex pl-6 pt-2 items-center justify-between text-center mb-5 md:text-xl">
                   <FolderIcon className="h-10 w-10 md:h-20 md:w-20 " />
                   <p className="text-white text-2xl md:text-3xl ">{repo.name}</p>
