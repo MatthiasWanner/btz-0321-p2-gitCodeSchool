@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import { FolderIcon, StarIcon } from '@heroicons/react/solid';
+import { FolderIcon, StarIcon, LockClosedIcon } from '@heroicons/react/solid';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { PROFIL_REPOS } from '../../api/endpoints';
+import { PROFIL_REPOS, USER_REPOS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
 import './AllRepos.css';
 
 export default function AllRepos() {
   const { username } = useParams();
-  const endpoint = PROFIL_REPOS.replace(`{username}`, username);
+  const endpoint = username !== localStorage.ghUsername ? PROFIL_REPOS.replace(`{username}`, username) : USER_REPOS_URL;
   const allRepos = useGetAll(endpoint);
 
   const [changeLang, setChangeLang] = useState('');

@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { ModalContext } from '../Contexts';
 import { Dialog } from '@headlessui/react';
+import axios from 'axios';
+import API_URL from '../../api/api';
+import { CREATE_REPOS_URL } from '../../api/endpoints';
 
 export default function AddRepo({ showForm, setShowForm }) {
   const { modal, setModal, setModalOpen } = useContext(ModalContext);
@@ -15,9 +18,23 @@ export default function AddRepo({ showForm, setShowForm }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    console.log(showForm);
+  const onSubmit = async (data) => {
+    data.type === 'true' ? (data.type = true) : (data.type = false);
+    const authorization = localStorage.ghTokenKey !== undefined ? `token ${localStorage.ghTokenKey}` : '';
+
+    axios({
+      method: 'post',
+      url: `${API_URL}${CREATE_REPOS_URL}`,
+      headers: {
+        Authorization: authorization,
+      },
+      data: {
+        name: data.name,
+        description: data.description,
+        private: data.type,
+      },
+    });
+
     setShowForm(false);
     setModal({
       title: 'Yepa 🎉 ! Vous venez de créer un Repo',

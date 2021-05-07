@@ -14,6 +14,8 @@ function Chat({ username }) {
   const handleClickChat = (user, url) => {
     setActiveChat(user);
     setActiveAvatar(url);
+
+    socket.emit('chat:close');
   };
 
   useEffect(() => {
@@ -33,12 +35,11 @@ function Chat({ username }) {
 
   return (
     <>
-      <div className={`flex  justify-end mt-14 mb-16 margBox `}>
+      <div className={`flex justify-end mt-14 mb-16 margBox`}>
         {activeChat && <ChatBubble recipient={activeChat} username={username} handleClickChat={handleClickChat} avatarUrl={activeAvatar} />}
         <div className="boxOnline w-4/5 md:w-72 text-white h-96 bg-homeGray-dark md:rounded-lg p-2 md:border md:border-gold-dark border-t border-l border-r border-gold-dark">
           <p className="border-b w-1/2 border-gold-dark">Online</p>
           {onlineUsers
-
             .filter((user) => user !== username)
             .map((user) => {
               return <User user={user} handleClickChat={handleClickChat} key={user} />;

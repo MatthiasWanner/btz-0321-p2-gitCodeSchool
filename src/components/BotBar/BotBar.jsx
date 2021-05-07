@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { ChatContext, UnreadMessageContext } from '../Contexts';
 import { UsersIcon } from '@heroicons/react/solid';
 import Chat from '../Chat/Chat';
 import './BotBar.css';
 
 function BotBar() {
+  const socket = useContext(ChatContext);
+  const { setUnreadMessage } = useContext(UnreadMessageContext);
   const [chat, setChat] = useState(false);
+
+  useEffect(() => {
+    socket.on('message:new', () => {
+      setUnreadMessage((unreadMessage) => ++unreadMessage);
+    });
+
+    return () => {
+      socket.off('message:new');
+    };
+  }, []);
 
   return (
     <>
