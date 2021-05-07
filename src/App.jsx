@@ -12,7 +12,6 @@ import BotBar from './components/BotBar/BotBar';
 
 function App() {
   const socket = useContext(ChatContext);
-
   const [username, setUsername] = useState(localStorage.ghUsername);
   const [isLogged, setIsLogged] = useState(username !== undefined);
   useEffect(() => {
@@ -23,7 +22,6 @@ function App() {
   }, [username]);
   const [modal, setModal] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
-
   const handleClickLogin = async (e, tokenKey) => {
     try {
       e.preventDefault();
