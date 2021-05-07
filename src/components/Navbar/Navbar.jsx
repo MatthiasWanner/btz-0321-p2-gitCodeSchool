@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import PropTypes from 'prop-types';
-import { FingerPrintIcon, BellIcon, PlusIcon, UserIcon, XIcon, MenuIcon } from '@heroicons/react/solid';
+import { FingerPrintIcon, BellIcon, PlusIcon, XIcon, MenuIcon } from '@heroicons/react/solid';
 import NavbarSearch from '../NavbarSearch/NavbarSearch';
 import './Navbar.css';
 import NavbarLink from '../NavbarLink/NavbarLink';
+import AddRepo from '../AddRepo/AddRepo';
+import { UnreadMessageContext } from '../Contexts';
 
 function Navbar({ username, isLogged }) {
+  const { unreadMessage } = useContext(UnreadMessageContext);
+
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const iconsHeight = {
     height: 50,
   };
@@ -18,7 +23,6 @@ function Navbar({ username, isLogged }) {
     { to: `/profile/${username}`, content: 'Profil', displayed: isLogged },
     { to: `/repos/${username}`, content: 'Mes repos', displayed: isLogged },
   ];
-
   const handleClick = () => {
     setIsBurgerOpen(!isBurgerOpen);
   };
@@ -51,7 +55,10 @@ function Navbar({ username, isLogged }) {
       </Menu>
 
       <FingerPrintIcon style={iconsHeight} className="sm:hidden" />
-      <BellIcon style={iconsHeight} className="sm:hidden" />
+      <div className="flex flex-row-reverse">
+        {unreadMessage > 0 && <div className="absolute w-5 h-5 mt-1 mr-1 rounded-full bg-red-600 animate-pulse" />}
+        <BellIcon style={iconsHeight} className="sm:hidden" />
+      </div>
 
       <ul className="hidden sm:flex w-full h-14 px-3 justify-between">
         <li className="flex items-center">
@@ -70,11 +77,16 @@ function Navbar({ username, isLogged }) {
         </li>
         <li className="flex items-center">
           <NavbarSearch />
-          <BellIcon className="h-7 pl-3" />
-          <PlusIcon className="h-7 pl-3" />
-          <UserIcon className="h-7 pl-3" />
+          <div className="flex flex-row-reverse">
+            {unreadMessage > 0 && <div className="absolute w-3 h-3 rounded-full bg-red-600 animate-pulse" />}
+            <BellIcon className="h-7 pl-3" />
+          </div>
+          <button className="focus:outline-none" onClick={() => setShowForm(!showForm)}>
+            <PlusIcon className="h-7 pl-3" />
+          </button>
         </li>
       </ul>
+      {showForm && <AddRepo setShowForm={setShowForm} showForm={showForm} />}
     </div>
   );
 }

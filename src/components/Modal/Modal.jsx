@@ -14,11 +14,9 @@ function Modal() {
   return (
     <Dialog className="fixed inset-0 flex justify-center items-center flex-wrap" open={modalOpen} onClose={() => setModalOpen(false)}>
       <Dialog.Overlay className="fixed inset-0" />
-
       <div className={`z-50 w-full max-w-md p-6 my-8 mx-5 overflow-hidden rounded-2xl ${_status}`}>
         <Dialog.Title className="text-lg font-medium leading-6 text-gray-900">{modal.title}</Dialog.Title>
-        <Dialog.Description className="opacity-60 break-word">{modal.content}</Dialog.Description>
-
+        <div className="opacity-60 break-word">{modal.content}</div>
         <div className="flex mt-4">
           {modal.buttons.map((button, index) => {
             return (
