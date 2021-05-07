@@ -88,7 +88,7 @@ export default function AllRepos() {
             <Link className="w-full md:w-2/4" key={repo.id} to={`/repo/${username}/${repo.name}`}>
               <div className="border border-gold-dark bg-homeGray-dark  rounded-xl mx-8 my-5">
                 <div className="text-white flex pl-6 pt-2 items-center justify-between text-center md:text-xl flex">
-                  <FolderIcon className="h-6 w-6 md:h-20 md:w-20 flex-shrink-0 " />
+                  <FolderIcon className="h-6 w-6 md:h-20 text-gold-dark md:w-20 flex-shrink-0 " />
                   <p className="text-white md:text-2xl text-lg ">{repo.name}</p>
                   <div className="flex justify-around items-center mr-4">
                     <p className="text-white text-xs md:text-md px-2">{repo.stargazers_count}</p>

@@ -73,7 +73,7 @@ function Navbar({ username, isLogged }) {
           <NavbarSearch />
           {isLogged && (
             <button className="focus:outline-none" onClick={() => setShowForm(!showForm)}>
-              <PlusIcon className="h-7 pl-3" />
+              <PlusIcon className="h-10 pl-3" />
             </button>
           )}
         </li>
