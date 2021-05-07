@@ -28,7 +28,7 @@ function Home({ isLogged, handleClickLogin, username }) {
     return (
       <>
         <div className={`${mainContainerClasses}`}>
-          <h2 className="text-3xl text-gold-dark border-b border-gold-dark mt-10 text-center">Bienvenue</h2>
+          <h2 className="text-3xl text-gold-dark border-b border-gold-dark md:mt-10 mt-24 text-center">Bienvenue</h2>
           <header className="mt-14 w-full">
             <h3 className="text-2xl text-white mb-10 text-center">{username}</h3>
           </header>
