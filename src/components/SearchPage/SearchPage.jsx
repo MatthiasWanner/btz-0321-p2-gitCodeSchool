@@ -46,10 +46,10 @@ function SearchPage() {
   const subTitleClasses = 'text-xl mb-10';
   const searchResultsClasses = 'flex flex-col w-full';
   const searchResultsClassesMd = 'md:flex-row mt-16';
-  const userContainerClass= 'border'
-  const userContainerClassMd='mx-auto px-6 rounded-lg border-gold-dark w-1/3 bg-homeGray-dark'
-  const repoContainerClass='border'
-  const repoContainerClassMd='mx-auto px-6 rounded-lg border-gold-dark w-1/3 bg-homeGray-dark'
+  const userContainerClass = 'border';
+  const userContainerClassMd = 'mx-auto px-6 rounded-lg border-gold-dark md:w-1/3 w-3/4 bg-homeGray-dark';
+  const repoContainerClass = 'border';
+  const repoContainerClassMd = 'mx-auto px-6 rounded-lg border-gold-dark md:w-1/3 w-3/4 bg-homeGray-dark';
 
   return (
     <>
@@ -59,11 +59,11 @@ function SearchPage() {
         <NavbarSearch />
         <div className={`search-results ${searchResultsClasses} ${searchResultsClassesMd}`}>
           <div className={`${userContainerClass} ${userContainerClassMd}`}>
-          <SearchUsers query={query} handleSetUsers={handleSetUsers} />
+            <SearchUsers query={query} handleSetUsers={handleSetUsers} />
           </div>
-          <div className="my-10 border border-gold-dark  "></div> 
+          <div className="my-10 border border-gold-dark  "></div>
           <div className={`${repoContainerClass} ${repoContainerClassMd}`}>
-          <SearchRepos query={query} handleSetRepos={handleSetRepos} />
+            <SearchRepos query={query} handleSetRepos={handleSetRepos} />
           </div>
         </div>
       </div>

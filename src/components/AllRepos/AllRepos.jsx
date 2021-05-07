@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import { FolderIcon, StarIcon } from '@heroicons/react/solid';
+import { FolderIcon, StarIcon, LockClosedIcon } from '@heroicons/react/solid';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { PROFIL_REPOS } from '../../api/endpoints';
+import { PROFIL_REPOS, USER_REPOS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
 import './AllRepos.css';
 
 export default function AllRepos() {
   const { username } = useParams();
-  const endpoint = PROFIL_REPOS.replace(`{username}`, username);
+  const endpoint = username !== localStorage.ghUsername ? PROFIL_REPOS.replace(`{username}`, username) : USER_REPOS_URL;
   const allRepos = useGetAll(endpoint);
 
   const [changeLang, setChangeLang] = useState('');
@@ -54,10 +54,10 @@ export default function AllRepos() {
     <>
       <div className="mb-5 mt-14 ">
         <div className="demo-1 mt-2">
-          <h1 className=""> Les Repos de {`${username}`} </h1>
+          <h1 className="text-gold-dark flex justify-center text-3xl mb-10 border-b border-gold-dark"> Les Repos de {`${username}`} </h1>
         </div>
         <div className="flex flex-row items-baseline">
-          <p className="text-white mt-2">Language:</p>
+          <p className="text-white mt-2 px-3">Language: </p>
           <select
             onChange={handleChange}
             value={changeLang}
@@ -85,23 +85,27 @@ export default function AllRepos() {
         })
         .map((repo) => {
           return (
-            <Link className="w-full md:w-3/4 " key={repo.id} to={`/repo/${username}/${repo.name}`}>
-              <div className="border-2 border-white bg-gold-hover hover:bg-gold-dark rounded-md mx-8 mb-5">
-                <div className="text-white flex pl-6 pt-2 items-center justify-between text-center mb-5 md:text-xl">
-                  <FolderIcon className="h-10 w-10 md:h-20 md:w-20 " />
-                  <p className="text-white text-2xl md:text-3xl ">{repo.name}</p>
+            <Link className="w-full md:w-2/4" key={repo.id} to={`/repo/${username}/${repo.name}`}>
+              <div className="border border-gold-dark bg-homeGray-dark  rounded-xl mx-8 my-5">
+                <div className="text-white flex pl-6 pt-2 items-center justify-between text-center md:text-xl">
+                  <FolderIcon className="h-6 w-6 md:h-20 md:w-20 " />
+                  <p className="text-white text-2xl md:text-xl ">{repo.name}</p>
                   <div className="flex justify-around items-center mr-4">
                     <p className="text-white px-2">{repo.stargazers_count}</p>
-                    <StarIcon className="h-6" />
+                    <StarIcon className="h-6 text-gold-dark" />
                   </div>
                 </div>
-                <h1 className="text-white mb-2 pl-6">Description: </h1>
-                <p className="text-white mb-2 pl-6 pr-4">{repo.description}</p>
-                <p className="text-white mb-4 mx-6 flex items-center pl-36 md:justify-end">
+                <div className="border 1px border-gold-dark w-2/4 mx-auto mb-4"></div>
+                <div>
+                  <h1 className="text-white text-md my-2 pl-6">Description: </h1>
+                  <p className="text-white text-sm mb-2 pl-6 pr-4">{repo.description}</p>
+                </div>
+                <p className="text-white mb-4 mx-6 flex items-center  md:justify-end">
                   <span className={`${haveTheColor(repo.language)} w-4 h-4 rounded-full mx-3`} />
                   {repo.language}
                 </p>
               </div>
+              <div className="border 1px border-gold-dark w-1/4 mx-auto"></div>
             </Link>
           );
         })}
