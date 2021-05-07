@@ -12,3 +12,5 @@ export const PROFIL_HOME = '/users/{username}/repos';
 export const SEARCH_REPOS_URL = '/search/repositories?q={query}&page={page}';
 export const SEARCH_USERS_URL = '/search/users?q={query}&page={page}';
 export const CREATE_REPOS_URL = '/user/repos';
+export const USER_REPOS_URL = '/user/repos';
+

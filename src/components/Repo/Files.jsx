@@ -27,19 +27,19 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
 
   return (
     <div className="content border border-gold-dark mb-6 py-4 rounded-md  flex flex-col px-8 bg-homeGray-dark">
-      <div className="text-center ">
-        
+      <div className="text-center">
         {path.map((item, index) => {
-          return (
-            
-            <button
-            
-              className="path-item cursor-pointer text-yellow-400 focus:outline-none"
-              key={index}
-              onClick={() => handleClickReturn(index, item.endpoint)}>
-              {item.directory}
-            </button>
-          );
+          return 
+            {
+              index === path.length - 1 ?
+              <button
+                className="path-item text-yellow-400 focus:outline-none mx-1"
+                key={index}
+                onClick={() => handleClickReturn(index, item.endpoint)}>
+                {item.directory}
+              </button> :
+              <p className='path-item text-yellow-400 focus:outline-none mx-1'>{item.directoy}</p>
+            }
         })}
       </div>
       <hr className="border-gold-dark w-1/4 mx-auto my-4"/>
