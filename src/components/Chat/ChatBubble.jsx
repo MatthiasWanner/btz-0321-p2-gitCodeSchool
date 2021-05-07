@@ -14,6 +14,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
   const messageRef = useRef();
 
   useEffect(() => {
+    // noinspection JSUnresolvedFunction
     messageRef.current.scrollIntoView();
   }, [messages]);
 
@@ -49,7 +50,6 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // noinspection JSCheckFunctionSignatures
     socket.emit('message:create', recipient, content);
 
     setContent('');
