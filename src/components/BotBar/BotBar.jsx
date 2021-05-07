@@ -7,13 +7,19 @@ import './BotBar.css';
 function BotBar() {
   const socket = useContext(ChatContext);
   const [chat, setChat] = useState(false);
+  const [newMessageFrom, setNewMessageFrom] = useState([]);
+  const [notif, setNotif] = useState(newMessageFrom.length > 0);
 
   useEffect(() => {
     socket.on('message:new', (newMessages) => {
-      console.log(newMessages[newMessages.length - 1].from);
+      if (!newMessageFrom.includes(newMessages[newMessages.length - 1].from)) {
+        setNewMessageFrom([...newMessageFrom, newMessages[newMessages.length - 1].from]);
+      }
     });
     socket.on('message:create', (newMessages) => {
-      console.log(newMessages[newMessages.length - 1].from);
+      if (!newMessageFrom.includes(newMessages[newMessages.length - 1].from)) {
+        setNewMessageFrom([...newMessageFrom, newMessages[newMessages.length - 1].from]);
+      }
     });
   }, []);
 
