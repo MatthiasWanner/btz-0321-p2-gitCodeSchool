@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import ghLogo from '../../img/gh-logo.png';
 import './HomeFields.css';
-import GitLogo from '/src/img/Gitlogo.png'
+import GitLogo from '/src/img/Gitlogo.png';
 
 function HomeFields({ handleClickLogin }) {
   const [tokenKey, setTokenKey] = useState('');

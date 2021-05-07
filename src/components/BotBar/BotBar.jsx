@@ -9,10 +9,13 @@ function BotBar() {
   const [chat, setChat] = useState(false);
 
   useEffect(() => {
+    socket.on('message:new', (newMessages) => {
+      console.log(newMessages[newMessages.length - 1].from);
+    });
     socket.on('message:create', (newMessages) => {
       console.log(newMessages[newMessages.length - 1].from);
     });
-  });
+  }, []);
 
   return (
     <>

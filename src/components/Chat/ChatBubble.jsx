@@ -14,11 +14,11 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
     socket.emit('chat:open', recipient);
 
     socket.on('chat:open', (pastMessages) => {
-      setMessages(pastMessages);
+      setMessages(pastMessages.reverse());
     });
 
     socket.on('message:create', (newMessages) => {
-      setMessages(newMessages);
+      setMessages(newMessages.reverse());
     });
 
     socket.on('chat:delete', () => {
@@ -26,7 +26,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
     });
 
     socket.on('message:delete', (deletedMessages) => {
-      setMessages(deletedMessages);
+      setMessages(deletedMessages.reverse());
     });
 
     return () => {
@@ -79,7 +79,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
           </button>
         </div>
       </div>
-      <div className="h-96 overflow-auto">
+      <div className="flex flex-col-reverse h-96 overflow-auto">
         {messages.map((msg, index) => (
           <div key={msg.date} className={`flex ${msg.from === username ? 'flex-row-reverse' : 'flex-row'} w-full items-center  p-2`}>
             <img src={msg.from !== username ? avatarUrl : localStorage.ghAvatar} alt="photoprofile" className="rounded-full h-6 w-6 flex-shrink-0" />
