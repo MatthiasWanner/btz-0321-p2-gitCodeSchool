@@ -1,3 +1,16 @@
 .has-tooltip:hover .tooltip {
   display: block;
 }
+
+@media screen and (min-width: 760px){
+
+  .boxOnline{
+    
+  
+  }
+  
+  .margBox{
+    margin-right: 75px;
+  }
+}
+  

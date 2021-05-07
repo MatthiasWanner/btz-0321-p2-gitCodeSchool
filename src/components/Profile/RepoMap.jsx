@@ -13,7 +13,8 @@ export default function RepoMap() {
   const repoMap = useGetAll(endpoint);
 
   // class Tailwind
-  const repoContainer = 'flex flex-col items-center justify-center border-gold-dark mx-4  text-center bg-homeGray-dark rounded-xl h-full border border-gold-dark';
+  const repoContainer =
+    'flex flex-col items-center justify-center border-gold-dark mx-4  text-center bg-homeGray-dark rounded-xl h-full border border-gold-dark';
   const repoContainerLG = 'md:my-4 md:w-1/2 md:p-4 md:h-56 md:w-10/12 md:h-10/12';
   // fin de class
 

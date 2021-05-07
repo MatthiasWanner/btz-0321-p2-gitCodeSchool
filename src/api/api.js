@@ -9,6 +9,7 @@ export async function login(tokenKey) {
   const username = data.login;
   localStorage.setItem('ghUsername', username);
   localStorage.setItem('ghTokenKey', tokenKey);
+  localStorage.setItem('ghAvatar', data.avatar_url);
 
   return data;
 }
