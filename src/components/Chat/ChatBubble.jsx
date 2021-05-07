@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ChatContext } from '../Contexts';
+import { ChatContext, UnreadMessageContext } from '../Contexts';
 
 import './ChatBubble.css';
 import { ChevronRightIcon, TrashIcon, XIcon } from '@heroicons/react/solid';
 
 function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
   const socket = useContext(ChatContext);
+  const { setUnreadMessage } = useContext(UnreadMessageContext);
   const [messages, setMessages] = useState([]);
   const [content, setContent] = useState('');
 
@@ -29,6 +30,8 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
       setMessages(deletedMessages.reverse());
     });
 
+    setUnreadMessage((unreadMessage) => --unreadMessage);
+
     return () => {
       socket.off('chat:open');
       socket.off('chat:delete');
@@ -36,21 +39,6 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
       socket.off('message:delete');
     };
   }, [recipient]);
-
-  // const formatDate = (date) => {
-  //   date = new Date(date);
-
-  //   const [years, months, days, hours, minutes, seconds] = [
-  //     date.getFullYear(),
-  //     date.getMonth() + 1,
-  //     date.getDate(),
-  //     date.getHours(),
-  //     date.getMinutes(),
-  //     date.getSeconds(),
-  //   ].map((v) => v.toString().padStart(2, '0'));
-
-  //   return `${days}/${months}/${years} a ${hours}:${minutes}:${seconds}`;
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +57,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
     <div className="box absolute bottom-16 -rigth-16 md:border md:border-gold-dark rounded-lg bg-homeGray-darker text-white  w-72">
       <div className="flex justify-between rounded-t-lg p-2 bg-homeGray-dark">
         {recipient}
-        <div className="flex  items-center ">
+        <div className="flex items-center ">
           <button className="focus:outline-none  rounded-full px-1" onClick={handlePrune}>
             <TrashIcon className="h-4" />
             <p className="hidden ">Effacer la discussion</p>
@@ -83,7 +71,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
         {messages.map((msg, index) => (
           <div key={msg.date} className={`flex ${msg.from === username ? 'flex-row-reverse' : 'flex-row'} w-full items-center  p-2`}>
             <img src={msg.from !== username ? avatarUrl : localStorage.ghAvatar} alt="photoprofile" className="rounded-full h-6 w-6 flex-shrink-0" />
-            <p className={msg.from === username ? 'ml-1' : 'mr-1'}></p>
+            <p className={msg.from === username ? 'ml-1' : 'mr-1'} />
             <div
               className={
                 msg.from === username
