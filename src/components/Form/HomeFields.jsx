@@ -10,7 +10,7 @@ function HomeFields({ handleClickLogin }) {
   const tokonLabelClasses = 'text-center text-gold-dark text-2xl border-b border-gold-dark';
   const inputTokenClasses = ' rounded-3xl w-4/5 border border-black text-center focus:outline-none focus:ring focus:ring-gold-dark py-1';
   const submitHomeClasses =
-    'w-2/3 text-white py-1 bg-gold-dark text-white font-semibold rounded-3xl shadow-lg border border-black from-white hover:bg-gold-hover focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75';
+    'w-2/3 text-homeGray-dark py-1 bg-gold-dark text-white font-semibold rounded-3xl shadow-lg border border-black from-white hover:bg-gold-hover focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75';
   const pClasses = 'text-xs text-white';
   const aClasses = 'text-gold-dark font-bold';
 
