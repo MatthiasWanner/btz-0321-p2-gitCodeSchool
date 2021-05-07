@@ -93,7 +93,7 @@ export default function AllRepos() {
                 <div className="text-white flex pl-6 pt-2 items-center justify-between text-center md:text-xl">
                   <div className="flex items-center">
                     <FolderIcon className="h-6 w-6 md:h-20 text-gold-dark md:w-20 flex-shrink-0 " />
-                    {repo.private && <LockClosedIcon className="h-10 w-10 text-white" />}
+                    {repo.private && <LockClosedIcon className="h-3 w-3 text-white" />}
                   </div>
                   <p className="text-white md:text-2xl text-lg ">{repo.name}</p>
                   <div className="flex justify-around items-center mr-4">
