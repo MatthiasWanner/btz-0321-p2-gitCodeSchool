@@ -31,7 +31,7 @@ export default function Files({ filesEndpoint, handleClickFile, handleClickPath,
         {path.map((item, index) => {
           return (
             <button
-              className="path-item cursor-pointer text-yellow-400 focus:outline-none"
+              className="path-item cursor-pointer text-yellow-400 focus:outline-none px-1"
               key={index}
               onClick={() => handleClickReturn(index, item.endpoint)}>
               {item.directory}

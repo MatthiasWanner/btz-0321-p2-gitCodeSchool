@@ -9,7 +9,7 @@ import Following from './Following';
 import { Link } from 'react-router-dom';
 
 function Profile() {
-  const titleContainer = 'mt-14';
+  const titleContainer = '';
 
   const { username } = useParams();
   const endpoint = PROFIL_URL.replace('{username}', username);
