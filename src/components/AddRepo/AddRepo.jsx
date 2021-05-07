@@ -52,8 +52,7 @@ export default function AddRepo({ showForm, setShowForm }) {
         <div className="border 1px border-gold-dark w-3/4 mx-auto mb-6"></div>
         <form onSubmit={handleSubmit(onSubmit)} action="" className="text-white flex flex-col justify-around ">
           <div>
-            <label htmlFor="name" className="">
-            </label>
+            <label htmlFor="name" className=""></label>
             <input
               type="text"
               ref={nameRef}
@@ -73,9 +72,7 @@ export default function AddRepo({ showForm, setShowForm }) {
             <ErrorMessage errors={errors} name="name" />
           </div>
           <div>
-            <label htmlFor="text" className="">
-          
-            </label>
+            <label htmlFor="text" className=""></label>
             <input
               type="text"
               placeholder="Description..."
@@ -89,22 +86,31 @@ export default function AddRepo({ showForm, setShowForm }) {
           </div>
           <div className="flex flex-row justify-center w-full mb-3">
             <div className="flex w-full justify-start ml-24">
-              <label className="pr-2" htmlFor="radio">Public</label>
+              <label className="pr-2" htmlFor="radio">
+                Public
+              </label>
               <input type="radio" defaultChecked {...register('type', { required: 'Ce champs est requis' })} value="public" />
             </div>
             <div className="w-full flex justify-end mr-24">
               <input type="radio" {...register('type', { required: 'Ce champs est requis' })} value="private" />
-              <label className="pl-2" htmlFor="radio"> Private</label>
+              <label className="pl-2" htmlFor="radio">
+                {' '}
+                Private
+              </label>
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <button type="submit" className="focus:outline-none  w-1/3 bg-homeGray-dark border border-green-500 hover:text-homeGray-dark hover:bg-green-500 rounded-full text-green-500">
+            <button
+              type="submit"
+              className="focus:outline-none  w-1/3 bg-homeGray-dark border border-green-500 hover:text-homeGray-dark hover:bg-green-500 rounded-full text-green-500">
               Créer
             </button>
           </div>
         </form>
         <div className="flex flex-col items-center">
-          <button className="mt-3 w-1/3 border border-red-500 text-red-500 bg-homeGray-dark hover:text-homeGray-dark hover:bg-red-500 rounded-full " onClick={() => setShowForm(false)}>
+          <button
+            className="mt-3 w-1/3 border border-red-500 text-red-500 bg-homeGray-dark hover:text-homeGray-dark hover:bg-red-500 rounded-full "
+            onClick={() => setShowForm(false)}>
             Annuler
           </button>
         </div>
