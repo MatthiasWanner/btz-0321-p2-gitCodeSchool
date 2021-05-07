@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import { FolderIcon, StarIcon } from '@heroicons/react/solid';
+import { FolderIcon, StarIcon, LockClosedIcon } from '@heroicons/react/solid';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { PROFIL_REPOS } from '../../api/endpoints';
+import { PROFIL_REPOS, USER_REPOS_URL } from '../../api/endpoints';
 import { useGetAll } from '../../api/useGet';
 import './AllRepos.css';
 
 export default function AllRepos() {
   const { username } = useParams();
-  const endpoint = PROFIL_REPOS.replace(`{username}`, username);
+  const endpoint = username !== localStorage.ghUsername ? PROFIL_REPOS.replace(`{username}`, username) : USER_REPOS_URL;
   const allRepos = useGetAll(endpoint);
 
   const [changeLang, setChangeLang] = useState('');
@@ -88,7 +88,10 @@ export default function AllRepos() {
             <Link className="w-full md:w-3/4 " key={repo.id} to={`/repo/${username}/${repo.name}`}>
               <div className="border-2 border-white bg-gold-hover hover:bg-gold-dark rounded-md mx-8 mb-5">
                 <div className="text-white flex pl-6 pt-2 items-center justify-between text-center mb-5 md:text-xl">
-                  <FolderIcon className="h-10 w-10 md:h-20 md:w-20 " />
+                  <div className="flex items-center">
+                    <FolderIcon className="h-10 w-10 md:h-20 md:w-20 " />
+                    {repo.private && <LockClosedIcon className="h-10 w-10 text-homeGray-dark" />}
+                  </div>
                   <p className="text-white text-2xl md:text-3xl ">{repo.name}</p>
                   <div className="flex justify-around items-center mr-4">
                     <p className="text-white px-2">{repo.stargazers_count}</p>
