@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ChatContext, UnreadMessageContext } from '../Contexts';
 
@@ -11,15 +11,21 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
   const [messages, setMessages] = useState([]);
   const [content, setContent] = useState('');
 
+  const messageRef = useRef();
+
+  useEffect(() => {
+    messageRef.current.scrollIntoView();
+  }, [messages]);
+
   useEffect(() => {
     socket.emit('chat:open', recipient);
 
     socket.on('chat:open', (pastMessages) => {
-      setMessages(pastMessages.reverse());
+      setMessages(pastMessages);
     });
 
     socket.on('message:create', (newMessages) => {
-      setMessages(newMessages.reverse());
+      setMessages(newMessages);
     });
 
     socket.on('chat:delete', () => {
@@ -27,7 +33,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
     });
 
     socket.on('message:delete', (deletedMessages) => {
-      setMessages(deletedMessages.reverse());
+      setMessages(deletedMessages);
     });
 
     setUnreadMessage((unreadMessage) => --unreadMessage);
@@ -67,7 +73,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
           </button>
         </div>
       </div>
-      <div className="flex flex-col-reverse h-96 overflow-auto">
+      <div className="flex flex-col h-96 overflow-auto">
         {messages.map((msg, index) => (
           <div key={msg.date} className={`flex ${msg.from === username ? 'flex-row-reverse' : 'flex-row'} w-full items-center  p-2`}>
             <img src={msg.from !== username ? avatarUrl : localStorage.ghAvatar} alt="photoprofile" className="rounded-full h-6 w-6 flex-shrink-0" />
@@ -90,6 +96,7 @@ function ChatBubble({ username, recipient, handleClickChat, avatarUrl }) {
             )}
           </div>
         ))}
+        <div ref={messageRef} />
       </div>
       <div className="w-full rounded-b-lg bg-homeGray-dark py-2 ">
         <form action="" className="flex flex-row  justify-around md:justify-beetwin sticky items-start " onSubmit={handleSubmit}>
